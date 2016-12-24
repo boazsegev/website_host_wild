@@ -62,11 +62,52 @@
             opacity: 0.9;
         }
 
+        #bottom {
+            width: 100%;
+            position: fixed;
+            bottom: 0; left: 0;
+            box-sizing: border-box;
+            padding: 0.2em;
+            height: 1.5em;
+            font-size: 2em;
+            text-align: center;
+            background: #000;
+            border-top: #333 1px solid;
+            z-index: 1001;
+        }
+
+        #bottom img {
+            padding: 0; margin: 0;
+        }
+
+        #bottom .social {
+            display: inline-block;
+            margin: 0 0.5em;
+            padding: 0;
+            height: 29px;
+            width: 29px;
+            border-radius: 3px;
+            background-color: #112;
+            text-align: center;
+            text-decoration: none;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        #bottom .social:hover {
+            background-color: #668;
+        }
+
         #audio {
             position: absolute;
             top: 1em;
             left: 1em;
             z-index: 9999;
+        }
+        #content {
+            margin: 0;
+            padding: 0;
+            margin-bottom: 3em;
         }
 
         h1 {
@@ -75,6 +116,15 @@
             padding: 1em 0 0.5em 0;
             margin: 0;
             width: 100%;
+        }
+
+        a {
+            color: #eee;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #eeb;
         }
     </style>
     <script type="text/javascript">
@@ -91,9 +141,24 @@
     <div id="top">
         <h1>Bo Wild</h1>
     </div>
-    <h1>Prepare to Breathe</h1>
-    <h1>...where the wild things live...</h1>
+    <div id="content">
+        <h1>Prepare to Breathe</h1>
+        <h1>...where the wild things live...</h1>
+    </div>
+    <div id='bottom'>
+        <a href="http://facebook.com/bowildmusic" class='social' style='background-image:url("images/facebook_logo.png")'></a>
+        <a href="https://twitter.com/bowildmusic" class='social' style='background-image:url("images/twitter_logo.svg")'></a>
+    </div>
 
+    <script type="text/javascript">
+        function init_document() {
+            var content = document.getElementById('content');
+            content.style.opacity = "0";
+            content.style.transition = "opacity 1s";
+            setTimeout(function(c) {c.style.opacity = "1";}, 250, content);
+        }
+        init_document();
+    </script>
 </body>
 
 </html>
