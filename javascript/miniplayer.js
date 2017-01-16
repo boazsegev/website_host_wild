@@ -82,6 +82,7 @@ function MiniPlayer(obj_id) {
   this.autoplay = false;
 
   this.playlist = [];
+  this.history = [];
 
   this.obj_id = obj_id;
   this.container = document.getElementById(obj_id);
@@ -126,7 +127,7 @@ function MiniPlayer(obj_id) {
   this.player.addEventListener("ended", function(e) {
     e.target.owner.redraw();
     if (e.target.owner.playlist.length > 0) {
-      e.target.owner.set_sources(e.target.owner.playlist.shift());
+      e.target.owner.next();
     } else if (e.target.owner.on_stop)
       e.target.owner.on_stop(e.target.owner);
   });
@@ -367,6 +368,10 @@ MiniPlayer.prototype.set_sources = function(sources) {
   while (this.player.firstChild) {
     this.player.removeChild(this.player.firstChild);
   }
+  if (!sources) {
+    this.player.load();
+    return;
+  }
   // add requested sources.
   if (typeof(sources) == typeof(""))
     sources = [ sources ];
@@ -387,10 +392,19 @@ MiniPlayer.prototype.set_sources = function(sources) {
   // load
   this.player.load();
 };
-/** starts playback. */
+/** Starts playback. Uses playlist items if available and no source is set. */
 MiniPlayer.prototype.play = function() {
+  if (this.player.childElementCount == 0) {
+    if (this.playlist.length > 0) {
+      return this.next();
+    } else if (this.history.length > 0) {
+      return this.prev();
+    }
+    return false;
+  }
   this.player.play();
   this.redraw();
+  return true;
 };
 /** pauses playback. */
 MiniPlayer.prototype.pause = function() {
@@ -440,6 +454,22 @@ MiniPlayer.prototype.step_back = function() {
   else
     player.player.currentTime = time - 5;
 };
+/** plays the previous source, if available. */
+MiniPlayer.prototype.prev = function() {
+  if (this.player.currentSrc && this.player.childElementCount)
+    this.playlist.unshift(this.player.currentSrc);
+  this.set_sources(this.history.pop());
+  this.redraw();
+  return (this.player.childElementCount > 0);
+};
+/** plays the next source, if available. */
+MiniPlayer.prototype.next = function() {
+  if (this.player.currentSrc && this.player.childElementCount)
+    this.history.push(this.player.currentSrc);
+  this.set_sources(this.playlist.shift());
+  this.redraw();
+  return (this.player.childElementCount > 0);
+};
 /** changes the playback state. */
 MiniPlayer.prototype.enable_keyboard = function() {
   document.miniplayer_keyboard_control = this;
@@ -451,6 +481,7 @@ MiniPlayer.prototype.enable_keyboard = function() {
         document.activeElement.tagName == 'INPUT' ||
         document.activeElement.tagName == 'TEXTAREA')
       return true;
+    console.log(e);
     switch (e.key) {
     case ' ':
       document.miniplayer_keyboard_control.play_or_pause();
@@ -466,6 +497,12 @@ MiniPlayer.prototype.enable_keyboard = function() {
       break;
     case 'ArrowDown':
       document.miniplayer_keyboard_control.volume_down();
+      break;
+    case 'n':
+      document.miniplayer_keyboard_control.next();
+      break;
+    case 'p':
+      document.miniplayer_keyboard_control.prev();
       break;
     }
   });
