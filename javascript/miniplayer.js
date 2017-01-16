@@ -111,7 +111,7 @@ function MiniPlayer(obj_id) {
   this.player = document.createElement('audio');
   this.player.owner = this;
   this.player.controls = false;
-  this.player.autoplay = true;
+  this.player.autoplay = false;
   this.player.style.position = "absolute";
   this.player.style.display = "hidden";
   this.player.style.top = "0";
@@ -269,8 +269,11 @@ function MiniPlayer(obj_id) {
     return false;
   });
   this.controller.addEventListener("mouseout", function(e) {
-    if (e.target.state == 2)
+    if (e.target.state == 2) {
+      e.target.autoplay = e.target.autoplay_store;
+      delete e.target.autoplay_store;
       e.target.owner.play();
+    }
     e.target.state = 0;
     e.target.style.display = "none";
     return false;
@@ -287,6 +290,8 @@ function MiniPlayer(obj_id) {
       //   1 == volume control
       //   2 == seeking / time control
       if (Math.abs(xy.x - old_xy.x) > Math.abs(xy.y - old_xy.y)) {
+        e.target.owner.autoplay_store = e.target.owner.autoplay;
+        e.target.owner.autoplay = false;
         e.target.owner.pause();
         e.target.state = 2;
       } else {
