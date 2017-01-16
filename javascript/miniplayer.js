@@ -58,17 +58,23 @@ player and `autoplay` wasn't disabled). i.e.:
     // or, including an ogg fallback
     player.playlist.push(["song2.mp3", "song2.ogg"]);
 
-Once playback stops, the `on_stop` callback is called. i.e.
-
-    player.on_stop = (p) => { p.set_sources("repeat_me.mp3"); }
-
-It's possible to enable keyboard controls using the `enable_keyboard` method.
-Only one player can have control of the keyboard.
-
 It's possible to access the undelying HTML5 audio object using the `player`
 property. i.e.:
 
     player.player.pause();
+
+Evey time a song starts to play, the `on_play` callback is called. i.e.
+
+    player.on_play = (p) => { console.log(p.player.currentSrc); };
+
+Once playback stops, the `on_stop` callback is called. i.e.
+
+    player.on_stop = (p) => { p.set_sources("repeat_me.mp3"); };
+
+It's possible to enable keyboard controls using the `enable_keyboard` method.
+Only one player can have control of the keyboard.
+
+    player.enable_keyboard();
 
 */
 function MiniPlayer(obj_id) {
@@ -118,6 +124,10 @@ function MiniPlayer(obj_id) {
       e.target.owner.play();
     }
   });
+  this.player.addEventListener("play", function(e) {
+    if (e.target.owner.on_play)
+      e.target.owner.on_play(e.target.owner);
+  });
   this.player.addEventListener("volumechange",
                                function(e) { e.target.owner.redraw(); });
   this.player.addEventListener("loadedmetadata", function(e) {
@@ -126,9 +136,7 @@ function MiniPlayer(obj_id) {
   });
   this.player.addEventListener("ended", function(e) {
     e.target.owner.redraw();
-    if (e.target.owner.playlist.length > 0) {
-      e.target.owner.next();
-    } else if (e.target.owner.on_stop)
+    if (!e.target.owner.next() && e.target.owner.on_stop)
       e.target.owner.on_stop(e.target.owner);
   });
 
