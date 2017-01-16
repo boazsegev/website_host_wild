@@ -481,7 +481,6 @@ MiniPlayer.prototype.enable_keyboard = function() {
         document.activeElement.tagName == 'INPUT' ||
         document.activeElement.tagName == 'TEXTAREA')
       return true;
-    console.log(e);
     switch (e.key) {
     case ' ':
       document.miniplayer_keyboard_control.play_or_pause();
