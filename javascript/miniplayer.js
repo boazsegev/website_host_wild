@@ -444,6 +444,7 @@ MiniPlayer.prototype.set_sources = function(sources) {
     this.player.removeChild(this.player.firstChild);
   }
   if (!sources) {
+    this.player.src = "";
     this.player.load();
     return;
   }
@@ -455,11 +456,16 @@ MiniPlayer.prototype.set_sources = function(sources) {
         "player sources should be either a string or an array, but got",
         sources);
   }
+  var unset = true;
   for (var i = 0; i < sources.length; i++) {
     if (typeof(sources[i]) == typeof('')) {
       var tmp = document.createElement('source')
-      tmp.src = arguments[i];
+      tmp.src = sources[i];
       this.player.appendChild(tmp);
+      if (unset) {
+        this.player.src = sources[i];
+        unset = false;
+      }
     }
   }
   // clear title
