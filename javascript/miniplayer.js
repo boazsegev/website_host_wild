@@ -167,7 +167,7 @@ function MiniPlayer(obj_id) {
     e.target.owner.controller.mouse_xy = {x : e.pageX, y : e.pageY};
 
     if (e.target.owner._last_tap &&
-        e.timeStamp - e.target.owner._last_tap < 200)
+        e.timeStamp - e.target.owner._last_tap < 400)
       e.target.owner._tap_count++;
     else
       e.target.owner._tap_count = 1;
@@ -193,7 +193,7 @@ function MiniPlayer(obj_id) {
       }
       pl._tap_count = 0;
       pl._last_tap_timeout = false;
-    }, 300, e.target.owner);
+    }, 400, e.target.owner);
 
     e.returnValue = false;
     return false;
