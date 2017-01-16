@@ -88,7 +88,7 @@ function MiniPlayer(obj_id) {
   this.background = "rgba(85,85,120,0.5)";
   this.color = "rgba(255,120,255,0.5)";
   this.on_stop = false;
-  this.autoplay = true;
+  this.autoplay = false;
 
   this.playlist = [];
   this.history = [];
@@ -124,6 +124,7 @@ function MiniPlayer(obj_id) {
   this.player.addEventListener("seeked",
                                function(e) { e.target.owner.redraw(); });
   this.player.addEventListener("canplaythrough", function(e) {
+    e.target.autoplay = e.target.owner.autoplay;
     if (e.target.owner.autoplay) {
       e.target.owner.play();
     }
@@ -179,16 +180,16 @@ function MiniPlayer(obj_id) {
     e.target.owner._last_tap_timeout = window.setTimeout(function(pl) {
       switch (pl._tap_count) {
       case 2:
-        console.log("next");
         pl.controller.state = 0;
         pl.controller.style.display = "none";
         pl.next();
+        pl.play();
         break;
       case 3:
-        console.log("prev");
         pl.controller.state = 0;
         pl.controller.style.display = "none";
         pl.prev();
+        pl.play();
         break;
       }
       pl._tap_count = 0;
@@ -240,26 +241,20 @@ function MiniPlayer(obj_id) {
     if (e.target.owner.player.seekable.length == 0 ||
         e.target.owner.player.played.length == 0)
       e.target.owner.play_or_pause();
+    e.returnValue = false;
     return false;
   });
-  this.container.addEventListener("mousedown", function(e) {
-    // make sure the player is actuve before allowing control state.
-    if (e.target.owner.player.seekable.length == 0 ||
-        e.target.owner.player.played.length == 0)
-      e.target.owner.play_or_pause();
-    return false;
-  });
+
   this.container.addEventListener("touchend", function(e) {
     // make sure the player is actuve before allowing control state.
     if (e.target.state == 0)
       e.target.owner.play_or_pause();
     else if (e.target.state == 2) {
-      e.target.owner.autoplay = e.target.owner.autoplay_store;
-      delete e.target.owner.autoplay_store;
       e.target.owner.play();
     }
 
     e.target.state = 0;
+    e.returnValue = false;
     return false;
   });
 
@@ -267,23 +262,21 @@ function MiniPlayer(obj_id) {
     if (e.target.state == 0)
       e.target.owner.play_or_pause();
     else if (e.target.state == 2) {
-      e.target.owner.autoplay = e.target.owner.autoplay_store;
-      delete e.target.owner.autoplay_store;
       e.target.owner.play();
     }
 
     e.target.state = 0;
     e.target.style.display = "none";
+    e.returnValue = false;
     return false;
   });
   this.controller.addEventListener("mouseout", function(e) {
     if (e.target.state == 2) {
-      e.target.owner.autoplay = e.target.owner.autoplay_store;
-      delete e.target.owner.autoplay_store;
       e.target.owner.play();
     }
     e.target.state = 0;
     e.target.style.display = "none";
+    e.returnValue = false;
     return false;
   });
 
@@ -298,8 +291,6 @@ function MiniPlayer(obj_id) {
       //   1 == volume control
       //   2 == seeking / time control
       if (Math.abs(xy.x - old_xy.x) > Math.abs(xy.y - old_xy.y)) {
-        e.target.owner.autoplay_store = e.target.owner.autoplay;
-        e.target.owner.autoplay = false;
         e.target.owner.pause();
         e.target.state = 2;
       } else {
@@ -491,11 +482,16 @@ MiniPlayer.prototype.set_sources = function(sources) {
   // clear title
   this.container.title = '';
   // load
+  this.player.autoplay = this.autoplay;
   this.player.load();
-  this.player.play();
+  if (this.autoplay)
+    this.player.play();
 };
 /** Starts playback. Uses playlist items if available and no source is set. */
 MiniPlayer.prototype.play = function() {
+  this.autoplay = true;
+  this.player.autoplay = true;
+
   if (this.player.childElementCount == 0) {
     if (this.playlist.length > 0) {
       return this.next();
@@ -511,6 +507,8 @@ MiniPlayer.prototype.play = function() {
 /** pauses playback. */
 MiniPlayer.prototype.pause = function() {
   this.player.pause();
+  this.autoplay = false;
+  this.player.autoplay = false;
   this.redraw();
 };
 /** changes the playback state. */
