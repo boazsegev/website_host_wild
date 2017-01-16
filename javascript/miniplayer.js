@@ -6,7 +6,7 @@ Feel free to copy, use and enjoy according to the license provided.
 */
 
 /**
-The MiniPlayer is a simple audio player that utilizes the HTML5 player.
+The MiniPlayer is a simple audio player that utilizes the HTML5 audio object.
 
 Miniplayer will draw a circle, indicating volume (outer ring), position (middle
 ring) and play / pause state (inner circle).
@@ -17,9 +17,13 @@ up / down.
 Seeking is controlled by clicking / touching the MiniPlayer and moving the
 cursor left / right.
 
-On iOS, it's impossible to control volume (seeking still works) or to start
-autoplay, these are iOS limitations, where volume is controlled by the phisical
-device and autoplay requires the user's interaction.
+Multiple MiniPlayer instances can be initialized on a single page, allowing
+multiple streams to play at the same time.
+
+On iOS, it's impossible to control volume (seeking still works) or to start in
+autoplay mode, these are iOS limitations, where volume is controlled by the
+phisical device and autoplay requires the user's interaction to confirm
+playback.
 
 ================================================================================
 
