@@ -242,6 +242,13 @@ function MiniPlayer(obj_id) {
       e.target.owner.play_or_pause();
     return false;
   });
+  this.container.addEventListener("mousedown", function(e) {
+    // make sure the player is actuve before allowing control state.
+    if (e.target.owner.player.seekable.length == 0 ||
+        e.target.owner.player.played.length == 0)
+      e.target.owner.play_or_pause();
+    return false;
+  });
   this.container.addEventListener("touchend", function(e) {
     // make sure the player is actuve before allowing control state.
     if (e.target.state == 0)
