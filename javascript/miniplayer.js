@@ -46,8 +46,8 @@ function MiniPlayer(obj_id) {
   this.player.addEventListener("volumechange",
                                function(e) { e.target.owner.draw_volume(); });
   this.player.addEventListener("loadedmetadata", function(e) {
-    console.log(e);
-    e.target.owner.container.title = "";
+    // console.log(e);
+    // e.target.owner.container.title = "";
   });
 
   this.controller = document.createElement('controller');
@@ -165,7 +165,7 @@ MiniPlayer.prototype.draw_time = function() {
   var context = this.canvas.getContext('2d');
   var radius_limit = Math.min(this.canvas.height, this.canvas.width);
   var time = 0.0;
-  if (this.player.duration > 0) {
+  if (!isNaN(this.player.duration) && this.player.duration > 0) {
     time = player.player.currentTime / this.player.duration;
   }
   // Draw background
@@ -252,7 +252,7 @@ MiniPlayer.prototype.set_sources = function() {
     }
   }
   // clear title
-  this.container.title = "";
+  this.container.title = undefined;
   // load
   this.player.load();
 };
