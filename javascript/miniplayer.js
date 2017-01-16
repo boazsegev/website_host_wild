@@ -253,8 +253,12 @@ function MiniPlayer(obj_id) {
     // make sure the player is actuve before allowing control state.
     if (e.target.state == 0)
       e.target.owner.play_or_pause();
-    else if (e.target.state == 2)
+    else if (e.target.state == 2) {
+      e.target.owner.autoplay = e.target.owner.autoplay_store;
+      delete e.target.owner.autoplay_store;
       e.target.owner.play();
+    }
+
     e.target.state = 0;
     return false;
   });
@@ -262,8 +266,12 @@ function MiniPlayer(obj_id) {
   this.controller.addEventListener("mouseup", function(e) {
     if (e.target.state == 0)
       e.target.owner.play_or_pause();
-    else if (e.target.state == 2)
+    else if (e.target.state == 2) {
+      e.target.owner.autoplay = e.target.owner.autoplay_store;
+      delete e.target.owner.autoplay_store;
       e.target.owner.play();
+    }
+
     e.target.state = 0;
     e.target.style.display = "none";
     return false;
