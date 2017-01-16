@@ -11,10 +11,17 @@ The MiniPlayer is a simple audio player that utilizes the HTML5 player.
 Miniplayer will draw a circle, indicating volume (outer ring), position (middle
 ring) and play / pause state (inner circle).
 
-Volume is controled by clicking the MiniPlayer and moving the cursor up / down.
+Volume is controlled by clicking / touching the MiniPlayer and moving the cursor
+up / down.
 
-Seeking is controled by clicking the MiniPlayer and moving the cursor left /
-right.
+Seeking is controlled by clicking / touching the MiniPlayer and moving the
+cursor left / right.
+
+On iOS, it's impossible to control volume (seeking still works) or to start
+autoplay, these are iOS limitations, where volume is controlled by the phisical
+device and autoplay requires the user's interaction.
+
+================================================================================
 
 To create a MiniPlayer, a "parent" DOM object is required. The player will be
 drawn over the parent element according to the element's size.
@@ -73,6 +80,7 @@ function MiniPlayer(obj_id) {
   this.obj_id = obj_id;
   this.container = document.getElementById(obj_id);
   this.container.owner = this;
+  this.container.state = 0;
 
   this.canvas = document.createElement('canvas');
   this.canvas.owner = this;
@@ -86,6 +94,7 @@ function MiniPlayer(obj_id) {
   this.player = document.createElement('audio');
   this.player.owner = this;
   this.player.controls = false;
+  this.player.autoplay = true;
   this.player.style.position = "absolute";
   this.player.style.display = "hidden";
   this.player.style.top = "0";
@@ -99,8 +108,7 @@ function MiniPlayer(obj_id) {
                                function(e) { e.target.owner.draw_time(); });
   this.player.addEventListener("canplaythrough", function(e) {
     if (e.target.owner.autoplay) {
-      e.target.play();
-      e.target.owner.redraw();
+      e.target.owner.play();
     }
   });
   this.player.addEventListener("volumechange",
@@ -130,19 +138,38 @@ function MiniPlayer(obj_id) {
   document.body.appendChild(this.controller);
 
   this.container.addEventListener("mousedown", function(e) {
-    // make sure the player is actuve before allowing control state.
+    // make sure the player is active before allowing control state.
     if (e.target.owner.player.seekable.length == 0 ||
         e.target.owner.player.played.length == 0)
       return false;
     e.target.owner.controller.style.display = "block";
-    e.target.owner.controller.mouse_xy = {x : e.screenX, y : e.screenY};
+    e.target.owner.controller.mouse_xy = {x : e.pageX, y : e.pageY};
+    return false;
+  });
+  this.container.addEventListener("touchstart", function(e) {
+    // make sure the player is active before allowing control state.
+    e.target.mouse_xy = {x : e.pageX, y : e.pageY};
+    e.target.state = 0;
+    e.returnValue = false;
+    return false;
   });
   this.container.addEventListener("mouseup", function(e) {
     // make sure the player is actuve before allowing control state.
     if (e.target.owner.player.seekable.length == 0 ||
         e.target.owner.player.played.length == 0)
       e.target.owner.play_or_pause();
+    return false;
   });
+  this.container.addEventListener("touchend", function(e) {
+    // make sure the player is actuve before allowing control state.
+    if (e.target.state == 0)
+      e.target.owner.play_or_pause();
+    else if (e.target.state == 2)
+      e.target.owner.play();
+    e.target.state = 0;
+    return false;
+  });
+
   this.controller.addEventListener("mouseup", function(e) {
     if (e.target.state == 0)
       e.target.owner.play_or_pause();
@@ -150,6 +177,7 @@ function MiniPlayer(obj_id) {
       e.target.owner.play();
     e.target.state = 0;
     e.target.style.display = "none";
+    return false;
   });
   this.controller.addEventListener("mouseout", function(e) {
     if (e.target.state == 2)
@@ -158,8 +186,9 @@ function MiniPlayer(obj_id) {
     e.target.style.display = "none";
     return false;
   });
-  this.controller.addEventListener("mousemove", function(e) {
-    var xy = {x : e.screenX, y : e.screenY};
+
+  var func_move = function(e) {
+    var xy = {x : e.pageX, y : e.pageY};
     var old_xy = e.target.mouse_xy;
     if (e.target.state == 0) {
       // make sure the difference is noticable (more than 5px)
@@ -171,11 +200,12 @@ function MiniPlayer(obj_id) {
       if (Math.abs(xy.x - old_xy.x) > Math.abs(xy.y - old_xy.y)) {
         e.target.owner.pause();
         e.target.state = 2;
-      } else
+      } else {
         e.target.state = 1;
+      }
     }
     if (e.target.state == 1) {
-      //   volume control
+      //   volume control - won't work on iOS.
       var target_volume =
           e.target.owner.player.volume + (0.01 * (old_xy.y - xy.y));
       if (target_volume > 1)
@@ -196,7 +226,11 @@ function MiniPlayer(obj_id) {
       else e.target.owner.player.currentTime = new_time;
     }
     e.target.mouse_xy = xy;
-  });
+    e.returnValue = false;
+    return false;
+  };
+  this.controller.addEventListener("mousemove", func_move);
+  this.container.addEventListener("touchmove", func_move);
 
   if (window.javascript_player_objects == undefined) {
     window.javascript_player_objects = [];
@@ -302,7 +336,7 @@ MiniPlayer.prototype.draw_state = function() {
     context.stroke();
   }
 };
-
+/** sets playback volume within the range of 0..1 (i.e. 0.75).*/
 MiniPlayer.prototype.set_volume = function(volume) {
   if (volume > 1)
     volume = 1;
@@ -315,7 +349,13 @@ MiniPlayer.prototype.set_volume = function(volume) {
 MiniPlayer.prototype.get_volume = function(volume) {
   return this.player.volume;
 };
+/**
+Sets the current source for playback and initiates playback (unless `autoplay`
+was set to `false`).
 
+It's possible to set fallback sources by passing an array of strings instead of
+a single string.
+*/
 MiniPlayer.prototype.set_sources = function(sources) {
   // clear existing sources.
   while (this.player.firstChild) {
@@ -341,22 +381,24 @@ MiniPlayer.prototype.set_sources = function(sources) {
   // load
   this.player.load();
 };
-
+/** starts playback. */
 MiniPlayer.prototype.play = function() {
   this.player.play();
   this.redraw();
 };
+/** pauses playback. */
 MiniPlayer.prototype.pause = function() {
   this.player.pause();
   this.redraw();
 };
+/** changes the playback state. */
 MiniPlayer.prototype.play_or_pause = function() {
   if (this.player.paused)
     this.play();
   else
     this.pause();
 };
-
+/** redraws the player. */
 MiniPlayer.prototype.redraw = function() {
   // set the correct size
   this.canvas.width = this.canvas.offsetWidth;
@@ -365,5 +407,4 @@ MiniPlayer.prototype.redraw = function() {
   this.draw_state();
   this.draw_volume();
   this.draw_time();
-
 };
