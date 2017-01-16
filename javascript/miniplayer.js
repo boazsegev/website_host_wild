@@ -63,6 +63,9 @@ Once playback stops, the `on_stop` callback is called. i.e.
 
     player.on_stop = (p) => { p.set_sources("repeat_me.mp3"); }
 
+It's possible to enable keyboard controls using the `enable_keyboard` method.
+Only one player can have control of the keyboard.
+
 It's possible to access the undelying HTML5 audio object using the `player`
 property. i.e.:
 
@@ -401,6 +404,77 @@ MiniPlayer.prototype.play_or_pause = function() {
     this.play();
   else
     this.pause();
+};
+/** nudges the volume up. */
+MiniPlayer.prototype.volume_up = function() {
+  if (this.player.volume > 0.9)
+    this.player.volume = 1;
+  else
+    this.player.volume += 0.1;
+};
+/** nudges the volume down. */
+MiniPlayer.prototype.volume_down = function() {
+  if (this.player.volume < 0.1)
+    this.player.volume = 0;
+  else
+    this.player.volume -= 0.1;
+};
+/** nudges the playhead forward. */
+MiniPlayer.prototype.step_forward = function() {
+  var time = player.player.currentTime
+  var dur = this.player.duration;
+  if (dur == 0)
+    return;
+  if (dur - time <= 5)
+    time = dur - 0.1;
+  else
+    player.player.currentTime = time + 5;
+};
+/** nudges the playhead backwards. */
+MiniPlayer.prototype.step_back = function() {
+  var time = player.player.currentTime
+  var dur = this.player.duration;
+  if (dur == 0)
+    return;
+  if (time <= 5)
+    player.player.currentTime = 0;
+  else
+    player.player.currentTime = time - 5;
+};
+/** changes the playback state. */
+MiniPlayer.prototype.enable_keyboard = function() {
+  document.miniplayer_keyboard_control = this;
+  if (document.miniplayer_keyboard_control_enabled)
+    return;
+  document.miniplayer_keyboard_control_enabled = true;
+  document.addEventListener('keydown', function(e) {
+    if (!document.miniplayer_keyboard_control ||
+        document.activeElement.tagName == 'INPUT' ||
+        document.activeElement.tagName == 'TEXTAREA')
+      return true;
+    switch (e.key) {
+    case ' ':
+      document.miniplayer_keyboard_control.play_or_pause();
+      break;
+    case 'ArrowLeft':
+      document.miniplayer_keyboard_control.step_back();
+      break;
+    case 'ArrowRight':
+      document.miniplayer_keyboard_control.step_forward();
+      break;
+    case 'ArrowUp':
+      document.miniplayer_keyboard_control.volume_up();
+      break;
+    case 'ArrowDown':
+      document.miniplayer_keyboard_control.volume_down();
+      break;
+    }
+  });
+};
+
+/** disables keyboard controls. */
+MiniPlayer.prototype.disable_keyboard = function() {
+  document.miniplayer_keyboard_control = false;
 };
 /** redraws the player. */
 MiniPlayer.prototype.redraw = function() {
