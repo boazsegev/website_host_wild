@@ -4,6 +4,60 @@ License: MIT
 
 Feel free to copy, use and enjoy according to the license provided.
 */
+
+/**
+The MiniPlayer is a simple audio player that utilizes the HTML5 player.
+
+Miniplayer will draw a circle, indicating volume (outer ring), position (middle
+ring) and play / pause state (inner circle).
+
+Volume is controled by clicking the MiniPlayer and moving the cursor up / down.
+
+Seeking is controled by clicking the MiniPlayer and moving the cursor left /
+right.
+
+To create a MiniPlayer, a "parent" DOM object is required. The player will be
+drawn over the parent element according to the element's size.
+
+After the player had been created it's possible to set the source urls for audio
+playback.
+
+Audio will begin playing automatically when enough data was downloaded, unless
+the `autoplay` property was set to `false`.
+
+i.e.
+
+    <html>
+    <head>
+      <script type="text/javascript" src='javascript/miniplayer.js'></script>
+    </head>
+    <body>
+      <div id='player' style='width:100px; height:100px;'></div>
+      <script>
+        var player = new MiniPlayer('player');
+        player.set_sources(["source.mp3", "source.ogg"]);
+      </script>
+    </body>
+    </html>
+
+It's possible to add audio media to a player's playlist. Any urls added to the
+playlist will be played automatically (if the file format is supported by the
+player and `autoplay` wasn't disabled). i.e.:
+
+    player.playlist.push("song2.mp3");
+    // or, including an ogg fallback
+    player.playlist.push(["song2.mp3", "song2.ogg"]);
+
+Once playback stops, the `on_stop` callback is called. i.e.
+
+    player.on_stop = (p) => { p.set_sources("repeat_me.mp3"); }
+
+It's possible to access the undelying HTML5 audio object using the `player`
+property. i.e.:
+
+    player.player.pause();
+
+*/
 function MiniPlayer(obj_id) {
   this.vol_background = "#557";
   this.vol_color = "#99f";
@@ -11,6 +65,10 @@ function MiniPlayer(obj_id) {
   this.time_color = "#f9a";
   this.background = "#5578";
   this.color = "#f9f8";
+  this.on_stop = false;
+  this.autoplay = true;
+
+  this.playlist = [];
 
   this.obj_id = obj_id;
   this.container = document.getElementById(obj_id);
@@ -40,14 +98,23 @@ function MiniPlayer(obj_id) {
   this.player.addEventListener("seeked",
                                function(e) { e.target.owner.draw_time(); });
   this.player.addEventListener("canplaythrough", function(e) {
-    e.target.play();
-    e.target.owner.redraw();
+    if (e.target.owner.autoplay) {
+      e.target.play();
+      e.target.owner.redraw();
+    }
   });
   this.player.addEventListener("volumechange",
                                function(e) { e.target.owner.draw_volume(); });
   this.player.addEventListener("loadedmetadata", function(e) {
     // console.log(e);
     // e.target.owner.container.title = "";
+  });
+  this.player.addEventListener("ended", function(e) {
+    e.target.owner.redraw();
+    if (e.target.owner.playlist.length > 0) {
+      e.target.owner.set_sources(e.target.owner.playlist.shift());
+    } else if (e.target.owner.on_stop)
+      e.target.owner.on_stop(e.target.owner);
   });
 
   this.controller = document.createElement('controller');
@@ -70,13 +137,23 @@ function MiniPlayer(obj_id) {
     e.target.owner.controller.style.display = "block";
     e.target.owner.controller.mouse_xy = {x : e.screenX, y : e.screenY};
   });
+  this.container.addEventListener("mouseup", function(e) {
+    // make sure the player is actuve before allowing control state.
+    if (e.target.owner.player.seekable.length == 0 ||
+        e.target.owner.player.played.length == 0)
+      e.target.owner.play_or_pause();
+  });
   this.controller.addEventListener("mouseup", function(e) {
     if (e.target.state == 0)
       e.target.owner.play_or_pause();
+    else if (e.target.state == 2)
+      e.target.owner.play();
     e.target.state = 0;
     e.target.style.display = "none";
   });
   this.controller.addEventListener("mouseout", function(e) {
+    if (e.target.state == 2)
+      e.target.owner.play();
     e.target.state = 0;
     e.target.style.display = "none";
     return false;
@@ -91,9 +168,10 @@ function MiniPlayer(obj_id) {
       // set state:
       //   1 == volume control
       //   2 == seeking / time control
-      if (Math.abs(xy.x - old_xy.x) > Math.abs(xy.y - old_xy.y))
+      if (Math.abs(xy.x - old_xy.x) > Math.abs(xy.y - old_xy.y)) {
+        e.target.owner.pause();
         e.target.state = 2;
-      else
+      } else
         e.target.state = 1;
     }
     if (e.target.state == 1) {
@@ -238,39 +316,45 @@ MiniPlayer.prototype.get_volume = function(volume) {
   return this.player.volume;
 };
 
-MiniPlayer.prototype.set_sources = function() {
+MiniPlayer.prototype.set_sources = function(sources) {
   // clear existing sources.
   while (this.player.firstChild) {
     this.player.removeChild(this.player.firstChild);
   }
   // add requested sources.
-  for (var i = 0; i < arguments.length; i++) {
-    if (typeof(arguments[i]) == typeof('')) {
+  if (typeof(sources) == typeof(""))
+    sources = [ sources ];
+  else if (typeof(sources) == typeof([]) && (sources instanceof Array)) {
+    console.error(
+        "player sources should be either a string or an array, but got",
+        sources);
+  }
+  for (var i = 0; i < sources.length; i++) {
+    if (typeof(sources[i]) == typeof('')) {
       var tmp = document.createElement('source')
       tmp.src = arguments[i];
       this.player.appendChild(tmp);
     }
   }
   // clear title
-  this.container.title = undefined;
+  this.container.title = '';
   // load
   this.player.load();
 };
 
 MiniPlayer.prototype.play = function() {
-  return this.player.play();
+  this.player.play();
   this.redraw();
 };
 MiniPlayer.prototype.pause = function() {
-  return this.player.pause();
+  this.player.pause();
   this.redraw();
 };
 MiniPlayer.prototype.play_or_pause = function() {
   if (this.player.paused)
-    this.player.play();
+    this.play();
   else
-    this.player.pause();
-  this.redraw();
+    this.pause();
 };
 
 MiniPlayer.prototype.redraw = function() {
