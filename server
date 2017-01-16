@@ -6,5 +6,6 @@ require 'iodine'
 Iodine::Rack.app = proc { [404, { 'X-Sendfile' => File.expand_path("#{File.dirname(__FILE__) }/index.html") }, []] }
 Iodine::Rack.public = File.dirname(__FILE__)
 
+Iodine::Rack.log = true
 Iodine.threads = 8
 Iodine.start
