@@ -13,16 +13,19 @@ MiniPlayer displays controls for volume (outer ring), position (middle ring) and
 play / pause (inner circle).
 
 Volume and seeking are controlled clicking / touching the MiniPlayer and moving
-the cursor (or finger).
+the cursor (or finger). Double click / tap will skip forward and a triple click
+/ tap will skip backwards. Keyboard control is also available (off by default).
 
 Multiple MiniPlayer instances can be initialized on a single page, allowing
 multiple streams to play at the same time. However, keyboard control is limited
-to a single MiniPlayer instance.
+to a single MiniPlayer instance and must be initialized for that object.
 
 On iOS, it's impossible to control volume (seeking still works) or to start in
-autoplay mode. These are iOS limitations, where volume is controlled by the
-phisical device and autoplay requires the user's interaction to confirm
-playback (security measure).
+autoplay mode. Also only one MiniPlayer object can play at any given time.
+
+These limitations are imposed by iOS, where volume is controlled by the physical
+device and autoplay requires the user's interaction to confirm playback (a
+security measure).
 
 ================================================================================
 
@@ -85,10 +88,11 @@ function MiniPlayer(obj_id) {
   this.background = "rgba(85,85,120,0.5)";
   this.color = "rgba(255,120,255,0.5)";
   this.on_stop = false;
-  this.autoplay = false;
+  this.autoplay = true;
 
   this.playlist = [];
   this.history = [];
+  this._tap_count = 0;
 
   this.obj_id = obj_id;
   this.container = document.getElementById(obj_id);
@@ -125,6 +129,7 @@ function MiniPlayer(obj_id) {
     }
   });
   this.player.addEventListener("play", function(e) {
+    e.target.owner.redraw();
     if (e.target.owner.on_play)
       e.target.owner.on_play(e.target.owner);
   });
@@ -136,7 +141,8 @@ function MiniPlayer(obj_id) {
   });
   this.player.addEventListener("ended", function(e) {
     e.target.owner.redraw();
-    if (!e.target.owner.next() && e.target.owner.on_stop)
+    if (!(e.target.owner.autoplay && e.target.owner.next()) &&
+        e.target.owner.on_stop)
       e.target.owner.on_stop(e.target.owner);
   });
 
@@ -159,12 +165,73 @@ function MiniPlayer(obj_id) {
       return false;
     e.target.owner.controller.style.display = "block";
     e.target.owner.controller.mouse_xy = {x : e.pageX, y : e.pageY};
+
+    if (e.target.owner._last_tap &&
+        e.timeStamp - e.target.owner._last_tap < 200)
+      e.target.owner._tap_count++;
+    else
+      e.target.owner._tap_count = 1;
+    e.target.owner._last_tap = e.timeStamp;
+    if (e.target.owner._last_tap_timeout) {
+      window.clearTimeout(e.target.owner._last_tap_timeout);
+      e.target.owner._last_tap_timeout = false;
+    }
+    e.target.owner._last_tap_timeout = window.setTimeout(function(pl) {
+      switch (pl._tap_count) {
+      case 2:
+        console.log("next");
+        pl.controller.state = 0;
+        pl.controller.style.display = "none";
+        pl.next();
+        break;
+      case 3:
+        console.log("prev");
+        pl.controller.state = 0;
+        pl.controller.style.display = "none";
+        pl.prev();
+        break;
+      }
+      pl._tap_count = 0;
+      pl._last_tap_timeout = false;
+    }, 300, e.target.owner);
+
+    e.returnValue = false;
     return false;
   });
   this.container.addEventListener("touchstart", function(e) {
     // make sure the player is active before allowing control state.
     e.target.mouse_xy = {x : e.pageX, y : e.pageY};
     e.target.state = 0;
+
+    if (e.target.owner._last_tap &&
+        e.timeStamp - e.target.owner._last_tap < 500)
+      e.target.owner._tap_count++;
+    else
+      e.target.owner._tap_count = 1;
+    e.target.owner._last_tap = e.timeStamp;
+    if (e.target.owner._last_tap_timeout) {
+      window.clearTimeout(e.target.owner._last_tap_timeout);
+      e.target.owner._last_tap_timeout = false;
+    }
+    e.target.owner._last_tap_timeout = window.setTimeout(function(pl) {
+      switch (pl._tap_count) {
+      case 2:
+        console.log("next");
+        pl.controller.state = 0;
+        pl.controller.style.display = "none";
+        pl.next();
+        break;
+      case 3:
+        console.log("prev");
+        pl.controller.state = 0;
+        pl.controller.style.display = "none";
+        pl.prev();
+        break;
+      }
+      pl._tap_count = 0;
+      pl._last_tap_timeout = false;
+    }, 500, e.target.owner);
+
     e.returnValue = false;
     return false;
   });
@@ -399,6 +466,7 @@ MiniPlayer.prototype.set_sources = function(sources) {
   this.container.title = '';
   // load
   this.player.load();
+  this.player.play();
 };
 /** Starts playback. Uses playlist items if available and no source is set. */
 MiniPlayer.prototype.play = function() {
@@ -489,26 +557,27 @@ MiniPlayer.prototype.enable_keyboard = function() {
         document.activeElement.tagName == 'INPUT' ||
         document.activeElement.tagName == 'TEXTAREA')
       return true;
-    switch (e.key) {
-    case ' ':
+    console.log(e);
+    switch (e.keyCode) {
+    case 32:
       document.miniplayer_keyboard_control.play_or_pause();
       break;
-    case 'ArrowLeft':
+    case 37:
       document.miniplayer_keyboard_control.step_back();
       break;
-    case 'ArrowRight':
+    case 39:
       document.miniplayer_keyboard_control.step_forward();
       break;
-    case 'ArrowUp':
+    case 38:
       document.miniplayer_keyboard_control.volume_up();
       break;
-    case 'ArrowDown':
+    case 40:
       document.miniplayer_keyboard_control.volume_down();
       break;
-    case 'n':
+    case 78:
       document.miniplayer_keyboard_control.next();
       break;
-    case 'p':
+    case 80:
       document.miniplayer_keyboard_control.prev();
       break;
     }
