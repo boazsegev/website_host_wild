@@ -74,10 +74,10 @@ function MiniPlayer(obj_id) {
   this.vol_color = "#99f";
   this.time_background = "#756";
   this.time_color = "#f9a";
-  this.background = "#5578";
-  this.color = "#f9f8";
+  this.background = "rgba(85,85,120,0.5)";
+  this.color = "rgba(255,120,255,0.5)";
   this.on_stop = false;
-  this.autoplay = true;
+  this.autoplay = false;
 
   this.playlist = [];
 
@@ -107,16 +107,16 @@ function MiniPlayer(obj_id) {
   this.player.style.height = "0px";
   this.container.appendChild(this.player);
   this.player.addEventListener("timeupdate",
-                               function(e) { e.target.owner.draw_time(); });
+                               function(e) { e.target.owner.redraw(); });
   this.player.addEventListener("seeked",
-                               function(e) { e.target.owner.draw_time(); });
+                               function(e) { e.target.owner.redraw(); });
   this.player.addEventListener("canplaythrough", function(e) {
     if (e.target.owner.autoplay) {
       e.target.owner.play();
     }
   });
   this.player.addEventListener("volumechange",
-                               function(e) { e.target.owner.draw_volume(); });
+                               function(e) { e.target.owner.redraw(); });
   this.player.addEventListener("loadedmetadata", function(e) {
     // console.log(e);
     // e.target.owner.container.title = "";
@@ -224,7 +224,7 @@ function MiniPlayer(obj_id) {
       var total_time = e.target.owner.player
                            .duration // e.target.owner.player.seekable.end(0);
       if (new_time >= total_time)
-      e.target.owner.player.currentTime = total_time;
+      e.target.owner.player.currentTime = total_time - 0.1;
       else if (new_time <= 0)
       e.target.owner.player.currentTime = 0;
       else e.target.owner.player.currentTime = new_time;
@@ -258,7 +258,7 @@ MiniPlayer.prototype.draw_volume = function() {
   // Draw background
   context.beginPath();
   context.strokeStyle = this.vol_background;
-  context.lineWidth = radius_limit * 0.05;
+  context.lineWidth = Math.floor(radius_limit * 0.05);
   context.arc(this.canvas.width * 0.5, this.canvas.height * 0.5,
               radius_limit * 0.4, 0.75 * Math.PI,
               0.75 * Math.PI + (2 * Math.PI * 1));
@@ -270,7 +270,7 @@ MiniPlayer.prototype.draw_volume = function() {
     this.player.volume = 0;
   context.beginPath();
   context.strokeStyle = this.vol_color;
-  context.lineWidth = radius_limit * 0.04;
+  context.lineWidth = Math.floor(radius_limit * 0.04);
   context.arc(this.canvas.width * 0.5, this.canvas.height * 0.5,
               radius_limit * 0.4, 0.75 * Math.PI,
               0.75 * Math.PI + (2 * Math.PI * this.player.volume * 0.75));
@@ -287,7 +287,7 @@ MiniPlayer.prototype.draw_time = function() {
   // Draw background
   context.beginPath();
   context.strokeStyle = this.time_background;
-  context.lineWidth = radius_limit * 0.05;
+  context.lineWidth = Math.floor(radius_limit * 0.05);
   context.arc(this.canvas.width * 0.5, this.canvas.height * 0.5,
               radius_limit * 0.3, 0.75 * Math.PI,
               0.75 * Math.PI + (2 * Math.PI * 1));
@@ -295,7 +295,7 @@ MiniPlayer.prototype.draw_time = function() {
   // Draw time value
   context.beginPath();
   context.strokeStyle = this.time_color;
-  context.lineWidth = radius_limit * 0.04;
+  context.lineWidth = Math.floor(radius_limit * 0.04);
   context.arc(this.canvas.width * 0.5, this.canvas.height * 0.5,
               radius_limit * 0.3, 0.75 * Math.PI,
               0.75 * Math.PI + (2 * Math.PI * time * 0.75));
@@ -338,7 +338,7 @@ MiniPlayer.prototype.draw_state = function() {
     context.moveTo(radius_limit * 0.6, radius_limit * 0.65);
     context.lineTo(radius_limit * 0.6, radius_limit * 0.35);
     context.stroke();
-  }
+  };
 };
 /** sets playback volume within the range of 0..1 (i.e. 0.75).*/
 MiniPlayer.prototype.set_volume = function(volume) {
