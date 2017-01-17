@@ -207,7 +207,7 @@ MiniPlayer.prototype.event_handlers.fallback2pop = function(e) {
   return false;
 };
 
-/** a simple redraw handler. */
+/** a simple handler of events that only require a redraw. */
 MiniPlayer.prototype.event_handlers.redraw = function(e) {
   e.target.owner.redraw();
 };
@@ -280,6 +280,7 @@ MiniPlayer.prototype.event_handlers.out_of_range = function(e) {
   e.returnValue = false;
   return false;
 };
+
 /** Volume / seek control */
 MiniPlayer.prototype.event_handlers.vol_or_seek = function(e) {
   var xy = {x : e.pageX, y : e.pageY};
@@ -425,14 +426,14 @@ MiniPlayer.prototype.set_volume = function(volume) {
   this.player.volume = volume;
   this.draw_volume();
 };
+
 /** returns the playback volume within the range of 0..1.*/
 MiniPlayer.prototype.get_volume = function(volume) {
   return this.player.volume;
 };
 
 /**
-Sets the current source for playback and initiates playback (unless `autoplay`
-was set to `false`).
+Sets the current source for playback and resumes playback (if playing).
 
 It's possible to set fallback sources by passing an array of strings instead of
 a single string.
@@ -475,7 +476,8 @@ MiniPlayer.prototype.set_sources = function(sources) {
   if (this.autoplay)
     this.player.play();
 };
-/** Starts playback. Uses playlist items if available and no source is set. */
+
+/** Starts playback. Uses playlist / history data if available. */
 MiniPlayer.prototype.play = function() {
   this.autoplay = true;
   this.player.autoplay = true;
@@ -499,7 +501,8 @@ MiniPlayer.prototype.pause = function() {
   this.player.autoplay = false;
   this.redraw();
 };
-/** changes the playback state. */
+
+/** inverts the playback state. */
 MiniPlayer.prototype.play_or_pause = function() {
   if (this.player.paused)
     this.play();
@@ -562,7 +565,7 @@ MiniPlayer.prototype.next = function() {
   return (this.player.childElementCount > 0);
 };
 
-/** changes the playback state. */
+/** enables keyboard control for the player. */
 MiniPlayer.prototype.enable_keyboard = function() {
   document.miniplayer_keyboard_control = this;
   if (document.miniplayer_keyboard_control_enabled)
