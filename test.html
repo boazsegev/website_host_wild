@@ -116,12 +116,19 @@
             margin-bottom: 3em;
         }
 
+        #player_container {
+            width: 3em;
+            display: inline-block;
+            overflow: visible;
+            position: relative;
+        }
         #player {
             width: 3em;
             height: 3em;
             position: absolute;
-            bottom: 0;
+            top: -2.75em;
             left: 0;
+            display: inline-block;
         }
 
         h1 {
@@ -141,7 +148,7 @@
             color: #eeb;
         }
     </style>
-    <script type="text/javascript" src='javascript/miniplayer-v1.js'></script>
+    <script type="text/javascript" src='javascript/boplayer.js'></script>
 </head>
 
 <body>
@@ -155,8 +162,8 @@
     </div>
     <div id='bottom'>
         <a href="http://facebook.com/bowildmusic" class='social' style='background-image:url("images/facebook_logo.png")'></a>
+        <div id='player_container'><div id='player'></div></div>
         <a href="https://twitter.com/bowildmusic" class='social' style='background-image:url("images/twitter_logo.svg")'></a>
-        <div id='player'></div>
     </div>
     <script type="text/javascript">
         var player = undefined;
@@ -164,7 +171,7 @@
         content.style.opacity = "0";
         content.style.transition = "opacity 1s";
         function init_document() {
-            player = new MiniPlayer('player');
+            player = new BoPlayer('player');
             player.autoplay = true;
             player.set_volume(1);
             player.playlist.push("media/whilemyguitar.m4a");
