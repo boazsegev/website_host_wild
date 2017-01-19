@@ -106,6 +106,8 @@ function BoPlayer(obj_id) {
   /** The canvas object. */
   this.canvas = document.createElement('canvas');
   this.canvas.owner = this;
+  if (!(typeof this.canvas.getContext === "function"))
+    alert("This web page requires an updated browser with support for HTML5.");
   this.canvas.style.position = "absolute";
   this.canvas.style.top = "0";
   this.canvas.style.left = "0";
