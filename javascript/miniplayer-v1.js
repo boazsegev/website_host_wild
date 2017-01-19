@@ -94,14 +94,13 @@ function MiniPlayer(obj_id) {
   /** History and Playlist objects. */
   this.playlist = [];
   this.history = [];
-  /** control, double click / tap support. */
-  this._center_xy = {};
+  /** double click / tap support. */
   this._tap_count = 0;
-  this._state = 0;
   /** Attaching the MiniPlayer to the DOM. */
   this.obj_id = obj_id;
   this.container = document.getElementById(obj_id);
   this.container.owner = this;
+  this.container.state = 0;
   /** The canvas object. */
   this.canvas = document.createElement('canvas');
   this.canvas.owner = this;
@@ -151,8 +150,9 @@ function MiniPlayer(obj_id) {
   });
 
   /** The controller DOM layer (fullscreen event collecting). */
-  this.controller = document.createElement('div');
+  this.controller = document.createElement('controller');
   this.controller.owner = this;
+  this.controller.state = 0;
   this.controller.style.position = "absolute";
   this.controller.style.display = "none";
   this.controller.style.top = "0";
@@ -163,23 +163,21 @@ function MiniPlayer(obj_id) {
   document.body.appendChild(this.controller);
 
   /** The container-controller events. */
-  this.canvas.addEventListener("scroll", function(e) {
-    console.log(e);
-    e.returnValue = false;
-    return false;
-  });
-  this.container.onmousedown = this.event_handlers.control_start;
-  this.container.ontouchstart = this.event_handlers.control_start;
-  this.container.onmouseup = this.event_handlers.control_end;
-  this.container.ontouchmove = this.event_handlers.control_change;
-  this.container.ontouchend = this.event_handlers.control_end;
+  this.container.addEventListener("mousedown",
+                                  this.event_handlers.control_start);
+  this.container.addEventListener("touchstart",
+                                  this.event_handlers.control_start);
 
-  this.controller.onmouseup = this.event_handlers.control_end;
-  this.controller.onmouseout = function(e) {
-    if (e.target.owner._state)
-      e.target.owner.event_handlers.control_end(e);
-  };
-  this.controller.onmousemove = this.event_handlers.control_change;
+  this.container.addEventListener("mouseup", this.event_handlers.fallback2pop);
+
+  this.container.addEventListener("touchend", this.event_handlers.control_end);
+
+  this.controller.addEventListener("mouseup", this.event_handlers.control_end);
+  this.controller.addEventListener("mouseout",
+                                   this.event_handlers.out_of_range);
+  this.controller.addEventListener("mousemove",
+                                   this.event_handlers.vol_or_seek);
+  this.container.addEventListener("touchmove", this.event_handlers.vol_or_seek);
 
   /** Handling the resize event when the container is device-responsive. */
   if (window.javascript_player_objects == undefined) {
@@ -201,6 +199,14 @@ function MiniPlayer(obj_id) {
 /** Holds the event handlers. Some are used for both touch and mouse events. */
 MiniPlayer.prototype.event_handlers = {};
 
+/** Something went wrong or still initializing... just play or pause (PoP). */
+MiniPlayer.prototype.event_handlers.fallback2pop = function(e) {
+  // Fallback if no controller is present.
+  e.target.owner.play_or_pause();
+  e.returnValue = false;
+  return false;
+};
+
 /** a simple handler of events that only require a redraw. */
 MiniPlayer.prototype.event_handlers.redraw = function(e) {
   e.target.owner.redraw();
@@ -208,9 +214,6 @@ MiniPlayer.prototype.event_handlers.redraw = function(e) {
 
 /** When the mouse / touch starts. */
 MiniPlayer.prototype.event_handlers.control_start = function(e) {
-  e.target.owner._state = 0;
-  e.target.owner._vol_step = 0;
-  e.target.owner._seek_step = 0;
   // make sure the player is active before allowing control state.
   if (e.target.owner.player.seekable.length == 0 ||
       e.target.owner.player.played.length == 0) {
@@ -218,11 +221,8 @@ MiniPlayer.prototype.event_handlers.control_start = function(e) {
     return false;
   }
   e.target.owner.controller.style.display = "block";
-  e.target.owner._center_xy.x = e.pageX;
-  e.target.owner._center_xy.y = e.pageY;
-  if (!e.target.owner._ctrl_interval)
-    e.target.owner._ctrl_interval = window.setInterval(
-        e.target.owner.event_handlers.control_review, 50, e.target.owner);
+  e.target.owner.controller.mouse_xy = {x : e.pageX, y : e.pageY};
+  e.target.owner.controller.state = 0;
 
   if (e.target.owner._last_tap && e.timeStamp - e.target.owner._last_tap < 420)
     e.target.owner._tap_count++;
@@ -234,17 +234,15 @@ MiniPlayer.prototype.event_handlers.control_start = function(e) {
     e.target.owner._last_tap_timeout = false;
   }
   e.target.owner._last_tap_timeout = window.setTimeout(function(pl) {
-    if (pl._state)
-      return;
     switch (pl._tap_count) {
     case 2:
-      pl._state = 0;
+      pl.controller.state = 0;
       pl.controller.style.display = "none";
       pl.next();
       pl.play();
       break;
     case 3:
-      pl._state = 0;
+      pl.controller.state = 0;
       pl.controller.style.display = "none";
       pl.prev();
       pl.play();
@@ -254,69 +252,77 @@ MiniPlayer.prototype.event_handlers.control_start = function(e) {
     pl._last_tap_timeout = false;
   }, 420, e.target.owner);
 
-  e.target.owner.redraw();
   e.returnValue = false;
   return false;
 };
 
 /** When the mouse / touch stops. */
 MiniPlayer.prototype.event_handlers.control_end = function(e) {
-  if (e.target.owner._state) {
-    e.target.owner.play();
-  } else
+  if (e.target.owner.controller.state == 0)
     e.target.owner.play_or_pause();
-
-  e.target.owner._state = 0;
-  e.target.owner._vol_step = 0;
-  e.target.owner._seek_step = 0;
-  e.target.owner._center_xy.x = 0;
-  e.target.owner._center_xy.y = 0;
-
-  if (e.target.owner._ctrl_interval) {
-    window.clearInterval(e.target.owner._ctrl_interval)
-    e.target.owner._ctrl_interval = false;
+  else if (e.target.owner.controller.state == 2) {
+    e.target.owner.play();
   }
+
+  e.target.owner.controller.state = 0;
+  e.target.owner.controller.style.display = "none";
+  e.returnValue = false;
+  return false;
+};
+
+/** When the mouse / touch moves out of the browser window. */
+MiniPlayer.prototype.event_handlers.out_of_range = function(e) {
+  if (e.target.owner.controller.state == 2) {
+    e.target.owner.play();
+  }
+  e.target.owner.controller.state = 0;
   e.target.owner.controller.style.display = "none";
   e.returnValue = false;
   return false;
 };
 
 /** Volume / seek control */
-MiniPlayer.prototype.event_handlers.control_change = function(e) {
-  e.target.owner._seek_step = (e.pageX - e.target.owner._center_xy.x) / 32.0;
-  e.target.owner._vol_step = (e.target.owner._center_xy.y - e.pageY) / 2048.0;
+MiniPlayer.prototype.event_handlers.vol_or_seek = function(e) {
+  var xy = {x : e.pageX, y : e.pageY};
+  var old_xy = e.target.owner.controller.mouse_xy;
+  if (e.target.owner.controller.state == 0) {
+    // make sure the difference is noticable (more than 5px)
+    if (Math.abs(xy.x - old_xy.x) < 5 && Math.abs(xy.y - old_xy.y) < 5)
+      return false;
+    // set state:
+    //   1 == volume control
+    //   2 == seeking / time control
+    if (Math.abs(xy.x - old_xy.x) > Math.abs(xy.y - old_xy.y)) {
+      e.target.owner.pause();
+      e.target.owner.controller.state = 2;
+    } else {
+      e.target.owner.controller.state = 1;
+    }
+  }
+  if (e.target.owner.controller.state == 1) {
+    //   volume control - won't work on iOS.
+    var target_volume =
+        e.target.owner.player.volume + (0.01 * (old_xy.y - xy.y));
+    if (target_volume > 1)
+      target_volume = 1;
+    else if (target_volume < 0)
+      target_volume = 0;
+    e.target.owner.player.volume = target_volume;
+  } else {
+    //   seeking / time control
+    var new_time =
+        e.target.owner.player.currentTime + (0.5 * (xy.x - old_xy.x));
+    var total_time =
+        e.target.owner.player.duration // e.target.owner.player.seekable.end(0);
+    if (new_time >= total_time)
+    e.target.owner.player.currentTime = total_time - 0.1;
+    else if (new_time <= 0)
+    e.target.owner.player.currentTime = 0;
+    else e.target.owner.player.currentTime = new_time;
+  }
+  e.target.owner.controller.mouse_xy = xy;
   e.returnValue = false;
   return false;
-};
-
-MiniPlayer.prototype.event_handlers.control_review = function(pl) {
-  /** Volume control */
-  if (pl._vol_step >= 0.0075) {
-    pl._state |= 4;
-    pl._state |= 8;
-    pl.volume_up(pl._vol_step);
-  } else if (pl._vol_step <= -0.0075) {
-    pl._state |= 4;
-    pl._state |= 8;
-    pl.volume_down(0 - pl._vol_step);
-  } else {
-    pl._state &= ~4;
-  };
-  /** Seek control */
-  if (pl._seek_step >= 0.4) {
-    pl._state |= 2;
-    pl._state |= 8;
-    pl.pause();
-    pl.step_forward(pl._seek_step);
-  } else if (pl._seek_step <= -0.4) {
-    pl._state |= 2;
-    pl._state |= 8;
-    pl.pause();
-    pl.step_back(0 - pl._seek_step);
-  } else if (pl._state & 2) {
-    pl._state &= ~2;
-    pl.play();
-  };
 };
 
 /** Draws the volume (outer ring). */
@@ -388,19 +394,7 @@ MiniPlayer.prototype.draw_state = function() {
   // context.stroke();
   context.fill();
   // Draw content
-  if (this._center_xy.x) {
-    // draw controls
-    context.beginPath();
-    context.strokeStyle = this.color;
-    context.moveTo(radius_limit * 0.5, radius_limit * 0.7);
-    context.lineTo(radius_limit * 0.5, radius_limit * 0.3);
-    context.stroke();
-    context.beginPath();
-    context.strokeStyle = this.color;
-    context.moveTo(radius_limit * 0.7, radius_limit * 0.5);
-    context.lineTo(radius_limit * 0.3, radius_limit * 0.5);
-    context.stroke();
-  } else if (this.player.paused) {
+  if (this.player.paused) {
     // draw "paused" state
     context.beginPath();
     context.strokeStyle = this.color;
@@ -516,49 +510,41 @@ MiniPlayer.prototype.play_or_pause = function() {
     this.pause();
 };
 /** nudges the volume up. */
-MiniPlayer.prototype.volume_up = function(step) {
-  if (!step || step >= 1)
-    step = 0.1;
-  if (this.player.volume > (1 - step))
+MiniPlayer.prototype.volume_up = function() {
+  if (this.player.volume > 0.9)
     this.player.volume = 1;
   else
-    this.player.volume += step;
+    this.player.volume += 0.1;
 };
 /** nudges the volume down. */
-MiniPlayer.prototype.volume_down = function(step) {
-  if (!step || step >= 1)
-    step = 0.1;
-  if (this.player.volume < step)
+MiniPlayer.prototype.volume_down = function() {
+  if (this.player.volume < 0.1)
     this.player.volume = 0;
   else
-    this.player.volume -= step;
+    this.player.volume -= 0.1;
 };
 /** nudges the playhead forward. */
-MiniPlayer.prototype.step_forward = function(step) {
-  if (!step)
-    step = 5;
+MiniPlayer.prototype.step_forward = function() {
   var time = player.player.currentTime
   var dur = this.player.duration;
   if (dur == 0)
     return;
-  if (dur - time <= step)
+  if (dur - time <= 5)
     time = dur - 0.1;
   else
-    player.player.currentTime = time + step;
+    player.player.currentTime = time + 5;
 };
 
 /** nudges the playhead backwards. */
-MiniPlayer.prototype.step_back = function(step) {
-  if (!step)
-    step = 5;
+MiniPlayer.prototype.step_back = function() {
   var time = player.player.currentTime
   var dur = this.player.duration;
   if (dur == 0)
     return;
-  if (time <= step)
+  if (time <= 5)
     player.player.currentTime = 0;
   else
-    player.player.currentTime = time - step;
+    player.player.currentTime = time - 5;
 };
 
 /** plays the previous source, if available. */
