@@ -141,7 +141,7 @@
             color: #eeb;
         }
     </style>
-    <script type="text/javascript" src='javascript/miniplayer.js'></script>
+    <script type="text/javascript" src='javascript/boplayer.js'></script>
 </head>
 
 <body>
@@ -164,7 +164,7 @@
         content.style.opacity = "0";
         content.style.transition = "opacity 1s";
         function init_document() {
-            player = new MiniPlayer('player');
+            player = new BoPlayer('player');
             player.autoplay = true;
             player.set_volume(1);
             player.playlist.push("media/whilemyguitar.m4a");

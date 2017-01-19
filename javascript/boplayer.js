@@ -6,22 +6,22 @@ Feel free to copy, use and enjoy according to the license provided.
 */
 
 /**
-The MiniPlayer is a simple audio player that utilizes the HTML5 audio object
+The BoPlayer is a simple audio player that utilizes the HTML5 audio object
 using a circular GUI player instead of the OS's player.
 
-MiniPlayer displays controls for volume (outer ring), position (middle ring) and
+BoPlayer displays controls for volume (outer ring), position (middle ring) and
 play / pause (inner circle).
 
-Volume and seeking are controlled clicking / touching the MiniPlayer and moving
+Volume and seeking are controlled clicking / touching the BoPlayer and moving
 the cursor (or finger). Double click / tap will skip forward and a triple click
 / tap will skip backwards. Keyboard control is also available (off by default).
 
-Multiple MiniPlayer instances can be initialized on a single page, allowing
+Multiple BoPlayer instances can be initialized on a single page, allowing
 multiple streams to play at the same time. However, keyboard control is limited
-to a single MiniPlayer instance and must be initialized for that object.
+to a single BoPlayer instance and must be initialized for that object.
 
 On iOS, it's impossible to control volume (seeking still works) or to start in
-autoplay mode. Also only one MiniPlayer object can play at any given time.
+autoplay mode. Also only one BoPlayer object can play at any given time.
 
 These limitations are imposed by iOS, where volume is controlled by the physical
 device and autoplay requires the user's interaction to confirm playback (a
@@ -29,7 +29,7 @@ security measure).
 
 ================================================================================
 
-To create a MiniPlayer, a "parent" DOM object is required. The player will be
+To create a BoPlayer, a "parent" DOM object is required. The player will be
 drawn over the parent element matching the element's size.
 
 After the player had been created it's possible to set the source urls for audio
@@ -42,12 +42,12 @@ i.e.
 
     <html>
     <head>
-      <script type="text/javascript" src='javascript/miniplayer.js'></script>
+      <script type="text/javascript" src='javascript/BoPlayer.js'></script>
     </head>
     <body>
       <div id='player' style='width:100px; height:100px;'></div>
       <script>
-        var player = new MiniPlayer('player');
+        var player = new BoPlayer('player');
         player.set_sources(["source.mp3", "source.ogg"]);
       </script>
     </body>
@@ -80,7 +80,7 @@ Only one player can have control of the keyboard.
     player.enable_keyboard();
 
 */
-function MiniPlayer(obj_id) {
+function BoPlayer(obj_id) {
   /** Player settings. */
   this.vol_background = "#557";
   this.vol_color = "#99f";
@@ -96,9 +96,10 @@ function MiniPlayer(obj_id) {
   this.history = [];
   /** control, double click / tap support. */
   this._center_xy = {};
+  this._canvas_offset = {};
   this._tap_count = 0;
   this._state = 0;
-  /** Attaching the MiniPlayer to the DOM. */
+  /** Attaching the BoPlayer to the DOM. */
   this.obj_id = obj_id;
   this.container = document.getElementById(obj_id);
   this.container.owner = this;
@@ -110,6 +111,8 @@ function MiniPlayer(obj_id) {
   this.canvas.style.left = "0";
   this.canvas.style.width = "100%";
   this.canvas.style.height = "100%";
+  this.canvas.style.transition = "transform 0.25s";
+  this.canvas.style.transform = "translate(0px, 0px)";
   this.container.appendChild(this.canvas);
   /** The HTML5 audio player. */
   this.player = document.createElement('audio');
@@ -199,18 +202,39 @@ function MiniPlayer(obj_id) {
 };
 
 /** Holds the event handlers. Some are used for both touch and mouse events. */
-MiniPlayer.prototype.event_handlers = {};
+BoPlayer.prototype.event_handlers = {};
 
 /** a simple handler of events that only require a redraw. */
-MiniPlayer.prototype.event_handlers.redraw = function(e) {
+BoPlayer.prototype.event_handlers.redraw = function(e) {
   e.target.owner.redraw();
 };
 
 /** When the mouse / touch starts. */
-MiniPlayer.prototype.event_handlers.control_start = function(e) {
+BoPlayer.prototype.event_handlers.control_start = function(e) {
   e.target.owner._state = 0;
   e.target.owner._vol_step = 0;
   e.target.owner._seek_step = 0;
+  e.target.owner._center_xy.x = e.pageX;
+  e.target.owner._center_xy.y = e.pageY;
+  var box = e.target.owner.canvas.getBoundingClientRect();
+  e.target.owner._canvas_offset.y =
+      e.pageY -
+      Math.floor(
+          (e.target.owner.canvas.height / 2) + box.top +
+          (window.pageYOffset || document.documentElement.scrollTop ||
+           document.body.scrollTop) -
+          (document.documentElement.clientTop || document.body.clientTop || 0));
+  e.target.owner._canvas_offset.x =
+      e.pageX -
+      Math.floor((e.target.owner.canvas.width / 2) + box.left +
+                 (window.pageXOffset || document.documentElement.scrollLeft ||
+                  document.body.scrollLeft) -
+                 (document.documentElement.clientLeft ||
+                  document.body.clientLeft || 0));
+
+  e.target.owner.canvas.style.transform =
+      "translate(" + e.target.owner._canvas_offset.x + "px, " +
+      e.target.owner._canvas_offset.y + "px)";
   // make sure the player is active before allowing control state.
   if (e.target.owner.player.seekable.length == 0 ||
       e.target.owner.player.played.length == 0) {
@@ -218,8 +242,6 @@ MiniPlayer.prototype.event_handlers.control_start = function(e) {
     return false;
   }
   e.target.owner.controller.style.display = "block";
-  e.target.owner._center_xy.x = e.pageX;
-  e.target.owner._center_xy.y = e.pageY;
   if (!e.target.owner._ctrl_interval)
     e.target.owner._ctrl_interval = window.setInterval(
         e.target.owner.event_handlers.control_review, 50, e.target.owner);
@@ -260,7 +282,7 @@ MiniPlayer.prototype.event_handlers.control_start = function(e) {
 };
 
 /** When the mouse / touch stops. */
-MiniPlayer.prototype.event_handlers.control_end = function(e) {
+BoPlayer.prototype.event_handlers.control_end = function(e) {
   if (e.target.owner._state) {
     e.target.owner.play();
   } else
@@ -271,6 +293,7 @@ MiniPlayer.prototype.event_handlers.control_end = function(e) {
   e.target.owner._seek_step = 0;
   e.target.owner._center_xy.x = 0;
   e.target.owner._center_xy.y = 0;
+  e.target.owner.canvas.style.transform = "translate(0px, 0px)";
 
   if (e.target.owner._ctrl_interval) {
     window.clearInterval(e.target.owner._ctrl_interval)
@@ -282,14 +305,21 @@ MiniPlayer.prototype.event_handlers.control_end = function(e) {
 };
 
 /** Volume / seek control */
-MiniPlayer.prototype.event_handlers.control_change = function(e) {
+BoPlayer.prototype.event_handlers.control_change = function(e) {
   e.target.owner._seek_step = (e.pageX - e.target.owner._center_xy.x) / 32.0;
   e.target.owner._vol_step = (e.target.owner._center_xy.y - e.pageY) / 2048.0;
+  e.target.owner.canvas.style.transform =
+      "translate(" + (e.target.owner._canvas_offset.x +
+                      ((e.pageX - e.target.owner._center_xy.x) / 2)) +
+      "px, " + (e.target.owner._canvas_offset.y +
+                ((e.pageY - e.target.owner._center_xy.y) / 2)) +
+      "px)";
+  e.target.owner.redraw();
   e.returnValue = false;
   return false;
 };
 
-MiniPlayer.prototype.event_handlers.control_review = function(pl) {
+BoPlayer.prototype.event_handlers.control_review = function(pl) {
   /** Volume control */
   if (pl._vol_step >= 0.0075) {
     pl._state |= 4;
@@ -306,12 +336,14 @@ MiniPlayer.prototype.event_handlers.control_review = function(pl) {
   if (pl._seek_step >= 0.4) {
     pl._state |= 2;
     pl._state |= 8;
-    pl.pause();
+    // pl.pause();
+    pl.play();
     pl.step_forward(pl._seek_step);
   } else if (pl._seek_step <= -0.4) {
     pl._state |= 2;
     pl._state |= 8;
-    pl.pause();
+    // pl.pause();
+    pl.play();
     pl.step_back(0 - pl._seek_step);
   } else if (pl._state & 2) {
     pl._state &= ~2;
@@ -320,7 +352,7 @@ MiniPlayer.prototype.event_handlers.control_review = function(pl) {
 };
 
 /** Draws the volume (outer ring). */
-MiniPlayer.prototype.draw_volume = function() {
+BoPlayer.prototype.draw_volume = function() {
   var context = this.canvas.getContext('2d');
   var radius_limit = Math.min(this.canvas.height, this.canvas.width);
   // Draw background
@@ -346,7 +378,7 @@ MiniPlayer.prototype.draw_volume = function() {
 };
 
 /** Draws the playhead position (middle ring). */
-MiniPlayer.prototype.draw_time = function() {
+BoPlayer.prototype.draw_time = function() {
   var context = this.canvas.getContext('2d');
   var radius_limit = Math.min(this.canvas.height, this.canvas.width);
   var time = 0.0;
@@ -372,7 +404,7 @@ MiniPlayer.prototype.draw_time = function() {
 };
 
 /** Draws the Play / Pause state (inner circle). */
-MiniPlayer.prototype.draw_state = function() {
+BoPlayer.prototype.draw_state = function() {
   var context = this.canvas.getContext('2d');
   var radius_limit = Math.min(this.canvas.height, this.canvas.width);
   // Clear & Draw background
@@ -390,16 +422,52 @@ MiniPlayer.prototype.draw_state = function() {
   // Draw content
   if (this._center_xy.x) {
     // draw controls
-    context.beginPath();
-    context.strokeStyle = this.color;
-    context.moveTo(radius_limit * 0.5, radius_limit * 0.7);
-    context.lineTo(radius_limit * 0.5, radius_limit * 0.3);
-    context.stroke();
-    context.beginPath();
-    context.strokeStyle = this.color;
-    context.moveTo(radius_limit * 0.7, radius_limit * 0.5);
-    context.lineTo(radius_limit * 0.3, radius_limit * 0.5);
-    context.stroke();
+    if (this._vol_step >= 0.0075) {
+      // volume up
+      context.beginPath();
+      context.strokeStyle = this.vol_color;
+      context.fillStyle = this.vol_color;
+      context.lineWidth = radius_limit * 0.05;
+      context.arc(this.canvas.width * 0.5, this.canvas.height * 0.5,
+                  radius_limit * 0.25, 1.25 * Math.PI,
+                  1.25 * Math.PI + (2 * Math.PI * 0.25));
+      context.lineTo(this.canvas.width * 0.5, this.canvas.height * 0.5);
+      context.fill();
+    } else if (this._vol_step <= -0.0075) {
+      // volume down
+      context.beginPath();
+      context.strokeStyle = this.vol_color;
+      context.fillStyle = this.vol_color;
+      context.lineWidth = radius_limit * 0.05;
+      context.arc(this.canvas.width * 0.5, this.canvas.height * 0.5,
+                  radius_limit * 0.25, 0.25 * Math.PI,
+                  0.25 * Math.PI + (2 * Math.PI * 0.25));
+      context.lineTo(this.canvas.width * 0.5, this.canvas.height * 0.5);
+      context.fill();
+    };
+    if (this._seek_step >= 0.4) {
+      // seek forward
+      context.beginPath();
+      context.strokeStyle = this.time_color;
+      context.fillStyle = this.time_color;
+      context.lineWidth = radius_limit * 0.05;
+      context.arc(this.canvas.width * 0.5, this.canvas.height * 0.5,
+                  radius_limit * 0.25, 1.75 * Math.PI,
+                  1.75 * Math.PI + (2 * Math.PI * 0.25));
+      context.lineTo(this.canvas.width * 0.5, this.canvas.height * 0.5);
+      context.fill();
+    } else if (this._seek_step <= -0.4) {
+      // seek backward
+      context.beginPath();
+      context.strokeStyle = this.time_color;
+      context.fillStyle = this.time_color;
+      context.lineWidth = radius_limit * 0.05;
+      context.arc(this.canvas.width * 0.5, this.canvas.height * 0.5,
+                  radius_limit * 0.25, 0.75 * Math.PI,
+                  0.75 * Math.PI + (2 * Math.PI * 0.25));
+      context.lineTo(this.canvas.width * 0.5, this.canvas.height * 0.5);
+      context.fill();
+    };
   } else if (this.player.paused) {
     // draw "paused" state
     context.beginPath();
@@ -424,7 +492,7 @@ MiniPlayer.prototype.draw_state = function() {
 };
 
 /** sets playback volume within the range of 0..1 (i.e. 0.75).*/
-MiniPlayer.prototype.set_volume = function(volume) {
+BoPlayer.prototype.set_volume = function(volume) {
   if (volume > 1)
     volume = 1;
   if (volume < 0)
@@ -434,9 +502,7 @@ MiniPlayer.prototype.set_volume = function(volume) {
 };
 
 /** returns the playback volume within the range of 0..1.*/
-MiniPlayer.prototype.get_volume = function(volume) {
-  return this.player.volume;
-};
+BoPlayer.prototype.get_volume = function(volume) { return this.player.volume; };
 
 /**
 Sets the current source for playback and resumes playback (if playing).
@@ -444,7 +510,7 @@ Sets the current source for playback and resumes playback (if playing).
 It's possible to set fallback sources by passing an array of strings instead of
 a single string.
 */
-MiniPlayer.prototype.set_sources = function(sources) {
+BoPlayer.prototype.set_sources = function(sources) {
   // clear existing sources.
   while (this.player.firstChild) {
     this.player.removeChild(this.player.firstChild);
@@ -484,7 +550,7 @@ MiniPlayer.prototype.set_sources = function(sources) {
 };
 
 /** Starts playback. Uses playlist / history data if available. */
-MiniPlayer.prototype.play = function() {
+BoPlayer.prototype.play = function() {
   this.autoplay = true;
   this.player.autoplay = true;
 
@@ -501,7 +567,7 @@ MiniPlayer.prototype.play = function() {
   return true;
 };
 /** pauses playback. */
-MiniPlayer.prototype.pause = function() {
+BoPlayer.prototype.pause = function() {
   this.player.pause();
   this.autoplay = false;
   this.player.autoplay = false;
@@ -509,14 +575,14 @@ MiniPlayer.prototype.pause = function() {
 };
 
 /** inverts the playback state. */
-MiniPlayer.prototype.play_or_pause = function() {
+BoPlayer.prototype.play_or_pause = function() {
   if (this.player.paused)
     this.play();
   else
     this.pause();
 };
 /** nudges the volume up. */
-MiniPlayer.prototype.volume_up = function(step) {
+BoPlayer.prototype.volume_up = function(step) {
   if (!step || step >= 1)
     step = 0.1;
   if (this.player.volume > (1 - step))
@@ -525,7 +591,7 @@ MiniPlayer.prototype.volume_up = function(step) {
     this.player.volume += step;
 };
 /** nudges the volume down. */
-MiniPlayer.prototype.volume_down = function(step) {
+BoPlayer.prototype.volume_down = function(step) {
   if (!step || step >= 1)
     step = 0.1;
   if (this.player.volume < step)
@@ -534,7 +600,7 @@ MiniPlayer.prototype.volume_down = function(step) {
     this.player.volume -= step;
 };
 /** nudges the playhead forward. */
-MiniPlayer.prototype.step_forward = function(step) {
+BoPlayer.prototype.step_forward = function(step) {
   if (!step)
     step = 5;
   var time = player.player.currentTime
@@ -548,7 +614,7 @@ MiniPlayer.prototype.step_forward = function(step) {
 };
 
 /** nudges the playhead backwards. */
-MiniPlayer.prototype.step_back = function(step) {
+BoPlayer.prototype.step_back = function(step) {
   if (!step)
     step = 5;
   var time = player.player.currentTime
@@ -562,7 +628,7 @@ MiniPlayer.prototype.step_back = function(step) {
 };
 
 /** plays the previous source, if available. */
-MiniPlayer.prototype.prev = function() {
+BoPlayer.prototype.prev = function() {
   if (this.player.currentSrc && this.player.childElementCount)
     this.playlist.unshift(this.player.currentSrc);
   this.set_sources(this.history.pop());
@@ -571,7 +637,7 @@ MiniPlayer.prototype.prev = function() {
 };
 
 /** plays the next source, if available. */
-MiniPlayer.prototype.next = function() {
+BoPlayer.prototype.next = function() {
   if (this.player.currentSrc && this.player.childElementCount)
     this.history.push(this.player.currentSrc);
   this.set_sources(this.playlist.shift());
@@ -580,49 +646,49 @@ MiniPlayer.prototype.next = function() {
 };
 
 /** enables keyboard control for the player. */
-MiniPlayer.prototype.enable_keyboard = function() {
-  document.miniplayer_keyboard_control = this;
-  if (document.miniplayer_keyboard_control_enabled)
+BoPlayer.prototype.enable_keyboard = function() {
+  document.BoPlayer_keyboard_control = this;
+  if (document.BoPlayer_keyboard_control_enabled)
     return;
-  document.miniplayer_keyboard_control_enabled = true;
+  document.BoPlayer_keyboard_control_enabled = true;
   document.addEventListener('keydown', function(e) {
-    if (!document.miniplayer_keyboard_control ||
+    if (!document.BoPlayer_keyboard_control ||
         document.activeElement.tagName == 'INPUT' ||
         document.activeElement.tagName == 'TEXTAREA')
       return true;
     switch (e.keyCode) {
     case 32:
-      document.miniplayer_keyboard_control.play_or_pause();
+      document.BoPlayer_keyboard_control.play_or_pause();
       break;
     case 37:
-      document.miniplayer_keyboard_control.step_back();
+      document.BoPlayer_keyboard_control.step_back();
       break;
     case 39:
-      document.miniplayer_keyboard_control.step_forward();
+      document.BoPlayer_keyboard_control.step_forward();
       break;
     case 38:
-      document.miniplayer_keyboard_control.volume_up();
+      document.BoPlayer_keyboard_control.volume_up();
       break;
     case 40:
-      document.miniplayer_keyboard_control.volume_down();
+      document.BoPlayer_keyboard_control.volume_down();
       break;
     case 78:
-      document.miniplayer_keyboard_control.next();
+      document.BoPlayer_keyboard_control.next();
       break;
     case 80:
-      document.miniplayer_keyboard_control.prev();
+      document.BoPlayer_keyboard_control.prev();
       break;
     }
   });
 };
 
 /** disables keyboard controls. */
-MiniPlayer.prototype.disable_keyboard = function() {
-  document.miniplayer_keyboard_control = false;
+BoPlayer.prototype.disable_keyboard = function() {
+  document.BoPlayer_keyboard_control = false;
 };
 
 /** redraws the player. */
-MiniPlayer.prototype.redraw = function() {
+BoPlayer.prototype.redraw = function() {
   // set the correct size
   this.canvas.width = this.canvas.offsetWidth;
   this.canvas.height = this.canvas.offsetHeight;
