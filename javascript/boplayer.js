@@ -125,6 +125,12 @@ function BoPlayer(obj_id) {
   this.player.style.left = "0";
   this.player.style.width = "0px";
   this.player.style.height = "0px";
+  this.player.volume = 0.5;
+  if (this.player.volume == 0.5)
+    this.volume_control_enabled = true;
+  else
+    this.volume_control_enabled = false;
+  this.player.volume = 1;
   this.container.appendChild(this.player);
 
   /** Audio event handlers. */
@@ -313,7 +319,8 @@ BoPlayer.prototype.event_handlers.control_end = function(e) {
 /** Volume / seek control */
 BoPlayer.prototype.event_handlers.control_change = function(e) {
   e.target.owner._seek_step = (e.pageX - e.target.owner._center_xy.x) / 32.0;
-  e.target.owner._vol_step = (e.target.owner._center_xy.y - e.pageY) / 2048.0;
+  if (e.target.owner.volume_control_enabled)
+    e.target.owner._vol_step = (e.target.owner._center_xy.y - e.pageY) / 2048.0;
   e.target.owner.canvas.style.transform =
       "translate(" + (e.target.owner._canvas_offset.x +
                       Math.round((e.pageX - e.target.owner._center_xy.x) / 2)) +
