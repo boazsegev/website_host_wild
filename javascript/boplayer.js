@@ -145,6 +145,7 @@ function BoPlayer(obj_id) {
   });
   this.player.addEventListener("canplaythrough", function(e) {
     e.target.autoplay = e.target.owner.autoplay;
+    e.target.owner.can_play = true;
     if (e.target.owner.autoplay) {
       e.target.owner.play();
     }
@@ -247,8 +248,7 @@ BoPlayer.prototype.event_handlers.control_start = function(e) {
     pl.canvas.style.transition = "transform 0s";
   }, 250, e.target.owner);
   // make sure the player is active before allowing control state.
-  if (e.target.owner.player.seekable.length == 0 ||
-      e.target.owner.player.played.length == 0) {
+  if (!e.target.owner.can_play) {
     e.returnValue = false;
     return false;
   }
@@ -494,15 +494,7 @@ BoPlayer.prototype.draw_state = function() {
       context.lineTo(this.canvas.width * 0.5, this.canvas.height * 0.5);
       context.fill();
     };
-  } else if (this.player.paused) {
-    // draw "paused" state
-    context.beginPath();
-    context.strokeStyle = this.color;
-    context.moveTo(radius_limit * 0.4, radius_limit * 0.65);
-    context.lineTo(radius_limit * 0.6, radius_limit * 0.5);
-    context.lineTo(radius_limit * 0.4, radius_limit * 0.35);
-    context.stroke();
-  } else {
+  } else if (this.is_playing()) {
     // draw "playing" state
     context.beginPath();
     context.strokeStyle = this.color;
@@ -513,6 +505,14 @@ BoPlayer.prototype.draw_state = function() {
     context.strokeStyle = this.color;
     context.moveTo(radius_limit * 0.6, radius_limit * 0.65);
     context.lineTo(radius_limit * 0.6, radius_limit * 0.35);
+    context.stroke();
+  } else {
+    // draw "paused" state
+    context.beginPath();
+    context.strokeStyle = this.color;
+    context.moveTo(radius_limit * 0.4, radius_limit * 0.65);
+    context.lineTo(radius_limit * 0.6, radius_limit * 0.5);
+    context.lineTo(radius_limit * 0.4, radius_limit * 0.35);
     context.stroke();
   };
 };
@@ -546,6 +546,8 @@ BoPlayer.prototype.set_sources = function(sources) {
     this.player.load();
     return;
   }
+  // set playback flag
+  this.can_play = false;
   // add requested sources.
   if (typeof(sources) == typeof(""))
     sources = [ sources ];
@@ -574,6 +576,11 @@ BoPlayer.prototype.set_sources = function(sources) {
   if (this.autoplay)
     this.player.play();
 };
+
+/** returns the playback state. */
+BoPlayer.prototype.is_playing = function() { return (this.player.paused); };
+/** a flag indicating if enough data was downloaded for continuous playback. */
+BoPlayer.prototype.can_play = false;
 
 /** Starts playback. Uses playlist / history data if available. */
 BoPlayer.prototype.play = function() {
