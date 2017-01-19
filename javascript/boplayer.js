@@ -686,7 +686,6 @@ BoPlayer.prototype.enable_keyboard = function() {
     return;
   document.BoPlayer_keyboard_control_enabled = true;
   document.addEventListener('keydown', function(e) {
-    console.log(e);
     if (!document.BoPlayer_keyboard_control ||
         document.activeElement.tagName == 'INPUT' ||
         document.activeElement.tagName == 'TEXTAREA')
