@@ -186,6 +186,7 @@ function BoPlayer(obj_id) {
   this.container.ontouchmove = this.event_handlers.control_change;
   this.container.ontouchend = this.event_handlers.control_end;
 
+  this.controller.onmousedown = this.event_handlers.control_end;
   this.controller.onmouseup = this.event_handlers.control_end;
   this.controller.onmouseout = function(e) {
     if (e.target.owner._state)
@@ -578,7 +579,7 @@ BoPlayer.prototype.set_sources = function(sources) {
 };
 
 /** returns the playback state. */
-BoPlayer.prototype.is_playing = function() { return (this.player.paused); };
+BoPlayer.prototype.is_playing = function() { return (!this.player.paused); };
 /** a flag indicating if enough data was downloaded for continuous playback. */
 BoPlayer.prototype.can_play = false;
 
@@ -685,30 +686,34 @@ BoPlayer.prototype.enable_keyboard = function() {
     return;
   document.BoPlayer_keyboard_control_enabled = true;
   document.addEventListener('keydown', function(e) {
+    console.log(e);
     if (!document.BoPlayer_keyboard_control ||
         document.activeElement.tagName == 'INPUT' ||
         document.activeElement.tagName == 'TEXTAREA')
       return true;
     switch (e.keyCode) {
-    case 32:
+    case 32: // space - play / pause
       document.BoPlayer_keyboard_control.play_or_pause();
       break;
-    case 37:
+    case 13: // enter - seek to top
+      document.BoPlayer_keyboard_control.step_back(10000);
+      break;
+    case 37: // right arrow
       document.BoPlayer_keyboard_control.step_back();
       break;
-    case 39:
+    case 39: // left arrow
       document.BoPlayer_keyboard_control.step_forward();
       break;
-    case 38:
+    case 38: // up arrow
       document.BoPlayer_keyboard_control.volume_up();
       break;
-    case 40:
+    case 40: // down arrow
       document.BoPlayer_keyboard_control.volume_down();
       break;
-    case 78:
+    case 78: // "n"
       document.BoPlayer_keyboard_control.next();
       break;
-    case 80:
+    case 80: // "p"
       document.BoPlayer_keyboard_control.prev();
       break;
     }
