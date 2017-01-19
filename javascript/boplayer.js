@@ -235,6 +235,9 @@ BoPlayer.prototype.event_handlers.control_start = function(e) {
   e.target.owner.canvas.style.transform =
       "translate(" + e.target.owner._canvas_offset.x + "px, " +
       e.target.owner._canvas_offset.y + "px)";
+  window.setTimeout(function(pl) {
+    pl.canvas.style.transition = "transform 0s";
+  }, 250, e.target.owner);
   // make sure the player is active before allowing control state.
   if (e.target.owner.player.seekable.length == 0 ||
       e.target.owner.player.played.length == 0) {
@@ -260,15 +263,13 @@ BoPlayer.prototype.event_handlers.control_start = function(e) {
       return;
     switch (pl._tap_count) {
     case 2:
-      pl._state = 0;
-      pl.controller.style.display = "none";
       pl.next();
+      pl._state = 8;
       pl.play();
       break;
     case 3:
-      pl._state = 0;
-      pl.controller.style.display = "none";
       pl.prev();
+      pl._state = 8;
       pl.play();
       break;
     }
@@ -283,23 +284,28 @@ BoPlayer.prototype.event_handlers.control_start = function(e) {
 
 /** When the mouse / touch stops. */
 BoPlayer.prototype.event_handlers.control_end = function(e) {
-  if (e.target.owner._state) {
-    e.target.owner.play();
-  } else
-    e.target.owner.play_or_pause();
-
-  e.target.owner._state = 0;
   e.target.owner._vol_step = 0;
   e.target.owner._seek_step = 0;
   e.target.owner._center_xy.x = 0;
   e.target.owner._center_xy.y = 0;
-  e.target.owner.canvas.style.transform = "translate(0px, 0px)";
+  e.target.owner.canvas.style.transition = "transform 0.25s";
+  window.setTimeout(function(pl) {
+    pl.canvas.style.transform = "translate(0px, 0px)";
+  }, 10, e.target.owner);
 
   if (e.target.owner._ctrl_interval) {
     window.clearInterval(e.target.owner._ctrl_interval)
     e.target.owner._ctrl_interval = false;
   }
   e.target.owner.controller.style.display = "none";
+
+  if (e.target.owner._state) {
+    e.target.owner.play();
+  } else
+    e.target.owner.play_or_pause();
+
+  e.target.owner._state = 0;
+
   e.returnValue = false;
   return false;
 };
@@ -310,9 +316,9 @@ BoPlayer.prototype.event_handlers.control_change = function(e) {
   e.target.owner._vol_step = (e.target.owner._center_xy.y - e.pageY) / 2048.0;
   e.target.owner.canvas.style.transform =
       "translate(" + (e.target.owner._canvas_offset.x +
-                      ((e.pageX - e.target.owner._center_xy.x) / 2)) +
+                      Math.round((e.pageX - e.target.owner._center_xy.x) / 2)) +
       "px, " + (e.target.owner._canvas_offset.y +
-                ((e.pageY - e.target.owner._center_xy.y) / 2)) +
+                Math.round((e.pageY - e.target.owner._center_xy.y) / 2)) +
       "px)";
   e.target.owner.redraw();
   e.returnValue = false;
@@ -336,14 +342,14 @@ BoPlayer.prototype.event_handlers.control_review = function(pl) {
   if (pl._seek_step >= 0.4) {
     pl._state |= 2;
     pl._state |= 8;
-    // pl.pause();
-    pl.play();
+    pl.pause();
+    // pl.play();
     pl.step_forward(pl._seek_step);
   } else if (pl._seek_step <= -0.4) {
     pl._state |= 2;
     pl._state |= 8;
-    // pl.pause();
-    pl.play();
+    pl.pause();
+    // pl.play();
     pl.step_back(0 - pl._seek_step);
   } else if (pl._state & 2) {
     pl._state &= ~2;
@@ -422,6 +428,17 @@ BoPlayer.prototype.draw_state = function() {
   // Draw content
   if (this._center_xy.x) {
     // draw controls
+    if (this._state == 0) {
+      // pause / play control
+      context.beginPath();
+      context.strokeStyle = this.color;
+      context.fillStyle = this.color;
+      context.lineWidth = radius_limit * 0.03;
+      context.arc(this.canvas.width * 0.5, this.canvas.height * 0.5,
+                  radius_limit * 0.1, 0.75 * Math.PI,
+                  0.75 * Math.PI + (2 * Math.PI * 1));
+      context.fill();
+    }
     if (this._vol_step >= 0.0075) {
       // volume up
       context.beginPath();
