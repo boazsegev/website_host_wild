@@ -1,11 +1,168 @@
 #!/usr/bin/env ruby
 
+# ENV['RACK_ENV'] = 'production'
+
+require 'redcarpet'
+require 'erb'
+require 'slim'
+require 'sass'
 require 'iodine'
+require 'fileutils'
+require 'ostruct'
+require 'yaml'
 
-# Iodine::Rack.app = proc { [200, { 'X-Sendfile' => File.expand_path("#{File.dirname(__FILE__) }/index.html") }, []] }
-Iodine::Rack.app = proc { [404, { 'X-Sendfile' => File.expand_path("#{File.dirname(__FILE__) }/index.html") }, []] }
-Iodine::Rack.public = File.dirname(__FILE__)
+Dir.chdir File.dirname(__FILE__)
 
+SOURCE_ROOT = 'source'
+STATIC_ROOT = '.'
+PATH_INFO = 'PATH_INFO'.freeze
+X_SENDFILE = 'X-Sendfile'.freeze
+
+module APP
+
+  @extensions = {}
+
+  class Wrapper
+    attr_accessor :page
+    def initialize vars, &block
+      @page = OpenStruct.new(vars)
+      @block = block
+    end
+    def binding &block
+      super
+    end
+    def yield
+      @block.call if(@block)
+    end
+  end
+
+  def self.bake_all
+    @extensions.keys.each do |k|
+      Dir[File.join SOURCE_ROOT, '**', "*#{k}"].each do |pt|
+        begin
+          env = {PATH_INFO => pt[SOURCE_ROOT.length..(-1-k.length)]}
+          APP.call(env)
+          puts "INFO: pre-baked: #{env[PATH_INFO]}"
+        rescue => e
+          puts "WARN: couldn't pre-bake #{pt}: #{e.message}"
+        end
+      end
+    end
+    Dir[File.join SOURCE_ROOT, '**', "*"].each do |pt|
+      unless @extensions[File.extname(pt)] || File.directory?(pt)
+        target = pt[SOURCE_ROOT.length..-1]
+        bake target, IO.binread(pt)
+        puts "INFO: copied #{pt} to #{target}"
+      end
+    end
+  end
+
+if ENV['RACK_ENV'] == 'production'
+  def self.call env
+    puts "WARN: render was requested for #{env[PATH_INFO]}" unless env.keys.length == 1
+    env[PATH_INFO] = '/index.html'.freeze if (env[PATH_INFO] == '/'.freeze)
+    env[PATH_INFO] << ".html" if(File.extname(env[PATH_INFO]) == "")
+    [200, {X_SENDFILE => "#{STATIC_ROOT}#{env[PATH_INFO]}"}, "".freeze]
+  end
+else
+  def self.call env
+    env[PATH_INFO] = '/index.html'.freeze if (env[PATH_INFO] == '/'.freeze)
+    env[PATH_INFO] << ".html" if(File.extname(env[PATH_INFO]) == "")
+    render env[PATH_INFO]
+    [200, {X_SENDFILE => "#{STATIC_ROOT}#{env[PATH_INFO]}"}, "".freeze]
+  end
+
+end
+
+  def self.render path
+    name = "#{SOURCE_ROOT}#{path}"
+    base = name[0..(-1-(File.extname(path).length))]
+    data = nil
+    @extensions.keys.each { |k| data = try_name(name, k) || try_name(base, k); break if data }
+    bake path, data if data
+  end
+
+  def self.try_name name, ext
+    name = "#{name}#{ext}"
+    return nil unless File.exist?(name)
+    @extensions[ext].call(name)
+  end
+
+  def self.bake path, data
+    return unless data
+    path = "#{STATIC_ROOT}#{path}"
+    FileUtils.mkpath File.dirname(path)
+    IO.binwrite path, data
+  end
+
+  # simple markdown rendering
+  YAML_FRONT_MATTER_REGEXP = /\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)/m.freeze
+  MD_EXTENSIONS = { with_toc_data: true, strikethrough: true, autolink: true, fenced_code_blocks: true, no_intra_emphasis: true, tables: true, footnotes: true, underline: true, highlight: true }.freeze
+  MD_RENDERER = ::Redcarpet::Markdown.new ::Redcarpet::Render::HTML.new(MD_EXTENSIONS.dup), MD_EXTENSIONS.dup
+  SAFE_TYPES = [Symbol, Date, Time, Encoding, Struct, Regexp, Range, Set].freeze
+  @extensions['.md'] = proc do |name|
+    data = IO.binread(name)
+    vars = {}
+    front = data.match YAML_FRONT_MATTER_REGEXP
+    if(front)
+      vars = YAML.safe_load(front[1], SAFE_TYPES)
+      data = front.post_match
+    end
+    context = Wrapper.new(vars).binding
+    start = nil
+    fin = nil
+    while ((start = data.index "{{"))
+      fin = data[(start+2)..-1]
+      data = data[0..start] + context.eval(fin[0..((fin.index("}}") || -3) + 2)]) + fin[((fin.index("}}") || -3) + 2)..-1]
+    end
+    data = MD_RENDERER.render(data)
+    layout = "#{File.dirname(name)}/#{vars['layout']}"
+    if(vars['layout'] && File.exist?(layout) && @extensions[File.extname(layout)])
+      block = proc { data }
+      @extensions[File.extname(layout)].call(layout, vars, block)
+    else
+      data
+    end
+  end
+
+  # slim rendering (support variables and code blocks)
+  @extensions['.slim'] = proc do |name, vars, block|
+    engine = (Slim::Template.new { IO.binread(name).force_encoding(::Encoding::UTF_8) })
+    if(block)
+      engine.render(Wrapper.new(vars || {}), &block)
+    else
+      engine.render(Wrapper.new(vars || {}))
+    end
+  end
+
+  SASS_OPTIONS = { cache_store: Sass::CacheStores::Memory.new, style: (ENV['SASS_STYLE'] || ((ENV['ENV'] || ENV['RACK_ENV']) == 'production' ? :compressed : :nested)) }.dup
+
+  @extensions['.scss'] = @extensions['.sass'] = proc do |name|
+    eng = Sass::Engine.for_file(name, SASS_OPTIONS)
+    map_name = name.gsub /s[ac]ss$/, 'map'
+    map_name.gsub! /^#{SOURCE_ROOT}/, ''
+    css, map = eng.render_with_sourcemap(File.basename(map_name))
+    bake map_name, map.to_json(css_uri: File.basename(name))
+    css
+  end
+
+  # slim rendering (support variables and code blocks)
+  @extensions['.erb'] = proc do |name, vars, block|
+    engine = ::ERB.new(IO.binread(name).force_encoding(::Encoding::UTF_8))
+    engine.result(Wrapper.new((vars || {}), &block).binding(&block), &block)
+  end
+
+
+end
+
+if(ENV['RACK_ENV'] == 'production')
+  Iodine::Rack.public = STATIC_ROOT
+else
+  Iodine::Rack.public = SOURCE_ROOT
+end
 Iodine::Rack.log = true
-Iodine.threads = 8
-Iodine.start
+Iodine::Rack.app = APP
+APP.bake_all
+
+_did_run = nil
+at_exit { Iodine.threads ||=1; Iodine.start unless _did_run }
