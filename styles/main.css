@@ -93,7 +93,7 @@ html {
   margin: 0;
   padding: 0;
   font-size: 1.2em;
-  padding: 0 10% 4em 10%;
+  padding: 0 10% 8em 10%;
   margin-bottom: 4em;
   animation-name: appear;
   animation-duration: 1s;
@@ -134,9 +134,8 @@ h3 {
 a {
   color: #eee;
   text-decoration: none; }
-
-a:hover {
-  color: #eeb; }
+  a:active, a:hover {
+    color: #eeb; }
 
 #menu {
   width: 100%;
@@ -199,7 +198,7 @@ a:hover {
     background: rgba(48, 48, 48, 0.75);
     z-index: 1001;
     position: relative; }
-    #menu a:hover {
+    #menu a:active, #menu a:hover {
       background: rgba(128, 128, 128, 0.9); }
 
 #burger {
@@ -207,38 +206,47 @@ a:hover {
 
 @media only screen and (max-width: 768px) {
   #top h1 {
-    text-align: center;
-    font-size: 2.2em; }
+    text-align: right;
+    font-size: 1.8em;
+    vertical-align: middle;
+    line-height: 2em;
+    padding: 0 1em; }
 
   #burger {
     display: block;
-    position: fixed;
-    top: 3em;
-    left: 3em;
+    position: absolute;
+    font-size: 2em;
+    top: 1.5em;
+    left: 0.2em;
     overflow: visible;
-    transform: translateX(999999px);
+    transform: translateX(-999999px);
     z-index: 900; }
     #burger:after {
-      transform: translateX(-999999px);
-      content: "|||";
-      font-size: 2em;
+      transform: translateX(999999px);
+      content: " ";
+      font-size: 1em;
       display: block;
       box-sizing: border-box;
-      padding: 0.3em 0.5em;
-      text-align: center;
-      border-radius: 0.4em;
-      background-color: gray;
-      background-color: rgba(64, 64, 64, 0.64);
+      padding: 0;
+      margin: 0;
+      width: 2em;
+      height: 2em;
       position: absolute;
       left: 0;
       top: 0;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      -webkit-transition: transform 0.3s ease, opacity 0.3s ease;
-      -moz-transition: transform 0.3s ease, opacity 0.3s ease;
-      -o-transition: transform 0.3s ease, opacity 0.3s ease; }
+      border-radius: 1em;
+      background-color: rgba(192, 192, 192, 0);
+      background-image: url(/images/menu.svg);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+      -webkit-transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+      -moz-transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+      -o-transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease; }
     #burger:checked:after {
-      transform: translateX(-999999px) rotate(-90deg);
-      background-color: rgba(64, 32, 64, 0.64); }
+      transform: translateX(999999px) rotate(90deg);
+      background-color: rgba(192, 192, 192, 0.4); }
 
   #menu {
     padding: 0;
@@ -246,10 +254,12 @@ a:hover {
 
   #burger + ul {
     padding: 0;
+    opacity: 0;
     overflow-y: visible;
     height: auto;
-    transform: translateY(-200%);
-    transition: opacity 0.25s, transform 0.25s;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: opacity 0.4s, transform 0.3s;
     width: 100%;
     box-sizing: border-box; }
     #burger + ul li {
@@ -263,11 +273,15 @@ a:hover {
       #burger + ul ul li {
         opacity: 1;
         border-radius: 0; }
+        #burger + ul ul li:first-child {
+          background: rgba(0, 0, 0, 0.7); }
+        #burger + ul ul li:last-child {
+          border-radius: 0; }
     #burger + ul a {
       width: 100%; }
 
   #burger:checked + ul {
     opacity: 1;
-    transform: translateY(0); } }
+    transform: scaleY(1); } }
 
 /*# sourceMappingURL=main.css.map */
