@@ -56,6 +56,13 @@ html {
     opacity: 0.9;
     box-sizing: border-box;
   }
+
+  p {
+    font-size: 0.4em;
+    position: absolute;
+    top:0.5em;
+    right: 1em;
+  }
 }
 
 #bottom {
@@ -110,7 +117,7 @@ html {
   margin: 0;
   padding: 0;
   font-size: 1.2em;
-  padding:0 10% 8em 10%;
+  padding:0 10% 5em 10%;
   margin-bottom: 4em;
   @include animation_appear;
 }

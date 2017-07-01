@@ -1,5 +1,6 @@
 ---
 layout: layouts/layout.erb
+title: Bo - Music Production House nd Home - My Vision
 ---
 # Singing Your Story to Inspire
 
