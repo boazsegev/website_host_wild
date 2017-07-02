@@ -1,6 +1,6 @@
 ---
 layout: layouts/layout.erb
-title: Bo - Music Production House nd Home - My Vision
+title: Bo Wild's Music Production House and Home - My Vision
 ---
 # Singing Your Story to Inspire
 
