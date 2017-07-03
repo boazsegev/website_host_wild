@@ -67,25 +67,6 @@
 
 <p>I don&#39;t want to repeat what you did for your last album, I want to help you take your next step in your journey in a way that is authentic and true to your own voice.</p>
 
-<!-- TODO: Write a bit about my production approach and services -->
-
-<script type="text/javascript">
-    var player = undefined;
-    function init_player() {
-        document.getElementById('player_container').className = "active";
-        player = new BoPlayer('player');
-        player.autoplay = true;
-        player.set_volume(1);
-        player.playlist.push("media/whilemyguitar.m4a");
-        player.playlist.push("media/jimmie_the_cloud.m4a");
-        player.playlist.push("media/hello.m4a");
-        player.next();
-        player.enable_keyboard();
-        player.on_play = (p) => {console.log("now playing" , p.player.currentSrc)};
-    };
-    addEventListener("load", init_player);
-</script>
-
     </div>
     <div id='bottom'>
         <script type="text/javascript">
