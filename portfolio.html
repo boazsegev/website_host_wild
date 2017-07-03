@@ -21,7 +21,7 @@
         --><li><a href='/products.html'>Your Song</a></li><!--
         --><li><a href='/products_songwriting.html'>Songwriting</a></li><!--
         --><li><a href='/products_production.html'>Production</a></li><!--
-        --<li><a href='/pricing.html'>Pricing</a></li><!--
+        --><li><a href='/pricing.html'>Pricing</a></li><!--
             --></ul></li><!--
         --><li><ul><!--
         --><li><a href='/portfolio.html'>Portfolio</a></li><!--
@@ -45,11 +45,28 @@
             // }
             // document.addEventListener("load", init_document);
         </script>
-      <h1 id="prepare-to-breathe">Prepare to Breathe</h1>
+      <h1 id="my-portfolio">My Portfolio</h1>
 
-<h1 id="where-the-wild-things-live">...where the wild things live...</h1>
+<p>My portfolio includes examples of songs I wrote and work I have performed.</p>
 
-<h3 id="bos-music-production-house-and-home"><em>Bo&#39;s Music Production House and Home</em></h3>
+<!-- TODO -->
+
+<script type="text/javascript">
+    var player = undefined;
+    function init_player() {
+        document.getElementById('player_container').className = "active";
+        player = new BoPlayer('player');
+        player.autoplay = true;
+        player.set_volume(1);
+        player.playlist.push("media/whilemyguitar.m4a");
+        player.playlist.push("media/jimmie_the_cloud.m4a");
+        player.playlist.push("media/hello.m4a");
+        player.next();
+        player.enable_keyboard();
+        player.on_play = (p) => {console.log("now playing" , p.player.currentSrc)};
+    };
+    addEventListener("load", init_player);
+</script>
 
     </div>
     <div id='bottom'>
