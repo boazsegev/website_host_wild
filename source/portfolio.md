@@ -3,8 +3,11 @@ layout: layouts/layout.erb
 ---
 # My Portfolio
 
-My portfolio includes examples of songs I wrote and work I have performed.
+Here you will find examples of songs I wrote and work I have performed.
 
+Please choose the style and piece you wish to listen to from the menu.
+
+To listen please press on the play button at the bottom of the page.
 
 <!-- TODO -->
 

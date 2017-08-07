@@ -9,18 +9,20 @@ body,
 html {
   width: 100%;
   height: 100%;
-  background: #111;
   color: #ddd;
   padding: 0;
   margin: 0;
+  font-family: 'Amatic SC', cursive;
+  font-size-adjust: auto; }
+
+html {
+  background: #111;
   background-repeat: no-repeat;
   background-position: center;
   background-blend-mode: lighten;
   background-image: url("/images/background.jpg");
   background-size: cover;
-  background-attachment: fixed;
-  font-family: 'Amatic SC', cursive;
-  font-size-adjust: auto; }
+  background-attachment: fixed; }
 
 #top {
   display: block;
