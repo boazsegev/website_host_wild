@@ -165,7 +165,7 @@ function BoPlayer(obj_id) {
   /** The controller DOM layer (fullscreen event collecting). */
   this.controller = document.createElement('div');
   this.controller.owner = this;
-  this.controller.style.position = "absolute";
+  this.controller.style.position = "fixed";
   this.controller.style.display = "none";
   this.controller.style.top = "0";
   this.controller.style.left = "0";
@@ -325,10 +325,12 @@ BoPlayer.prototype.event_handlers.control_change = function(e) {
   if (e.target.owner.volume_control_enabled)
     e.target.owner._vol_step = (e.target.owner._center_xy.y - e.pageY) / 2048.0;
   e.target.owner.canvas.style.transform =
-      "translate(" + (e.target.owner._canvas_offset.x +
-                      Math.round((e.pageX - e.target.owner._center_xy.x) / 2)) +
-      "px, " + (e.target.owner._canvas_offset.y +
-                Math.round((e.pageY - e.target.owner._center_xy.y) / 2)) +
+      "translate(" +
+      (e.target.owner._canvas_offset.x +
+       Math.round((e.pageX - e.target.owner._center_xy.x) / 2)) +
+      "px, " +
+      (e.target.owner._canvas_offset.y +
+       Math.round((e.pageY - e.target.owner._center_xy.y) / 2)) +
       "px)";
   e.target.owner.redraw();
   e.returnValue = false;

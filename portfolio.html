@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Bo Wild - Songwriter, Music Producer and Explorer</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=2.0, user-scalable=yes, minimal-ui=yes" name="viewport" />
+    <!-- <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet'> -->
+    <link href='/styles/main.css' rel='stylesheet' media="screen">
+    <script type="text/javascript" src='/javascript/boplayer.js'></script>
+</head>
+
+<body>
+    <div id="top">
+        <h1><a href='/' title="Bo Wild's Music Production House and Home">Bo Wild</a></h1>
+        <p>Music Production Home</p>
+    </div>
+    <nav id="menu"><input id='burger' type='checkbox'></input><ul><!--
+    --><li><a href='/about.html'>Vision</a></li><!--
+        --><li><ul><!--
+        --><li><a href='/products.html'>Your Song</a></li><!--
+        --><li><a href='/products_songwriting.html'>Songwriting</a></li><!--
+        --><li><a href='/products_production.html'>Production</a></li><!--
+        --<li><a href='/pricing.html'>Pricing</a></li><!--
+            --></ul></li><!--
+        --><li><ul><!--
+        -- ><li><a href='/portfolio.html'>Portfolio</a></li><!--
+            -- ><li><a href='/portfolio_songwriting.html'>Songwriting</a></li><!--
+            -- ><li><a href='/portfolio_arranging.html'>Arranging</a></li><!--
+            -- ><li><a href='/portfolio_production.html'>Production</a></li><!--
+            -- ><li><a href='/portfolio_video_sync.html'>Video Sync</a></li><!--
+            -- ></ul></li><!--
+        --><li><a href='/contact.html'>Contact</a></li><!--
+        --></ul></nav>
+    <div id="content">
+        <script type="text/javascript">
+            // document.getElementById('content').style.opacity = "0";
+            // function init_document() {
+            //     var content = document.getElementById('content');
+            //     content.style.transition = "opacity 1s";
+            //     setTimeout(function(c) {c.style.opacity = "1";}, 250, content);
+            //     var content = document.getElementById('bottom');
+            //     content.style.transition = "opacity 1s";
+            //     setTimeout(function(c) {c.style.opacity = "1";}, 250, content);
+            // }
+            // document.addEventListener("load", init_document);
+        </script>
+      <h1 id="my-portfolio">My Portfolio</h1>
+
+<p>Here you will find examples of songs I wrote and work I have performed.</p>
+
+<p>Please choose the style and piece you wish to listen to from the menu.</p>
+
+<p>To listen please press on the play button at the bottom of the page.</p>
+
+<!-- TODO -->
+
+<script type="text/javascript">
+    var player = undefined;
+    function init_player() {
+        document.getElementById('player_container').className = "active";
+        player = new BoPlayer('player');
+        player.autoplay = true;
+        player.set_volume(1);
+        player.playlist.push("media/whilemyguitar.m4a");
+        player.playlist.push("media/jimmie_the_cloud.m4a");
+        player.playlist.push("media/hello.m4a");
+        player.next();
+        player.enable_keyboard();
+        player.on_play = (p) => {console.log("now playing" , p.player.currentSrc)};
+    };
+    addEventListener("load", init_player);
+</script>
+
+    </div>
+    <div id='bottom'>
+        <script type="text/javascript">
+            // document.getElementById('bottom').style.opacity = "0";
+        </script>
+        <a href="http://facebook.com/bowildmusic" class='social' style='background-image:url("/images/facebook_logo.png")'></a>
+        <div id='player_container'><div id='player'></div></div>
+        <a href="https://twitter.com/bowildmusic" class='social' style='background-image:url("/images/twitter_logo.svg")'></a>
+    </div>
+
+</body>
+
+</html>
