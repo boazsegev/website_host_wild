@@ -25,7 +25,7 @@ You can also click "Demo" to listen to a demo of a conceptual arrangement for ou
 
 1. [She Was a Lost Soul](https://www.evernote.com/shard/s199/nl/2147483647/235bf246-5c07-4eb0-8f4f-7b557e43ffcf/) -  <a href='media/lost_soul.m4a' onclick='player.next();player.set_sources("media/lost_soul.m4a");player.play();return false;'>Demo</a> / [PDF](media/lost_soul.pdf) (todo: fix PDF)
 
-1. [Tears To My Smile](https://www.evernote.com/l/AMeV5kSt0BJEJo586yfT8CJxkt6KSNjtXPg) -  <a href='media/tears2smile.m4a' onclick='player.next();player.set_sources("media/tears2smile.m4a");player.play();return false;'>Demo</a> / [PDF](media/tears2smile.pdf) (Bo solo?, todo: fix PDF)
+1. [Tears To My Smile](https://www.evernote.com/l/AMeV5kSt0BJEJo586yfT8CJxkt6KSNjtXPg) -  <a href='media/tears2smile.m4a' onclick='player.next();player.set_sources("media/tears2smile.m4a");player.play();return false;'>Demo</a> / [PDF](media/tears2smile.pdf) (Bo solo?, todo: demo)
 
 1. [Never Was A Touching Man](https://www.evernote.com/l/AMf5sGF3qUVGF5gRvM0w9wpsab2EC3VHsdQ) -  <a href='media/never_was.m4a' onclick='player.next();player.set_sources("media/never_was.m4a");player.play();return false;'>Demo</a> / [PDF](media/never_was.pdf)
 
