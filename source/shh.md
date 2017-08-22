@@ -23,7 +23,7 @@ You can also click "Demo" to listen to a demo of a conceptual arrangement for ou
 
 1. [Bad Boy](https://www.evernote.com/l/AMc-dimL6UtAf7RrZlyy6_qQ2FvXQnDDwXw) - <a href='media/bad_boy.m4a' onclick='player.next();player.set_sources("media/bad_boy.m4a");player.play();return false;'>Demo</a> / [PDF](media/bad_boy.pdf)
 
-1. [She Was a Lost Soul](https://www.evernote.com/shard/s199/nl/2147483647/235bf246-5c07-4eb0-8f4f-7b557e43ffcf/) -  <a href='media/lost_soul.m4a' onclick='player.next();player.set_sources("media/lost_soul.m4a");player.play();return false;'>Demo</a> / [PDF](media/lost_soul.pdf) (todo: fix PDF)
+1. [She Was a Lost Soul](https://www.evernote.com/shard/s199/nl/2147483647/235bf246-5c07-4eb0-8f4f-7b557e43ffcf/) -  <a href='media/lost_soul.m4a' onclick='player.next();player.set_sources("media/lost_soul.m4a");player.play();return false;'>Demo</a> / [PDF](media/lost_soul.pdf)
 
 1. [Tears To My Smile](https://www.evernote.com/l/AMeV5kSt0BJEJo586yfT8CJxkt6KSNjtXPg) -  <a href='media/tears2smile.m4a' onclick='player.next();player.set_sources("media/tears2smile.m4a");player.play();return false;'>Demo</a> / [PDF](media/tears2smile.pdf) (Bo solo?, todo: demo)
 
