@@ -29,11 +29,11 @@ You can also click "Demo" to listen to a demo of a conceptual arrangement for ou
 
 1. [Miss You When I'm Gone](https://www.evernote.com/l/AMfdgKRYIfhNvZ4WXa3jhH-EgY5Mog89dLI) -  <a href='media/miss_you_when.m4a' onclick='player.next();player.set_sources("media/miss_you_when.m4a");player.play();return false;'>Demo</a> / [PDF](media/miss_you_when.pdf) (Bo vocals) (MISSING)
 
-1. [Tell Me](https://www.evernote.com/l/AMfpDbGCfJpJ3asf1hE817x4yC9VOOf-wqc) -  <a href='media/tell_me.m4a' onclick='player.next();player.set_sources("media/tell_me.m4a");player.play();return false;'>Demo</a> / [PDF](media/tell_me.pdf) (MISSING demo)
+1. [Tell Me](https://www.evernote.com/l/AMfpDbGCfJpJ3asf1hE817x4yC9VOOf-wqc) -  <a href='media/tell_me.m4a' onclick='player.next();player.set_sources("media/tell_me.m4a");player.play();return false;'>Demo</a> / [PDF](media/tell_me.pdf) (missing demo)
 
 1. [Nightmare (I've got so much to give)](https://www.evernote.com/l/AMfVsH1UqfxH1ZoDOAb4rZuY3JbC1V-Z-6Y) -  <a href='media/nightmare.m4a' onclick='player.next();player.set_sources("media/nightmare.m4a");player.play();return false;'>Demo</a> / [PDF](media/nightmare.pdf) (MISSING PDF)
 
-1. [Guilty Dealings](https://www.evernote.com/l/AMe3FO8InhVOX6b7qkNlzlon9iSqEOhMPCQ) -  <a href='media/guilty_dealings.m4a' onclick='player.next();player.set_sources("media/guilty_dealings.m4a");player.play();return false;'>Demo</a> / [PDF](media/guilty_dealings.pdf) (MISSING)
+1. [Guilty Dealings](https://www.evernote.com/l/AMe3FO8InhVOX6b7qkNlzlon9iSqEOhMPCQ) -  <a href='media/guilty_dealings.m4a' onclick='player.next();player.set_sources("media/guilty_dealings.m4a");player.play();return false;'>Demo</a> / [PDF](media/guilty_dealings.pdf) (demo has old lyrics)
 
 
 Some songs I considered and left. Let me know if you think we should put them back instead of one of the existing songs:
