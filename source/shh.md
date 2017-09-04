@@ -33,7 +33,7 @@ You can also click "Demo" to listen to a demo of a conceptual arrangement for ou
 
 1. [Nightmare (I've got so much to give)](https://www.evernote.com/l/AMfVsH1UqfxH1ZoDOAb4rZuY3JbC1V-Z-6Y) -  <a href='media/nightmare.m4a' onclick='player.next();player.set_sources("media/nightmare.m4a");player.play();return false;'>Demo</a> / [PDF](media/nightmare.pdf) (MISSING PDF)
 
-1. [Guilty Dealings](https://www.evernote.com/l/AMe3FO8InhVOX6b7qkNlzlon9iSqEOhMPCQ) -  <a href='media/guilty_dealings.m4a' onclick='player.next();player.set_sources("media/guilty_dealings.m4a");player.play();return false;'>Demo</a> / [PDF](media/guilty_dealings.pdf) (demo has old lyrics)
+1. [Guilty Dealings](https://www.evernote.com/l/AMe3FO8InhVOX6b7qkNlzlon9iSqEOhMPCQ) -  <a href='media/guilty_dealings.mp3' onclick='player.next();player.set_sources("media/guilty_dealings.mp3");player.play();return false;'>Demo</a> / [PDF](media/guilty_dealings.pdf) (demo has old lyrics)
 
 
 Some songs I considered and left. Let me know if you think we should put them back instead of one of the existing songs:
