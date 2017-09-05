@@ -26,7 +26,7 @@ I will step into the [spotlight](/media/lost_soul.m4a "play: Lost Soul") to shar
 
 Oaks need the softness of sunlight and the kindness of rain before they sprout. Me? I need my friends.
 
-On stage with me are:
+On stage with me you will listen to (in order of score notation):
 
 * The Amazing [Leanne Mosher](https://lmoser12.wixsite.com/leannemoser/music) - vocals, guitar and joy.
 * The Great Weijun Yang - guitar and soul.
@@ -42,5 +42,11 @@ With sepcial thanks to The Berklee College Of Music.
 My name is Boaz Segev, which is a jaw breaker of a name, so people call me Bo.
 
 I'm as wild as a summer breeze from the winter ocean - uncoltivated and kind.
+
+## Extra Credits
+
+The teaser song you're listening to was recorded with Hinako Sato (Piano), Yoshihi Yamada (Bass) and Renato Milone (Drums).
+
+During the recital, I will probably perform the song "Nightmare", co-written with Alec (William) Simpson.
 
 <a href='https://www.berklee.edu/events/boaz-segev-bo-wild' style='font-size: 0.7em'>The official Berklee event page</a>
