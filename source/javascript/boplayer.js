@@ -695,7 +695,18 @@ BoPlayer.prototype.enable_keyboard = function() {
     switch (e.keyCode) {
     case 32: // space - play / pause
       document.BoPlayer_keyboard_control.play_or_pause();
+      e.preventDefault();
       break;
+    case 78: // "n"
+      document.BoPlayer_keyboard_control.next();
+      break;
+    case 80: // "p"
+      document.BoPlayer_keyboard_control.prev();
+      break;
+    }
+    if (!document.BoPlayer_keyboard_control.is_playing())
+      return true;
+    switch (e.keyCode) {
     case 13: // enter - seek to top
       document.BoPlayer_keyboard_control.step_back(10000);
       break;
@@ -711,13 +722,9 @@ BoPlayer.prototype.enable_keyboard = function() {
     case 40: // down arrow
       document.BoPlayer_keyboard_control.volume_down();
       break;
-    case 78: // "n"
-      document.BoPlayer_keyboard_control.next();
-      break;
-    case 80: // "p"
-      document.BoPlayer_keyboard_control.prev();
-      break;
     }
+    e.preventDefault();
+    return false;
   });
 };
 

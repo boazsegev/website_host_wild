@@ -1,0 +1,21 @@
+@media print {
+  #top,
+  #bottom,
+  #burger,
+  #menu,
+  #audio,
+  #player_container
+  {
+    display: none  !important;
+  }
+  a {
+  color: black;
+  text-decoration: none;
+  }
+
+  h1 {text-align: center;}
+  h2 {text-align: left;}
+  h3 {text-align: right;;}
+
+}
+
