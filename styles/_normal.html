@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC:400,700");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@media screen {
+  @keyframes appear {
+    from {
+      opacity: 0; }
+    to {
+      opacity: 1; } }
+  body,
+  html {
+    width: 100%;
+    height: 100%;
+    color: #ddd;
+    padding: 0;
+    margin: 0;
+    font-family: 'Amatic SC', cursive;
+    font-size-adjust: auto; }
+
+  html {
+    background: #111;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode: lighten;
+    background-image: url("/images/background.jpg");
+    background-size: cover;
+    background-attachment: fixed; }
+
+  #top {
+    display: block;
+    width: 100%;
+    height: 3em;
+    box-sizing: border-box;
+    padding: 0;
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
+    font-stretch: expanded;
+    background: #000;
+    border-bottom: #333 1px solid;
+    z-index: 1001; }
+    #top h1 {
+      display: block;
+      position: relative;
+      top: -0.1em;
+      font-size: 3em;
+      text-align: left;
+      padding: 0 5%;
+      margin: 0;
+      width: 100%;
+      opacity: 0.9;
+      box-sizing: border-box; }
+    #top p {
+      font-size: 0.4em;
+      position: absolute;
+      top: 0.5em;
+      right: 1em; }
+
+  #bottom {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 0.2em;
+    height: 1.5em;
+    font-size: 2em;
+    text-align: center;
+    background: #000;
+    border-top: #333 1px solid;
+    z-index: 1001;
+    animation-name: appear;
+    animation-duration: 1s;
+    transition: opacity 1s; }
+    #bottom img {
+      padding: 0;
+      margin: 0; }
+    #bottom .social {
+      display: inline-block;
+      margin: 0 0.5em;
+      padding: 0;
+      height: 29px;
+      width: 29px;
+      border-radius: 3px;
+      background-color: #112;
+      text-align: center;
+      text-decoration: none;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover; }
+      #bottom .social:hover {
+        background-color: #668; }
+
+  #audio {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    z-index: 9999; }
+
+  #content {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    padding: 0 10% 5em 10%;
+    margin-bottom: 4em;
+    animation-name: appear;
+    animation-duration: 1s;
+    transition: opacity 1s; }
+
+  #player_container {
+    display: none; }
+    #player_container.active {
+      width: 3em;
+      display: inline-block;
+      overflow: visible;
+      position: relative; }
+      #player_container.active #player {
+        width: 3em;
+        height: 3em;
+        position: absolute;
+        top: -2.75em;
+        left: 0;
+        display: inline-block; }
+
+  h1, h2, h3 {
+    font-size: 3em;
+    text-align: center;
+    padding: 0.4em 0;
+    margin: 0;
+    width: 100%;
+    font-family: 'Amatic SC', cursive; }
+
+  h2, h3 {
+    font-size: 2em; }
+
+  h2 {
+    text-align: left; }
+
+  h3 {
+    text-align: right; }
+
+  a {
+    color: #eee;
+    text-decoration: none; }
+    a:active, a:hover {
+      color: #eeb; }
+
+  #menu {
+    width: 100%;
+    height: 3em;
+    overflow: visible;
+    background: rgba(64, 64, 64, 0.3);
+    vertical-align: top;
+    text-align: center;
+    box-sizing: border-box; }
+    #menu li {
+      padding: 0;
+      margin: 0;
+      width: 20%;
+      height: 100%;
+      display: inline-block;
+      position: relative;
+      vertical-align: top;
+      box-sizing: border-box; }
+    #menu ul, #menu ul ul li {
+      position: relative;
+      box-sizing: border-box;
+      vertical-align: top;
+      overflow-y: hidden;
+      overflow-x: visible;
+      list-style: none;
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%; }
+      #menu ul:hover, #menu ul ul li:hover {
+        overflow-y: visible; }
+    #menu ul ul li {
+      opacity: 0; }
+    #menu ul ul li:first-child {
+      opacity: 1; }
+    #menu ul ul li:last-child {
+      border-radius: 0 0 0.5em 0.5em;
+      overflow: hidden; }
+    #menu ul ul:hover li {
+      transition: opacity 0.25s;
+      opacity: 1; }
+    #menu a {
+      box-sizing: border-box;
+      vertical-align: middle;
+      font-size: 1.5em;
+      line-height: 2em;
+      font-weight: bold;
+      text-rendering: optimizeLegibility;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      border-left: rgba(128, 128, 128, 0.4) solid 1px;
+      border-right: rgba(128, 128, 128, 0.6) solid 1px;
+      border-collapse: collapse;
+      display: inline-block;
+      transition: background 0.5s;
+      background: rgba(48, 48, 48, 0.75);
+      z-index: 1001;
+      position: relative; }
+      #menu a:active, #menu a:hover {
+        background: rgba(128, 128, 128, 0.9); }
+
+  #burger {
+    display: none; } }
+
+/*# sourceMappingURL=_normal.map */

@@ -1,6 +1,7 @@
 ---
 layout: layouts/layout.erb
 title: Sprout Recital - Bo Wild
+background: /images/recital.jpg
 ---
 # The Sprout Recital
 

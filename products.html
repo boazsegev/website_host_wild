@@ -6,7 +6,7 @@
     <title>Bo Wild - Songwriter, Music Producer and Explorer</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=2.0, user-scalable=yes, minimal-ui=yes" name="viewport" />
     <!-- <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet'> -->
-    <link href='/styles/main.css' rel='stylesheet' media="screen">
+    <link href='/styles/main.css' rel='stylesheet' media="all">
     <script type="text/javascript" src='/javascript/boplayer.js'></script>
 </head>
 
@@ -17,8 +17,9 @@
     </div>
     <nav id="menu"><input id='burger' type='checkbox'></input><ul><!--
     --><li><a href='/about.html'>Vision</a></li><!--
+    --><li><a href='/recital.html'>Shows</a></li><!--
         --><li><ul><!--
-        --><li><a href='/products.html'>Your Song</a></li><!--
+        --><li><a href='/products.html'>Services</a></li><!--
         --><li><a href='/products_songwriting.html'>Songwriting</a></li><!--
         --><li><a href='/products_production.html'>Production</a></li><!--
         --<li><a href='/pricing.html'>Pricing</a></li><!--
@@ -64,6 +65,60 @@
         <div id='player_container'><div id='player'></div></div>
         <a href="https://twitter.com/bowildmusic" class='social' style='background-image:url("/images/twitter_logo.svg")'></a>
     </div>
+
+<script type="text/javascript">
+    var player = undefined;
+    function play_file(e) {
+        player.next();
+        player.set_sources(e.target.href);
+        player.play();
+        return false;
+    }
+
+    function init_player() {
+        document.getElementById('player_container').className = "active";
+        player = new BoPlayer('player'); // , 'content'
+        player.autoplay = false;
+        player.set_volume(1);
+        player.next();
+        player.enable_keyboard();
+        player.on_play = (p) => {console.log("now playing" , p.player.currentSrc)};
+    };
+
+    function convert_links() {
+        var l = document.links;
+        var playlist = [];
+        var player_required = false;
+        for (var i = l.length - 1; i >= 0; i--) {
+            if(l[i].title.startsWith("play: ")) {
+                l[i].title = l[i].title.slice(6);
+                l[i].onclick = play_file;
+                playlist.push(l[i].href);
+                player_required = true;
+            } else if(l[i].title.startsWith("score: ")) {
+                l[i].title = l[i].title.slice(7);
+                l[i].onclick = play_file;
+                playlist.push(l[i].href);
+                player_required = true;
+                var score = document.createElement('a');
+                score.appendChild(document.createTextNode("(score)"));
+                score.href = l[i].href.slice(0,-3) + "pdf";
+                score.title = l[i].title;
+                l[i].parentNode.insertBefore(document.createTextNode(" "), l[i].nextSibling);
+                l[i].parentNode.insertBefore(score, l[i].nextSibling);
+                l[i].parentNode.insertBefore(document.createTextNode(" "), l[i].nextSibling);
+            }
+        }
+        if(player_required){
+            init_player();
+            while(playlist[0]) player.playlist.push(playlist.shift());
+        }
+    }
+
+    addEventListener("load", convert_links);
+
+
+</script>
 
 </body>
 
