@@ -42,7 +42,7 @@ With sepcial thanks to The Berklee College Of Music.
 
 My name is Boaz Segev, which is a jaw breaker of a name, so people call me Bo.
 
-I'm as wild as a summer breeze from the winter ocean - uncoltivated and kind.
+I'm as Wild as a summer breeze on winter shores - uncultivated and kind.
 
 ## Extra Credits
 
