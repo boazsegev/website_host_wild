@@ -31,7 +31,7 @@ On stage with me you will listen to (in order of score notation):
 
 * The Amazing Leanne Mosher - vocals, guitar and joy.
 * The Great Weijun Yang - guitar and soul.
-* The Brilliant Gie Trax - bass and heart.
+* The Brilliant Gai Trax - bass and heart.
 * The Distinguished Taiki Miyazawa - drums and kindness.
  
 Off stage, wonderful and kind, are my friends, rooting for me from the crowd and behind computer screens across the globe. You will recognize them by their shine, they are all bright souls.
