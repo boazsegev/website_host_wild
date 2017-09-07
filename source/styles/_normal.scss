@@ -170,10 +170,10 @@
     @include animation_appear;
 
     a {
-    color: #eea;
+    color: #eaa;
     text-decoration: none;
     &:active , &:hover {
-      color: #eed;
+      color: #eea;
     }
   }
 }

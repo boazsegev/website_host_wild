@@ -145,10 +145,10 @@
     animation-duration: 1s;
     transition: opacity 1s; }
     #content a {
-      color: #eea;
+      color: #eaa;
       text-decoration: none; }
       #content a:active, #content a:hover {
-        color: #eed; }
+        color: #eea; }
 
   #menu {
     width: 100%;
