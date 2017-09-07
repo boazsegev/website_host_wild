@@ -117,16 +117,6 @@
     z-index: 9999;
   }
 
-  #content {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    font-size: 1.2em;
-    padding:0 10% 5em 10%;
-    margin-bottom: 4em;
-    @include animation_appear;
-  }
-
   #player_container {
     display: none;
     &.active{
@@ -168,6 +158,25 @@
       color: #eeb;
     }
   }
+
+  #content {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    padding:0 10% 5em 10%;
+    margin-bottom: 4em;
+
+    @include animation_appear;
+
+    a {
+    color: #eea;
+    text-decoration: none;
+    &:active , &:hover {
+      color: #eec;
+    }
+  }
+}
 
 
   #menu {

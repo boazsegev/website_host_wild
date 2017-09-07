@@ -96,17 +96,6 @@
     left: 1em;
     z-index: 9999; }
 
-  #content {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    font-size: 1.2em;
-    padding: 0 10% 5em 10%;
-    margin-bottom: 4em;
-    animation-name: appear;
-    animation-duration: 1s;
-    transition: opacity 1s; }
-
   #player_container {
     display: none; }
     #player_container.active {
@@ -144,6 +133,22 @@
     text-decoration: none; }
     a:active, a:hover {
       color: #eeb; }
+
+  #content {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    padding: 0 10% 5em 10%;
+    margin-bottom: 4em;
+    animation-name: appear;
+    animation-duration: 1s;
+    transition: opacity 1s; }
+    #content a {
+      color: #eea;
+      text-decoration: none; }
+      #content a:active, #content a:hover {
+        color: #eec; }
 
   #menu {
     width: 100%;
