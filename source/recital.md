@@ -29,7 +29,7 @@ Oaks need the softness of sunlight and the kindness of rain before they sprout. 
 
 On stage with me you will listen to (in order of score notation):
 
-* The Amazing Leanne Mosher - vocals, guitar and joy.
+* The Amazing Leanne Moser - vocals, guitar and joy.
 * The Great Weijun Yang - guitar and soul.
 * The Brilliant Gai Trax - bass and heart.
 * The Distinguished Taiki Miyazawa - drums and kindness.

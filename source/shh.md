@@ -30,7 +30,7 @@ The main links lead to my Evernote notes about each song, which is where you can
 
 1. [Tell Me](https://www.evernote.com/l/AMfpDbGCfJpJ3asf1hE817x4yC9VOOf-wqc):  [play demo](media/tell_me.m4a "score: Tell Me") - missing demo.
 
-1. [Nightmare (I've got so much to give)](https://www.evernote.com/l/AMfVsH1UqfxH1ZoDOAb4rZuY3JbC1V-Z-6Y):  [play demo](media/nightmare.m4a "play: Nightmare (I've got so much to give)") - demo is too slow, missing score.
+1. [Nightmare (I've got so much to give)](https://www.evernote.com/l/AMfVsH1UqfxH1ZoDOAb4rZuY3JbC1V-Z-6Y):  [play demo](media/nightmare.m4a "score: Nightmare (I've got so much to give)") - demo is too slow.
 
 1. [Guilty Dealings](https://www.evernote.com/l/AMe3FO8InhVOX6b7qkNlzlon9iSqEOhMPCQ):  [play demo](media/guilty_dealings.mp3 "score: Guilty Dealings") - demo has old lyrics.
 
