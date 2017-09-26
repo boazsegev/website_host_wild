@@ -64,15 +64,15 @@ if ENV['RACK_ENV'] == 'production'
     puts "WARN: render was requested for #{env[PATH_INFO]}" unless env.keys.length == 1
     env[PATH_INFO] = '/index.html'.freeze if (env[PATH_INFO] == '/'.freeze)
     env[PATH_INFO] << ".html" if(File.extname(env[PATH_INFO]) == "")
-    [200, {X_SENDFILE => "#{STATIC_ROOT}#{env[PATH_INFO]}"}, "".freeze]
+    [200, {X_SENDFILE => "#{STATIC_ROOT}#{env[PATH_INFO]}"}, ["".freeze]]
   end
 else
   def self.call env
     env[PATH_INFO] = '/index.html'.freeze if (env[PATH_INFO] == '/'.freeze)
     env[PATH_INFO] << ".html" if(File.extname(env[PATH_INFO]) == "")
-    render(env[PATH_INFO]) if(@bakers.include?(File.extname(env[PATH_INFO])))
+    data = render(env[PATH_INFO]) if(@bakers.include?(File.extname(env[PATH_INFO])))
       
-    [200, {X_SENDFILE => "#{STATIC_ROOT}#{env[PATH_INFO]}"}, "".freeze]
+    [200, {X_SENDFILE => "#{STATIC_ROOT}#{env[PATH_INFO]}"}, [data]]
   end
 
 end
@@ -96,6 +96,7 @@ end
     path = "#{STATIC_ROOT}#{path}"
     FileUtils.mkpath File.dirname(path)
     IO.binwrite path, data
+    data
   end
 
   # simple markdown rendering
@@ -167,4 +168,4 @@ Iodine::Rack.app = APP
 APP.bake_all
 
 _did_run = nil
-at_exit { Iodine.threads ||=1; Iodine.start unless _did_run }
+at_exit { Iodine.threads ||=8; Iodine.start unless _did_run }
