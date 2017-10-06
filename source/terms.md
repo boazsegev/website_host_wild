@@ -15,7 +15,7 @@ By visiting and/or viewing and/or listening to this website (website herein: inc
 
 1. You will respect all the copyrights, performance rights and any other rights related to this website (and/or any of it's content) and/or the people who have created it.
 
-1. You will not download any content from or copies of this website (in whole or in part) except as temporary copies to be used in accordance to these terms and conditions and in accordance to the law. 
+1. You will not download any content from (or copies of) this website (in part or in whole) except as temporary copies to be used in accordance with these terms and conditions and in accordance with the law. 
 
 Thank you for your understanding.
 
