@@ -6,5 +6,3 @@ layout: layouts/layout.erb
 # ...where the wild things live...
 
 ### *Bo's Music Production House and Home*
-
-# [an upcoming show on Oct. 19th!](/recital.html)
