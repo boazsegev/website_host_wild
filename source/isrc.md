@@ -18,3 +18,4 @@ This doesn't necessarily reflect copyright for the song or composition, as mecha
 |    **ISRC**     |      **Track Name**      |       **Owner**       |
 |-----------------|--------------------------|-----------------------|
 | QZ-AYA-17-00010 | It's Me                  | Bo Wild (me)          |
+| QZ-AYA-17-00021 | Lost Soul (Remix)        | Bo Wild (me)          |

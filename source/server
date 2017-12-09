@@ -12,7 +12,11 @@ require 'ostruct'
 require 'yaml'
 require 'set'
 
-Dir.chdir("#{File.dirname(__FILE__)}/..")
+if File.expand_path(File.dirname(__FILE__)).end_with?('source')
+  Dir.chdir("#{File.dirname(__FILE__)}/..")
+else
+  Dir.chdir("#{File.dirname(__FILE__)}")
+end
 
 SOURCE_ROOT = 'source'
 STATIC_ROOT = '.'
