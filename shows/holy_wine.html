@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Holy Wine (Unplugged Recital) - Bo Wild</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=2.0, user-scalable=yes, minimal-ui=yes" name="viewport" />
+    <!-- <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet'> -->
+    <link href='/styles/main.css' rel='stylesheet' media="all">
+    <script type="text/javascript" src='/javascript/boplayer.js'></script>
+    <style type="text/css" media="screen">
+        html {background-image: url(/images/recital.jpg); }
+    </style>
+</head>
+
+<body>
+    <div id="top">
+        <h1><a href='/' title="Bo Wild's Music Production House and Home">Bo Wild</a></h1>
+        <p>Music Production Home</p>
+    </div>
+    <nav id="menu"><input id='burger' type='checkbox'></input><ul><!--
+    --><li><a href='/about'>Vision</a></li><!--
+    --><li><ul><!--
+        --><li><a href='/shows'>Shows</a></li><!--
+        --><li><a href='/shows/holy_wine'>Holy Wine (unplugged)</a></li><!--
+        --></ul></li><!--
+        --><li><ul><!--
+        --><li><a href='/products'>Services</a></li><!--
+        --><li><a href='/products_songwriting'>Songwriting</a></li><!--
+        --><li><a href='/products_production'>Production</a></li><!--
+        --<li><a href='/pricing'>Pricing</a></li><!--
+            --></ul></li><!--
+        --><li><ul><!--
+        -- ><li><a href='/portfolio'>Portfolio</a></li><!--
+            -- ><li><a href='/portfolio_songwriting'>Songwriting</a></li><!--
+            -- ><li><a href='/portfolio_arranging'>Arranging</a></li><!--
+            -- ><li><a href='/portfolio_production'>Production</a></li><!--
+            -- ><li><a href='/portfolio_video_sync'>Video Sync</a></li><!--
+            -- ></ul></li><!--
+        --><li><a href='/contact'>Contact</a></li><!--
+        --></ul></nav>
+    <div id="content">
+        <script type="text/javascript">
+            // document.getElementById('content').style.opacity = "0";
+            // function init_document() {
+            //     var content = document.getElementById('content');
+            //     content.style.transition = "opacity 1s";
+            //     setTimeout(function(c) {c.style.opacity = "1";}, 250, content);
+            //     var content = document.getElementById('bottom');
+            //     content.style.transition = "opacity 1s";
+            //     setTimeout(function(c) {c.style.opacity = "1";}, 250, content);
+            // }
+            // document.addEventListener("load", init_document);
+        </script>
+      <h2 id="march-28th-2017-7-00pm-est"><a href="holy_wine.ics">March 28th, 2017, 7:00pm EST</a></h2>
+
+<div style='text-align:left; padding:0 0 0 10%;' data-play:"go">
+There was sweetness in your journey,<BR />
+But there was sour sadness too.<BR />
+For a moment rest your burden,<BR />
+Though your journey isn't through.
+</div>
+
+<ul>
+<li><p><a href="https://maps.google.com/maps?q=1140+Boylston+Street,+Boston,+MA,+02215,+United+States">Live: Oliver Colvin Recital Hall, 1140 Boylston Street, Boston, MA</a>.</p></li>
+<li><p><a href="http://www.ustream.tv/channel/berklee-colvin">Streamed: berklee-colvin@UStream.tv</a></p></li>
+</ul>
+
+<p>I <a href="holy_wine.ics">invite you</a> to a bitter sweet evening for slow reflection and slower songs.</p>
+
+<p>There will be solo acoustic versions for <a href="/media/lost_soul2.m4a" title="play: Lost Soul">old favorits</a> as well as some younger (newer) songs.</p>
+
+<h2 id="unplugged">Unplugged</h2>
+
+<p>On stage it will just be me. Open, exposed, with no one to hide behind, playing the acoustic piano or my steel string guitar.</p>
+
+<p>I&#39;m as Wild as a summer breeze on winter shores - uncultivated and kind.</p>
+
+<p>My name is Boaz Segev, but you can call me Bo.</p>
+
+<h2 id="with-a-little-help-from">With a little help from...</h2>
+
+<p>Off stage, wonderful and kind, you, my friends, rooting for me from the crowd and behind computer screens across the globe. You are the shining, bright souls that made this world the amazing place it is.</p>
+
+<p>With special thanks to The Berklee College Of Music.</p>
+
+<h2 id="extra-credits">Extra Credits</h2>
+
+<p>The teaser song you&#39;re listening to was recorded with Hinako Sato (Piano), Yoshihi Yamada (Bass) and Renato Milone (Drums).</p>
+
+<p>During the recital, I will probably perform the song &quot;Anneanne&quot;, co-written with Deniz Demirkurt.</p>
+
+<p>During the recital, I might also perform the song &quot;Nightmare&quot;, co-written with Alec (William) Simpson.</p>
+
+<p><a href='https://www.berklee.edu/events/bo-wild-holy-wine' style='font-size: 0.7em'>The official Berklee event page</a></p>
+
+    </div>
+    <div id='bottom'>
+        <script type="text/javascript">
+            // document.getElementById('bottom').style.opacity = "0";
+        </script>
+        <a href="http://facebook.com/bowildmusic" class='social' style='background-image:url("/images/facebook_logo.png")'></a>
+        <div id='player_container'><div id='player'></div></div>
+        <a href="https://twitter.com/bowildmusic" class='social' style='background-image:url("/images/twitter_logo.svg")'></a>
+        <a href="/terms" class='copyright'> Terms and Conditions &copy;</a>
+    </div>
+
+<script type="text/javascript">
+    var player = undefined;
+    function play_file(e) {
+        player.next();
+        player.set_sources(e.target.href);
+        player.play();
+        return false;
+    }
+
+    function init_player() {
+        document.getElementById('player_container').className = "active";
+        player = new BoPlayer('player'); // , 'content'
+        player.autoplay = false;
+        player.set_volume(1);
+        player.next();
+        player.enable_keyboard();
+        player.on_play = (p) => {console.log("now playing" , p.player.currentSrc)};
+    };
+
+    function convert_links() {
+        var l = document.links;
+        var playlist = [];
+        var player_required = false;
+        for (var i = l.length - 1; i >= 0; i--) {
+            if(l[i].title.startsWith("play: ")) {
+                l[i].title = l[i].title.slice(6);
+                l[i].onclick = play_file;
+                playlist.push(l[i].href);
+                player_required = true;
+            } else if(l[i].title.startsWith("score: ")) {
+                l[i].title = l[i].title.slice(7);
+                l[i].onclick = play_file;
+                playlist.push(l[i].href);
+                player_required = true;
+                var score = document.createElement('a');
+                score.appendChild(document.createTextNode("(score)"));
+                score.href = l[i].href.slice(0,-3) + "pdf";
+                score.title = l[i].title;
+                l[i].parentNode.insertBefore(document.createTextNode(" "), l[i].nextSibling);
+                l[i].parentNode.insertBefore(score, l[i].nextSibling);
+                l[i].parentNode.insertBefore(document.createTextNode(" "), l[i].nextSibling);
+            }
+        }
+        if(player_required){
+            init_player();
+            while(playlist[0]) player.playlist.push(playlist.shift());
+        }
+    }
+
+    addEventListener("load", convert_links);
+</script>
+
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-106062835-1', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+
+</html>

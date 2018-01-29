@@ -66,23 +66,34 @@ module APP
 if ENV['RACK_ENV'] == 'production'
   def self.call env
     puts "WARN: render was requested for #{env[PATH_INFO]}" unless env.keys.length == 1
-    env[PATH_INFO] = '/index.html'.freeze if (env[PATH_INFO] == '/'.freeze)
+    if (File.directory?( "#{STATIC_ROOT}#{env[PATH_INFO]}"))
+      if (env[PATH_INFO][-1] == '/')
+        env[PATH_INFO] << 'index.html'.freeze 
+      else
+        env[PATH_INFO] << '/index.html'.freeze
+      end
+    end
     env[PATH_INFO] << ".html" if(File.extname(env[PATH_INFO]) == "")
     [200, {X_SENDFILE => "#{STATIC_ROOT}#{env[PATH_INFO]}"}, ["".freeze]]
   end
 else
   def self.call env
-    env[PATH_INFO] = '/index.html'.freeze if (env[PATH_INFO] == '/'.freeze)
-    env[PATH_INFO] << ".html" if(File.extname(env[PATH_INFO]) == "")
+    if (File.directory?( "#{STATIC_ROOT}#{env[PATH_INFO]}"))
+      if (env[PATH_INFO][-1] == '/')
+        env[PATH_INFO] << 'index.html'.freeze 
+      else
+        env[PATH_INFO] << '/index.html'.freeze
+      end
+    end
+    env[PATH_INFO] << ".html" if(File.extname(env[PATH_INFO]) == "".freeze)
     data = render(env[PATH_INFO]) if(@bakers.include?(File.extname(env[PATH_INFO])))
-      
     [200, {X_SENDFILE => "#{STATIC_ROOT}#{env[PATH_INFO]}"}, [data]]
   end
 
 end
 
   def self.render path
-    name = "#{SOURCE_ROOT}#{path}"
+    name = File.join(SOURCE_ROOT, path).to_s
     base = name[0..(-1-(File.extname(path).length))]
     data = nil
     @extensions.keys.each { |k| data = try_name(name, k) || try_name(base, k); break if data }
@@ -124,7 +135,7 @@ end
       data = data[0..start] + context.eval(fin[0..((fin.index("}}") || -3) + 2)]) + fin[((fin.index("}}") || -3) + 2)..-1]
     end
     data = MD_RENDERER.render(data)
-    layout = "#{File.dirname(name)}/#{vars['layout']}"
+    layout = File.join(SOURCE_ROOT, vars['layout']).to_s
     if(vars['layout'] && File.exist?(layout) && @extensions[File.extname(layout)])
       block = proc { data }
       @extensions[File.extname(layout)].call(layout, vars, block)
