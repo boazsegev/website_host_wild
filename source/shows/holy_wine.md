@@ -3,6 +3,7 @@ layout: /layouts/layout.erb
 title: Holy Wine (Unplugged Recital) - Bo Wild
 background: /images/recital.jpg
 ---
+# Holy Wine / Bo Wild
 
 ## [March 28th, 2017, 7:00pm EST](holy_wine.ics)
 

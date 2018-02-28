@@ -83,6 +83,16 @@
         player.on_play = (p) => {console.log("now playing" , p.player.currentSrc)};
     };
 
+    function convert_images() {
+        var l = document.images;
+        for (var i = l.length - 1; i >= 0; i--) {
+            if(l[i].alt.startsWith("banner")) {
+                l[i].className = l[i].alt.slice(0,7);
+                l[i].alt = l[i].alt.slice(8);
+            }
+        }
+    }
+
     function convert_links() {
         var l = document.links;
         var playlist = [];
@@ -113,7 +123,12 @@
         }
     }
 
-    addEventListener("load", convert_links);
+    function initialize_page() {
+        convert_links();
+        convert_images();
+    }
+
+    addEventListener("load", initialize_page);
 </script>
 
 <script type="text/javascript">

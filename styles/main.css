@@ -138,6 +138,9 @@
     a:active, a:hover {
       color: #eeb; }
 
+  p {
+    width: 100%; }
+
   #content {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
@@ -339,6 +342,27 @@
     table tr, table td, table th {
       border-collapse: collapse;
       border: 1px #333 solid;
-      padding: 0.1em 1em; } }
+      padding: 0.1em 1em; }
+
+  img {
+    border: 1px solid #fff; } }
+img {
+  border-radius: 20px; }
+
+.banner1 {
+  box-sizing: border-box;
+  width: 100%; }
+
+.banner2 {
+  box-sizing: border-box;
+  width: 60%;
+  float: left;
+  clear: left; }
+
+.banner3 {
+  box-sizing: border-box;
+  width: 40%;
+  float: right;
+  clear: right; }
 
 /*# sourceMappingURL=main.css.map */

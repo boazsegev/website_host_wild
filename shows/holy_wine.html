@@ -52,7 +52,9 @@
             // }
             // document.addEventListener("load", init_document);
         </script>
-      <h2 id="march-28th-2017-7-00pm-est"><a href="holy_wine.ics">March 28th, 2017, 7:00pm EST</a></h2>
+      <h1 id="holy-wine-bo-wild">Holy Wine / Bo Wild</h1>
+
+<h2 id="march-28th-2017-7-00pm-est"><a href="holy_wine.ics">March 28th, 2017, 7:00pm EST</a></h2>
 
 <div style='text-align:left; padding:0 0 0 10%;' data-play:"go">
 There was sweetness in your journey,<BR />
@@ -124,6 +126,16 @@ Though your journey isn't through.
         player.on_play = (p) => {console.log("now playing" , p.player.currentSrc)};
     };
 
+    function convert_images() {
+        var l = document.images;
+        for (var i = l.length - 1; i >= 0; i--) {
+            if(l[i].alt.startsWith("banner")) {
+                l[i].className = l[i].alt.slice(0,7);
+                l[i].alt = l[i].alt.slice(8);
+            }
+        }
+    }
+
     function convert_links() {
         var l = document.links;
         var playlist = [];
@@ -154,7 +166,12 @@ Though your journey isn't through.
         }
     }
 
-    addEventListener("load", convert_links);
+    function initialize_page() {
+        convert_links();
+        convert_images();
+    }
+
+    addEventListener("load", initialize_page);
 </script>
 
 <script type="text/javascript">

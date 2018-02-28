@@ -87,7 +87,6 @@ else
     end
     env[PATH_INFO] << ".html" if(File.extname(env[PATH_INFO]) == "".freeze)
     data = render(env[PATH_INFO]) if(@bakers.include?(File.extname(env[PATH_INFO])))
-    p env[PATH_INFO]
     [200, {X_SENDFILE => "#{STATIC_ROOT}#{env[PATH_INFO]}"}, [data]]
   end
 
