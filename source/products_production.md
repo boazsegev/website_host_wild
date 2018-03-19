@@ -19,8 +19,11 @@ I don't want to repeat what you did for your last album, I want to help you take
 
 Before we can start exploring your next step as an artist, I will need to learn more about the artist you are, your inspirations, the music of your youth, your past albums and favorite songs.
 
-I will ask that you send me a playlist of the songs that inspired you.
+I will ask that you send me a playlist of the songs that inspired you. This can be anything, from Beatles to Metallica or anything in between.
 
 My intention isn't just to learn who you are right now.
 
 My I wish is to look at the arc of your journey as an artist so the production is custom tailored to your growing voice and vision.
+
+It's a wonderful thing to start close to an artist you love and learn from them (I [wrote this one](/media/its_me.m4a "play: It's Me") as a Beatles influenced song), but it's important to me to write something that grows beyond your beginnings into the artist you are becoming. 
+
