@@ -39,6 +39,8 @@ With special thanks to The Berklee College Of Music.
 
 The teaser song you're listening to was recorded with Hinako Sato (Piano), Yoshihi Yamada (Bass) and Renato Milone (Drums).
 
+The recital will start with a guest performance of the song "The Note You Left", performed by Alida McKeon with whom I co-wrote the song.
+
 During the recital, I will probably perform the song "Anneanne", co-written with Deniz Demirkurt.
 
 During the recital, I might also perform the song "Nightmare", co-written with Alec (William) Simpson.
