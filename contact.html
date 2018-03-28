@@ -77,8 +77,8 @@
 <script type="text/javascript">
     var player = undefined;
     function play_file(e) {
+        player.playlist = [e.target.href];
         player.next();
-        player.set_sources(e.target.href);
         player.play();
         return false;
     }
