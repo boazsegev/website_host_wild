@@ -16,9 +16,10 @@ I’m happy to share my music with you. I hope my music and experiences give you
 
 I haven't published any of the music I perform with. However, here's a few private artist demos (demos I made for band members), click to play:
 
-*  [Silver Dreams (original)](/media/silver_dreams.m4a "play: Silver Dreams")
-*  [Lost Soul (original)](/media/lost_soul.m4a "play: Lost Soul")
-*  [While My Guitar Gently Weeps (production cover)](/media/whilemyguitar.m4a "play: While My Guitar Gently Weeps")
+*  [Silver Dreams (original, solo)](/media/silver_dreams.m4a "play: Silver Dreams")
+*  [It's Me (original, production)](/media/its_me.m4a "play: It's Me")
+*  [Lost Soul (original, band)](/media/lost_soul.m4a "play: Lost Soul")
+*  [While My Guitar Gently Weeps (cover, production)](/media/whilemyguitar.m4a "play: While My Guitar Gently Weeps")
 
 ## Contact:
 
