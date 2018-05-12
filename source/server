@@ -173,14 +173,12 @@ end
 
 end
 
-if(ENV['RACK_ENV'] == 'production')
-  Iodine::Rack.public = STATIC_ROOT
-else
-  Iodine::Rack.public = SOURCE_ROOT
-end
-Iodine::Rack.log = true
-Iodine::Rack.app = APP
+Iodine.listen2http app: APP, log: true, public: ((ENV['RACK_ENV'] == 'production') ? STATIC_ROOT : SOURCE_ROOT)
 APP.bake_all
 
+if(Iodine.threads == 0 && Iodine.workers == 0)
+  Iodine.threads =-2;
+  Iodine.workers =1;
+end
 _did_run = nil
-at_exit { Iodine.threads ||=8; Iodine.start unless _did_run }
+at_exit { Iodine.start unless _did_run }

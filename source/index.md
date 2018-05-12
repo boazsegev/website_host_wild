@@ -1,10 +1,13 @@
 ---
 layout: layouts/layout.erb
 ---
-# Prepare to [Breathe](/about)
-
-# ...where the wild things live...
-
 ### *Bo's Music Production House and Home*
 
-##[Upcoming Show in March 2018!](/shows/holy_wine)
+#### I believe we all have our own **unique voice**.
+#### I believe the best songs are the ones that **express our true inner voice in the most authentic way.**
+#### Let's **write something real** and see what happens.
+
+<!-- # Prepare to [Breathe](/about)
+
+# ...where the wild things live...
+ -->
