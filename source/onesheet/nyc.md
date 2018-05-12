@@ -56,10 +56,9 @@ The following links are to commercial scores that I composed and produced during
 
 They all sound different, showcasing my approach to discovering the inner voice of the artists I work with (in this case, the inner voice behind the products).
 
-* [iPad Commercial](https://youtu.be/fe_fmv08qNs)
-* [Rebook Commercial](https://youtu.be/lG8oFVgCxc0)
-* [Purina Commercial](https://youtu.be/2CA8BR_boqo)
-* [Cheetos Commercial](https://youtu.be/sa4cFCnTn2c)
+<iframe width="280" height="158" src="https://www.youtube-nocookie.com/embed/fe_fmv08qNs?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe><iframe width="280" height="158" src="https://www.youtube-nocookie.com/embed/lG8oFVgCxc0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe><iframe width="280" height="158" src="https://www.youtube-nocookie.com/embed/2CA8BR_boqo?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe><iframe width="280" height="158" src="https://www.youtube-nocookie.com/embed/sa4cFCnTn2c?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe>
+
+[iPad Commercial](https://youtu.be/fe_fmv08qNs) | [Rebook Commercial](https://youtu.be/lG8oFVgCxc0) | [Purina Commercial](https://youtu.be/2CA8BR_boqo) | [Cheetos Commercial](https://youtu.be/sa4cFCnTn2c)
 
 ## Contact:
 
