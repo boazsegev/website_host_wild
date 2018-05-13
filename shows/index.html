@@ -22,7 +22,7 @@
     --><li><a href='/about'>Vision</a></li><!--
     --><li><ul><!--
         --><li><a href='/shows'>Shows</a></li><!--
-        --><li><a href='/shows/holy_wine'>Holy Wine (unplugged)</a></li><!--
+        --<<li><a href='/shows/holy_wine'>Holy Wine (unplugged)</a></li><!--
         --></ul></li><!--
         --><li><ul><!--
         --><li><a href='/products'>Services</a></li><!--
@@ -123,6 +123,26 @@
                 l[i].parentNode.insertBefore(document.createTextNode(" "), l[i].nextSibling);
                 l[i].parentNode.insertBefore(score, l[i].nextSibling);
                 l[i].parentNode.insertBefore(document.createTextNode(" "), l[i].nextSibling);
+            } else if (l[i].title.startsWith("contct")) {
+                l[i].title = "";
+                l[i].onclick = function(e) {
+                  var d = window.location.hostname;
+                  if(d.slice(0, 3) == "loc") { d = "bowild.com"; }
+                  if (d.slice(0, 3) != "bow") {
+                    d = d.slice(4);
+                  }
+                  if (d.slice(0, 3) != "bow") {
+                    console.error("Domain name error.", d);
+                    return false;
+                  }
+                  var n = window.prompt("What's my nickname (two letters)?", "");
+                  if (n.length != 2 || n[1] != 'o') {
+                    window.alert("Nope, sorry. Try again.")
+                  }
+                  window.location.href = "mai" +
+                                         "lto" +
+                                         ":" + n + '@' + d;
+                };
             }
         }
         if(player_required){
