@@ -164,6 +164,7 @@
 
   .section_H5 {
     transition: transform 250ms ease-in-out, max-height 250ms ease-in-out;
+    transform-origin: 50% 0;
     transform: rotateX(0);
     max-height: 100em; }
 
