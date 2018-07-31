@@ -125,7 +125,7 @@
         left: 0;
         display: inline-block; }
 
-  h1, h2, h3 {
+  h1, h2, h3, h5 {
     font-size: 3em;
     text-align: center;
     padding: 0.4em 0;
@@ -136,7 +136,7 @@
   h2, h3 {
     font-size: 2em; }
 
-  h2 {
+  h2, h5 {
     text-align: left; }
 
   h3 {
@@ -150,6 +150,28 @@
     padding: 0.4em 0;
     margin: 0; }
 
+  h5 {
+    font-size: 1.4em;
+    font-weight: bold;
+    list-style-type: circle;
+    list-style-position: inside;
+    display: list-item;
+    cursor: pointer; }
+    h5:hover {
+      background-color: #668; }
+    h5.showing {
+      list-style-type: disc; }
+
+  .section_H5 {
+    transition: transform 250ms ease-in-out, max-height 250ms ease-in-out;
+    transform: rotateX(0);
+    max-height: 100em; }
+
+  .hide {
+    max-height: 0;
+    overflow: hidden;
+    transform: rotateX(90deg); }
+
   a {
     color: #eee;
     text-decoration: none; }
@@ -158,6 +180,10 @@
 
   p {
     width: 100%; }
+
+  blockquote p {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em; }
 
   #content {
     font-family: 'Montserrat', sans-serif;

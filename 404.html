@@ -28,6 +28,8 @@
         --><li><a href='/products'>Services</a></li><!--
         --><li><a href='/products_songwriting'>Songwriting</a></li><!--
         --><li><a href='/products_production'>Production</a></li><!--
+        -- ><li><a href='#'><hr /></a></li><!--
+        -- ><li><a href='/portfolio'>Portfolio</a></li><!--
         --<li><a href='/pricing'>Pricing</a></li><!--
             --></ul></li><!--
         --><li><ul><!--
@@ -73,9 +75,10 @@
 <script type="text/javascript">
     var player = undefined;
     function play_file(e) {
-        player.playlist = [e.target.href];
+        player.playlist = [this.href];
         player.next();
         player.play();
+        e.preventDefault();
         return false;
     }
 
@@ -106,12 +109,12 @@
         for (var i = l.length - 1; i >= 0; i--) {
             if(l[i].title.startsWith("play: ")) {
                 l[i].title = l[i].title.slice(6);
-                l[i].onclick = play_file;
+                l[i].addEventListener("click", play_file, true);
                 playlist.push(l[i].href);
                 player_required = true;
             } else if(l[i].title.startsWith("score: ")) {
                 l[i].title = l[i].title.slice(7);
-                l[i].onclick = play_file;
+                l[i].addEventListener("click", play_file, true);
                 playlist.push(l[i].href);
                 player_required = true;
                 var score = document.createElement('a');
@@ -140,6 +143,8 @@
                   window.location.href = "mai" +
                                          "lto" +
                                          ":" + n + '@' + d;
+                  e.preventDefault();
+                  return false;
                 };
             }
         }
@@ -153,6 +158,8 @@
         convert_links();
         convert_images();
     }
+
+    function collaps() {}
 
     addEventListener("load", initialize_page);
 </script>

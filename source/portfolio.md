@@ -1,29 +1,348 @@
 ---
 layout: layouts/layout.erb
 ---
-# My Portfolio
+# Portfolio
 
-Here you will find examples of songs I wrote and work I have performed.
+Welcome to my private portfolio where you can enjoy a sample of my work.
 
-Please choose the style and piece you wish to listen to from the menu.
+Most of the work in this portfolio was never published, so feel free to contact me about cuts or sync licenses.
 
-To listen please press on the play button at the bottom of the page.
+There's much more not listed here, feel free to contact me for details.
+
+## Songs
+
+The following are some rough demos for songs I enjoyed writing.
+
+I hope you enjoy listening to these songs as much as I enjoyed writing them.
+
+##### It's Me
+
+For years I was in love with a girl who couldn't care enough to acknowledge my existence. I was 6 years old when she stole my heart and more than 13 years old before I reclaimed it.
+
+I think we all go through that at some point in our lives. I just had to do it more than once... High school was much the same with a different girl and my adult life took a while to improve.
+
+I was luck enough to analyze the works of the Beatles and their amazing songwriting skills with Prof. Suzanne Clark.
+
+During our work, I wrote this song inspired by my own story and some of the techniques employed by John Lennon and Sir Paul McCartney.
+
+[**It's Me** / Me](/media/its_me.m4a "score: It's Me")
+
+> **V.1.**
+> 
+> I guess it’s true,
+> 
+> what they all said,
+> 
+> He wasn’t true, he made you sad
+> 
+> But don’t you know there’s someone
+> 
+> that you can always count on
+> 
+> Oh don’t you know? It's me. 
+
+> **V.2.**
+> 
+> So many years I loved you, but I never said
+> 
+> These hopes and fears inside me, and all the tears I shed
+> 
+> Oh, all this time together
+> 
+> And still you don’t know better
+> 
+> How don’t you know? It's me. It's ...
+
+> **Br.**
+> 
+> Me that hears your cries, in the silence of the night
+> 
+> I share your sighs, your lows, your highs
+> 
+> and you should know,
+> 
+> I loved you, since I met you, on that night in New Years Eve,
+> 
+> This love will never fade or leave
+
+> **Br.2.**
+> 
+> This love, this love, this love, this love
+> 
+> This love will never die
+
+> **V.3.**
+> 
+> The day will come and you will see,
+> 
+> That this old heart is all you need
+> 
+> One day we'll be together
+> 
+> And things will just get better
+> 
+> The day you'll know, it's me. 
+
+##### Turned Gray
+
+I love animation movies, like Finding Nemo and Toy Story. I don't know what it is, but somehow the adult in me is torn be these little stories.
+
+And the opening of the film Up was one I couldn't easily let go of... and this is how this song was born.
+
+[**Turned Gray** / Me](/media/turned_gray.m4a "play: Turned Gray")
+
+> **V.1.**
+> 
+> Small broken dreams, we left by the stream,
+> 
+> With our childhood and younger days
+> 
+> Promises made, were stolen away,
+> 
+> Time flowing on it’s way
+> 
+> By time twisting years that stray.
+> 
+> Sitting right here, as days turn to years,
+> 
+> I wonder you never say,
+> 
+> That all the dreams we promised, turned gray
+
+> **V.2.**
+> 
+> Holding our hands, through decades that bend
+> 
+> I still have so much to say
+> 
+> Our old childhood dreams, are torn at the seams
+> 
+> I doubt if we'll see them one day
+> 
+> Worn kitchen chairs, slumped wooden stairs,
+> 
+> Consumed by an old routine.
+
+> **Br.**
+> 
+> On slow afternoons at home (Home with you)
+> 
+> Curled by the TV screen (You’re in my arms)
+> 
+> It's better than any dream or adventure I'd known,
+> 
+> Oh...
+
+> **V.3.**
+> 
+> Christmas tree lights, still shining bright,
+> 
+> We bought them so long ago
+> 
+> You gift me this book, of peter and hook
+> 
+> Wrapped in your love and a bow
+> 
+> Though we grow old, walking this road
+> 
+> Please know that for me it's okay
+> 
+> That all the dreams we promised, turned gray
+
+##### Morning Sunshine
+
+Some songs I never got to record properly... but when I have some free time, I would love to take them back in to the studio and make a proper demo.
+
+Morning Sunshine is definitely one of the songs I want to record.
+
+It's sweet and honest and I wrote it during one of those magical moods when I was beginning to fall in love, just before loosing my balance and crashing.
+
+Anyway, I even [have a score](/media/morning_sunshine.pdf), ready for when I can record it.
+
+[**Morning Sunshine** / Me](/media/morning_sunshine.pdf)
+
+> **V.1**
+> 
+> Sunday morning,
+> 
+> we’re still in bed
+> 
+> I hear her mumble
+> 
+> Her curls all tumble on my chest
+
+> If I'm dreaming? (is he dreaming?)
+> 
+> If she’s not here
+> 
+> Oh morning sunshine, (morning sun_shine)
+> 
+> please disappear
+
+> **V.2**
+> 
+> If she wakes up
+> 
+> Oh, if she leaves
+> 
+> I’ll be lonely (so lonely___)
+> 
+> Oh, I would plainly lose my mind
+
+ 
+> Now she’s sleeping,
+> 
+> So don’t come near,
+> 
+> Oh morning sunshine, (oh ooo___)
+> 
+> please disappear (disappear)
+
+> **Br.**
+> 
+> Before I met her
+> 
+> My nights were always blue
+> 
+> Empty evenings,
+> 
+> Each time with someone new
+
+
+> The day I met her
+> 
+> She stole away my heart
+> 
+> I damn the daytime
+> 
+> That's keeping us apart
+
+> **V.3**
+> 
+> Monday morning,
+> 
+> I’m off to work
+> 
+> She said she’ll meet me (oh yeah)
+> 
+> I’ll pick her up right after dark
+
+
+> I can’t wait, no
+> 
+> To see my dear (at night together)
+> 
+> Oh morning sunshine,
+> 
+> please disappear
+
+
+## Sync
+
+I had fun scoring these commercials and I hope you enjoy the score.
+
+The iPad commercial is probably my favorite, since I felt it was am improvement on the original score - check it out and let me know what you think.
+
+##### iPad
+
+<div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/fe_fmv08qNs?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+
+##### Rebook
+
+I found this commercial a bit of a challenge. I wanted the sounds to be organic, but fresh and young, like running shoes - they are a technology that let's us go running in nature.
+
+Eventually I think I managed to find a balance between the digital and nature, using both orchestral and synth sounds. An interesting mix.
+
+<div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/lG8oFVgCxc0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+
+##### Purina
+
+Purina is a household name for dog food... but I fell in love with their concept the moment I got to see the commercial.
+
+Even without sound, the sweetness of heroic dreams and the innocence of youth were oozing from the concept. Now I just had to figure out how to draw these qualities out and make them shine.
+
+I decided on a balance between a bit of humor and a touch of drama to bring the heroic and playful puppy dreams to life, which brought me up to orchestral sounds and a sprinkle of corny voicings in fourths.
+
+<div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/2CA8BR_boqo?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+
+##### Cheetos
+
+I really love detective films. Something about the film-noir calls to me... but I'm a real sucker for spy films with Jazzy big band scores. I just can't get enough of them.
+
+So when I saw this old Cheetos commercial, I has to give a shot at scoring it.
+
+Sadly, this one has no sound design. I was focused on learning the Jazzy sound and wasn't too concerned about the polish.
+
+<div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/sa4cFCnTn2c?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+
+## Notes
+
+When playing the songs or videos, it might take a bit for the player to load the data.
+
+If you want to play a song directly, right click and open the link in a new tab.
+
 
 <!-- TODO -->
 
 <script type="text/javascript">
-    var player = undefined;
-    function init_player() {
-        document.getElementById('player_container').className = "active";
-        player = new BoPlayer('player');
-        player.autoplay = true;
-        player.set_volume(1);
-        player.playlist.push("media/whilemyguitar.m4a");
-        player.playlist.push("media/jimmie_the_cloud.m4a");
-        player.playlist.push("media/hello.m4a");
-        player.next();
-        player.enable_keyboard();
-        player.on_play = (p) => {console.log("now playing" , p.player.currentSrc)};
-    };
-    addEventListener("load", init_player);
+
+    function on_header_click(e) {
+        var t = document.getElementById(e.target.id + "_content");
+        if(t.className.length > 10) {
+            e.target.className = "showing";
+            t.className = "section_H5";
+            var li = [];
+            for (var i = 0; i < t.childNodes.length; i+=1) {li.push(t.childNodes[i]);};
+            while(li.length > 0) {
+                var node = li.pop();
+                for (var i = 0; i < node.childNodes.length; i+=1) {li.push(node.childNodes[i]);};
+                if(node.href && (node.href.endsWith("mp3") || node.href.endsWith("m4a"))) {
+                    player.playlist = [node.href];
+                    player.next();
+                    player.play();
+                    li = [];
+                    break; // from while loop
+                }
+            }
+            console.log(li);
+        } else {
+            e.target.className = "";
+            t.className = "section_H5 hide";
+        }
+    }
+
+    function convert_headers2sections() {
+        // copy all content children to a temporary array (list) `l`
+        var l = [];
+        var parent = document.getElementById("content");
+        var children = parent.children;
+        for (var i = children.length - 1; i >= 0; i--) {
+            l.push(children[i]);
+        }
+        // replace children with containers
+        var container = document.createElement("div");
+        container.className = "section";
+        parent.appendChild(container);
+        for (var i = l.length - 1; i >= 0; i--) {
+            if(l[i].tagName.length == 2 && l[i].tagName.startsWith("H")){
+                container = document.createElement("div");
+                l[i].insertAdjacentElement("afterend", container);
+                if(l[i].tagName == "H5") {
+                    container.id = l[i].id + "_content";
+                    l[i].addEventListener("click", on_header_click, true);
+                    l[i].className = "clickable";
+                    container.className = "section_" + l[i].tagName + " hide";
+                    continue;
+                }
+            }
+            parent.removeChild(l[i]);
+            container.appendChild(l[i]);
+        }
+    }
+    function init_portfolio() {
+        convert_headers2sections();
+    }
+
+    // addEventListener("load", init_portfolio);
+    init_portfolio();
 </script>
