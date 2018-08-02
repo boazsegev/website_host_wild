@@ -245,7 +245,13 @@ The iPad commercial is probably my favorite, since I felt it was am improvement 
 
 ##### iPad
 
+I love drums and rhythm... there's something raw and powerful.
+
+And this commercial just screamed to me "big bang", where music emerges from chaos.
+
 <div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/fe_fmv08qNs?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+
+<p> </p>
 
 ##### Rebook
 
@@ -254,6 +260,8 @@ I found this commercial a bit of a challenge. I wanted the sounds to be organic,
 Eventually I think I managed to find a balance between the digital and nature, using both orchestral and synth sounds. An interesting mix.
 
 <div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/lG8oFVgCxc0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+
+<p> </p>
 
 ##### Purina
 
@@ -265,6 +273,8 @@ I decided on a balance between a bit of humor and a touch of drama to bring the 
 
 <div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/2CA8BR_boqo?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
 
+<p> </p>
+
 ##### Cheetos
 
 I really love detective films. Something about the film-noir calls to me... but I'm a real sucker for spy films with Jazzy big band scores. I just can't get enough of them.
@@ -274,6 +284,8 @@ So when I saw this old Cheetos commercial, I has to give a shot at scoring it.
 Sadly, this one has no sound design. I was focused on learning the Jazzy sound and wasn't too concerned about the polish.
 
 <div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/sa4cFCnTn2c?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+
+<p> </p>
 
 ## Notes
 

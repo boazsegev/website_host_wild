@@ -157,16 +157,31 @@
     list-style-position: inside;
     display: list-item;
     cursor: pointer; }
+    h5.showing {
+      list-style-type: disc;
+      background-color: rgba(200, 200, 200, 0.2); }
     h5:hover {
       background-color: #668; }
-    h5.showing {
-      list-style-type: disc; }
 
   .section_H5 {
     transition: transform 250ms ease-in-out, max-height 250ms ease-in-out;
     transform-origin: 50% 0;
     transform: rotateX(0);
     max-height: 100em; }
+    .section_H5:before {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: -0.5em;
+      left: -0.5em;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(200, 200, 200, 0.3);
+      filter: blur(4px);
+      z-index: -1;
+      padding: 0.5em;
+      box-sizing: content-box;
+      border-radius: 0.4em; }
 
   .hide {
     max-height: 0;
