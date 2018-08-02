@@ -89,7 +89,7 @@ I love animation movies, like Finding Nemo and Toy Story. I don't know what it i
 
 And the opening of the film Up was one I couldn't easily let go of... and this is how this song was born.
 
-[**Turned Gray** / Me](/media/turned_gray.m4a "play: Turned Gray")
+[**Turned Gray** / Me](/media/turned_gray.m4a "score: Turned Gray")
 
 > **V.1.**
 > 
@@ -286,6 +286,18 @@ Sadly, this one has no sound design. I was focused on learning the Jazzy sound a
 <div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/sa4cFCnTn2c?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
 
 <p> </p>
+
+##### West 40
+
+I was asked by a friend for a 40 second musical piece that matched the famous mood and feel in [the theme for Westworld](https://youtu.be/rYelEUVQ50g).
+
+[West 40](/media/west40.m4a "play: West 40") was written as a simplified mood version that leaves more room for the video than the theme that inspired it.
+
+Now, Westworld's theme is beautiful and smart. Ramin Djawadi wrote a wonderful piece. It's multi-layered and moving and full of story. I wondered - how could I compress that into 40 seconds?
+
+Moreover, the piece of music was for a class and they would edit to my music (instead of the other way around), which meant I didn't have any picture to start with. Also, I didn't have enough time to find a Dobro for that beautiful metallic sound.
+
+I must say, it was a fun challenge and I hope you enjoy it too.
 
 ## Notes
 
