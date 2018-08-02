@@ -149,6 +149,109 @@ And the opening of the film Up was one I couldn't easily let go of... and this i
 > 
 > That all the dreams we promised, turned gray
 
+##### Lost Soul
+
+[Lost Soul](/media/lost_soul.m4a "score: Lost Soul") is one I am quietly in love with. There's a million songs about "_boy meets girl at bar and never sees here again_", but this story is my story, which makes it a bit more personal... at least for me.
+
+[**Lost Soul** / Me](/media/lost_soul.m4a "score: Lost Soul")
+
+> **V.1.**
+> 
+> She stood in the spotlight, with an old stained guitar
+> 
+> Teasing a song
+> 
+> as I watched from the bar
+> 
+> She was clouds on the horizon,
+> 
+> Trouble on the breeze
+> 
+> And she had me
+> 
+> on my knees
+
+
+> **Ch.**
+> 
+> She was a lost soul
+> 
+> Shouldn’t give my heart
+> 
+> Knew it from the start
+> 
+> She was a lost soul 
+> 
+> Lost soul
+> 
+> Lost Soul
+
+
+> **V.2.**
+> 
+> Her shattered breath
+> 
+> Went under my guard
+> 
+> With her soft voice
+> 
+> She hit me quite hard
+> 
+> She was the cry of thunder drums
+> 
+> Lightning on high seas
+> 
+> And she had me
+> 
+> on my knees
+
+
+> **Ch.**
+> 
+> She was a lost soul...
+
+
+> **Br.**
+> 
+> I had this need to save her,
+> 
+> Saving her just might save me,
+> 
+> But I heard it in that moment,
+> 
+> in her graceful movement,
+> 
+> I knew that it could never be
+
+
+> **Ch.**
+> 
+> She was a lost soul...
+
+ 
+> **V.3.**
+> 
+> She broke my heart
+> 
+> And left me that night
+> 
+> It's been a while 
+> 
+> But I still crave her light
+> 
+> She was summer dream in winter
+> 
+> A kiss of fire as I freeze
+> 
+> And she had me
+> 
+> on my knees
+
+
+> **Ch.**
+> 
+> She was a lost soul...
+
 ##### Morning Sunshine
 
 Some songs I never got to record properly... but when I have some free time, I would love to take them back in to the studio and make a proper demo.
