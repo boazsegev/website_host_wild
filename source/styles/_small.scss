@@ -22,8 +22,8 @@
     transform: translateX(-999999px);
     z-index: 900;
 
-    &:after {
-      transform: translateX(999999px);
+    &:before, &:after {
+      transform: translateX(999999px) rotateX(0deg);
       content: " ";
       font-size: 1em;
       display: block;
@@ -33,23 +33,33 @@
       width: 2em; height: 2em;
       position: absolute;
       left: 0;
-      top: 0;
+      top: 0;      
       border-radius: 1em;
-      background-color: rgba(192, 192, 192, 0);
-      background-image: url(/images/menu.svg);
       background-size:contain;
       background-position: center;
       background-repeat: no-repeat;
-      transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
-      -webkit-transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
-      -moz-transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
-      -o-transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+      -webkit-transition: transform 0.75s ease, opacity 0.3s ease, background-color 0.3s ease;
+      -moz-transition: transform 0.75s ease, opacity 0.3s ease, background-color 0.3s ease;
+      -o-transition: transform 0.75s ease, opacity 0.3s ease, background-color 0.3s ease;
+      transition: transform 0.75s ease, opacity 0.3s ease, background-color 0.1s ease;
+    }
+
+    &:before {
+      background-color: rgba(192, 192, 192, 0.3);      
+      z-index:+1;
+    }
+
+    &:after {
+      background-image: url(/images/menu.svg);
+      z-index:+2;
     }
 
     &:checked {
-      &:after {
-        transform: translateX(999999px) rotate(90deg);
+      &:before {
         background-color: rgba(192, 192, 192, 0.4);
+      }
+      &:after {
+        transform: translateX(999999px) rotateX(540deg);
       }
     }
   }
