@@ -402,6 +402,14 @@ Moreover, the piece of music was for a class and they would edit to my music (in
 
 I must say, it was a fun challenge and I hope you enjoy it too.
 
+## Instrumental
+
+##### Big Band Mood Piece
+
+I really enjoyed writing [iSpy Bo](/media/ispy_bo.mp3 "score: iSpy Bo").
+
+Sadly I couldn't record this piece as well as I had hoped, but I really enjoyed working with the ensemble and discovering more ways to write instrumental pieces.
+
 ## Notes
 
 When playing the songs or videos, it might take a bit for the player to load the data.
