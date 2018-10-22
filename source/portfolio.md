@@ -362,7 +362,7 @@ I found this commercial a bit of a challenge. I wanted the sounds to be organic,
 
 Eventually I think I managed to find a balance between the digital and nature, using both orchestral and synth sounds. An interesting mix.
 
-<div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/lG8oFVgCxc0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+<div style="text-align: center"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/MKI2EKgV8n0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
 
 <p> </p>
 
@@ -387,6 +387,16 @@ So when I saw this old Cheetos commercial, I has to give a shot at scoring it.
 Sadly, this one has no sound design. I was focused on learning the Jazzy sound and wasn't too concerned about the polish.
 
 <div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/sa4cFCnTn2c?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+
+<p> </p>
+
+##### Japp
+
+This hilarious commercial was re-scored as a school assignment. I ended up writing a song which I really enjoyed and I hope you enjoy it as well.
+
+After the first time, feel free to follow along with [the score](/media/together.pdf) if you like.
+
+<div style="text-align: center"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OWtjESI2RsM?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
 
 <p> </p>
 
