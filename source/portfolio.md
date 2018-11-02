@@ -418,7 +418,7 @@ I must say, it was a fun challenge and I hope you enjoy it too.
 
 Warlords don't really expect to age, they don't often reflect on their life's accomplishments and they rarely live long enough to get the chance.
 
-Allow us listen to the Strings as they follow an aging warlord's musing in [The Warlord's Lament](/media/the%20warlords%20lament.m4a "score: The Warlord's Lament"). Let us march along the footsteps of empty victories and lost friends.
+Allow us to listen to the Strings as they follow an aging warlord's musing in [The Warlord's Lament](/media/the%20warlords%20lament.m4a "score: The Warlord's Lament"). Let us march along the footsteps of empty victories and lost friends.
 
 ##### Big Band Mood Piece
 

@@ -129,8 +129,8 @@
 
         function start_player_with(song) {
             if(player) {
-                player.playlist.push(song);
-                player.next();
+                player.playlist.unshift(song);
+                player.play();
             } else {
                 addEventListener("load", function(e) {
                     init_player();
@@ -600,7 +600,7 @@
 
 <p>Warlords don&#39;t really expect to age, they don&#39;t often reflect on their life&#39;s accomplishments and they rarely live long enough to get the chance.</p>
 
-<p>Allow us listen to the Strings as they follow an aging warlord&#39;s musing in <a href="/media/the%20warlords%20lament.m4a" title="score: The Warlord&#39;s Lament">The Warlord&#39;s Lament</a>. Let us march along the footsteps of empty victories and lost friends.</p>
+<p>Allow us to listen to the Strings as they follow an aging warlord&#39;s musing in <a href="/media/the%20warlords%20lament.m4a" title="score: The Warlord&#39;s Lament">The Warlord&#39;s Lament</a>. Let us march along the footsteps of empty victories and lost friends.</p>
 
 <h5 id="big-band-mood-piece">Big Band Mood Piece</h5>
 
