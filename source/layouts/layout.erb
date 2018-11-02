@@ -127,6 +127,18 @@
             convert_images();
         }
 
+        function start_player_with(song) {
+            if(player) {
+                player.playlist.unshift(song);
+                player.play();
+            } else {
+                addEventListener("load", function(e) {
+                    init_player();
+                    start_player_with(this);
+                }.bind(song));
+            }
+        }
+
         function collaps() {}
 
         addEventListener("load", initialize_page);
