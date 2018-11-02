@@ -123,15 +123,17 @@
         position: absolute;
         top: -2.75em;
         left: 0;
-        display: inline-block; }
+        display: inline-block;
+        z-index: 1001; }
 
   #score_link {
     display: block;
     position: absolute;
-    width: 0em;
-    height: 0em;
+    width: 0px;
+    height: 0px;
     overflow: hidden;
-    bottom: 1.2em; }
+    bottom: 1.2em;
+    z-index: 900; }
     #score_link:after {
       content: "Score";
       display: inline-block;

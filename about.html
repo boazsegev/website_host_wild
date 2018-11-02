@@ -55,7 +55,7 @@
             player.next();
             player.enable_keyboard();
             player.on_play = test_for_score;
-            player.on_pause = player.on_stop = function(e) { document.getElementById('score_link').style = ""; }
+            /* player.on_pause = */ player.on_stop = function(e) { document.getElementById('score_link').style = ""; }
         };
 
         function convert_images() {

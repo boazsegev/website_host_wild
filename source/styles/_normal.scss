@@ -148,16 +148,18 @@
           top: -2.75em;
           left: 0;
           display: inline-block;
+          z-index: 1001;
       }
     }
   }
   #score_link {
     display: block;
     position: absolute;
-    width: 0em;
-    height: 0em;
+    width: 0px;
+    height: 0px;
     overflow: hidden;
     bottom: 1.2em;
+    z-index: 900;
     &:after {
       content: "Score";
       display: inline-block;
