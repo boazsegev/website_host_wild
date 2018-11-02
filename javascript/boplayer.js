@@ -152,14 +152,34 @@ function BoPlayer(obj_id) {
   });
   this.player.addEventListener("play", function(e) {
     e.target.owner.redraw();
-    if (e.target.owner.on_play)
-      e.target.owner.on_play(e.target.owner);
+    if (e.target.owner.on_play) {
+      try {
+        e.target.owner.on_play(e.target.owner);
+      } catch (err) {
+        console.error(err.message);
+      }
+    }
+  });
+  this.player.addEventListener("pause", function(e) {
+    e.target.owner.redraw();
+    if (e.target.owner.on_pause) {
+      try {
+        e.target.owner.on_pause(e.target.owner);
+      } catch (err) {
+        console.error(err.message);
+      }
+    }
   });
   this.player.addEventListener("ended", function(e) {
     e.target.owner.redraw();
     if (!(e.target.owner.autoplay && e.target.owner.next()) &&
-        e.target.owner.on_stop)
-      e.target.owner.on_stop(e.target.owner);
+        e.target.owner.on_stop) {
+      try {
+        e.target.owner.on_stop(e.target.owner);
+      } catch (err) {
+        console.error(err.message);
+      }
+    }
   });
 
   /** The controller DOM layer (fullscreen event collecting). */
@@ -215,9 +235,8 @@ function BoPlayer(obj_id) {
 BoPlayer.prototype.event_handlers = {};
 
 /** a simple handler of events that only require a redraw. */
-BoPlayer.prototype.event_handlers.redraw = function(e) {
-  e.target.owner.redraw();
-};
+BoPlayer.prototype.event_handlers.redraw = function(
+    e) { e.target.owner.redraw(); };
 
 /** When the mouse / touch starts. */
 BoPlayer.prototype.event_handlers.control_start = function(e) {
@@ -245,9 +264,9 @@ BoPlayer.prototype.event_handlers.control_start = function(e) {
   e.target.owner.canvas.style.transform =
       "translate(" + e.target.owner._canvas_offset.x + "px, " +
       e.target.owner._canvas_offset.y + "px)";
-  window.setTimeout(function(pl) {
-    pl.canvas.style.transition = "transform 0s";
-  }, 250, e.target.owner);
+  window.setTimeout(function(
+                        pl) { pl.canvas.style.transition = "transform 0s"; },
+                    250, e.target.owner);
   // make sure the player is active before allowing control state.
   if (!e.target.owner.can_play) {
     e.returnValue = false;
@@ -298,9 +317,9 @@ BoPlayer.prototype.event_handlers.control_end = function(e) {
   e.target.owner._center_xy.x = 0;
   e.target.owner._center_xy.y = 0;
   e.target.owner.canvas.style.transition = "transform 0.25s";
-  window.setTimeout(function(pl) {
-    pl.canvas.style.transform = "translate(0px, 0px)";
-  }, 10, e.target.owner);
+  window.setTimeout(
+      function(pl) { pl.canvas.style.transform = "translate(0px, 0px)"; }, 10,
+      e.target.owner);
 
   if (e.target.owner._ctrl_interval) {
     window.clearInterval(e.target.owner._ctrl_interval)
@@ -552,16 +571,16 @@ BoPlayer.prototype.set_sources = function(sources) {
   // set playback flag
   this.can_play = false;
   // add requested sources.
-  if (typeof(sources) == typeof(""))
+  if (typeof (sources) == typeof (""))
     sources = [ sources ];
-  else if (typeof(sources) == typeof([]) && (sources instanceof Array)) {
+  else if (typeof (sources) == typeof ([]) && (sources instanceof Array)) {
     console.error(
         "player sources should be either a string or an array, but got",
         sources);
   }
   var unset = true;
   for (var i = 0; i < sources.length; i++) {
-    if (typeof(sources[i]) == typeof('')) {
+    if (typeof (sources[i]) == typeof ('')) {
       var tmp = document.createElement('source')
       tmp.src = sources[i];
       this.player.appendChild(tmp);
@@ -729,9 +748,8 @@ BoPlayer.prototype.enable_keyboard = function() {
 };
 
 /** disables keyboard controls. */
-BoPlayer.prototype.disable_keyboard = function() {
-  document.BoPlayer_keyboard_control = false;
-};
+BoPlayer.prototype.disable_keyboard =
+    function() { document.BoPlayer_keyboard_control = false; };
 
 /** redraws the player. */
 BoPlayer.prototype.redraw = function() {

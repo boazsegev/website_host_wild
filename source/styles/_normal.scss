@@ -151,6 +151,32 @@
       }
     }
   }
+  #score_link {
+    display: block;
+    position: absolute;
+    width: 0em;
+    height: 0em;
+    overflow: hidden;
+    bottom: 1.2em;
+    &:after {
+      content: "Score";
+      display: inline-block;
+      position: relative;
+      width: 3em;
+      height: 1em;
+      bottom: 0;
+      left: 3.6em;
+      font-size: 0.8em;
+      border: rgba(128, 128, 128, 0.6) solid 1px;
+      border-radius: 0.4em;
+      transition: background 0.5s;
+      background: rgba(48, 48, 48, 0.75);
+      z-index: 1001;
+      &:hover , &:active {
+        background: rgba(128, 128, 128, 0.9);
+      }
+    }
+  }
 
   h1, h2, h3, h5  {
     font-size: 3em;
