@@ -134,12 +134,6 @@
                 console.warn("invalid URL section request for: " + wanted);
         }
 
-        function initialize_page() {
-            convert_links();
-            convert_images();
-            test_for_anchor();
-        }
-
         function start_player_with(song) {
             if(player) {
                 player.playlist.unshift(song);
@@ -152,7 +146,66 @@
             }
         }
 
-        function collaps() {}
+        function on_header_click(e) {
+            var t = document.getElementById(e.target.id + "_content");
+            if(t.className.length > 10) {
+                e.target.className = "showing";
+                t.className = "section_H5";
+                var li = [];
+                for (var i = 0; i < t.childNodes.length; i+=1) {li.push(t.childNodes[i]);};
+                while(li.length > 0) {
+                    var node = li.pop();
+                    for (var i = 0; i < node.childNodes.length; i+=1) {li.push(node.childNodes[i]);};
+                    if(node.href && (node.href.endsWith("mp3") || node.href.endsWith("m4a"))) {
+                        player.playlist = [node.href];
+                        player.next();
+                        player.play();
+                        li = [];
+                        break; // from while loop
+                    }
+                }
+                console.log(li);
+            } else {
+                e.target.className = "";
+                t.className = "section_H5 hide";
+            }
+        }
+
+        function convert_headers2sections() {
+            // copy all content children to a temporary array (list) `l`
+            var l = [];
+            var parent = document.getElementById("content");
+            var children = parent.children;
+            for (var i = children.length - 1; i >= 0; i--) {
+                l.push(children[i]);
+            }
+            // replace children with containers
+            var container = document.createElement("div");
+            container.className = "section";
+            parent.appendChild(container);
+            for (var i = l.length - 1; i >= 0; i--) {
+                if(l[i].tagName.length == 2 && l[i].tagName.startsWith("H")){
+                    container = document.createElement("div");
+                    l[i].insertAdjacentElement("afterend", container);
+                    if(l[i].tagName == "H5") {
+                        container.id = l[i].id + "_content";
+                        l[i].addEventListener("click", on_header_click, true);
+                        l[i].className = "clickable";
+                        container.className = "section_" + l[i].tagName + " hide";
+                        continue;
+                    }
+                }
+                parent.removeChild(l[i]);
+                container.appendChild(l[i]);
+            }
+        }
+
+        function initialize_page() {
+            convert_links();
+            convert_images();
+            convert_headers2sections();
+            test_for_anchor();
+        }
 
         addEventListener("load", initialize_page);
     </script>
@@ -728,71 +781,6 @@
 <p>When playing the songs or videos, it might take a bit for the player to load the data.</p>
 
 <p>If you want to play a song directly, right click and open the link in a new tab.</p>
-
-<!-- TODO -->
-
-<script type="text/javascript">
-
-    function on_header_click(e) {
-        var t = document.getElementById(e.target.id + "_content");
-        if(t.className.length > 10) {
-            e.target.className = "showing";
-            t.className = "section_H5";
-            var li = [];
-            for (var i = 0; i < t.childNodes.length; i+=1) {li.push(t.childNodes[i]);};
-            while(li.length > 0) {
-                var node = li.pop();
-                for (var i = 0; i < node.childNodes.length; i+=1) {li.push(node.childNodes[i]);};
-                if(node.href && (node.href.endsWith("mp3") || node.href.endsWith("m4a"))) {
-                    player.playlist = [node.href];
-                    player.next();
-                    player.play();
-                    li = [];
-                    break; // from while loop
-                }
-            }
-            console.log(li);
-        } else {
-            e.target.className = "";
-            t.className = "section_H5 hide";
-        }
-    }
-
-    function convert_headers2sections() {
-        // copy all content children to a temporary array (list) `l`
-        var l = [];
-        var parent = document.getElementById("content");
-        var children = parent.children;
-        for (var i = children.length - 1; i >= 0; i--) {
-            l.push(children[i]);
-        }
-        // replace children with containers
-        var container = document.createElement("div");
-        container.className = "section";
-        parent.appendChild(container);
-        for (var i = l.length - 1; i >= 0; i--) {
-            if(l[i].tagName.length == 2 && l[i].tagName.startsWith("H")){
-                container = document.createElement("div");
-                l[i].insertAdjacentElement("afterend", container);
-                if(l[i].tagName == "H5") {
-                    container.id = l[i].id + "_content";
-                    l[i].addEventListener("click", on_header_click, true);
-                    l[i].className = "clickable";
-                    container.className = "section_" + l[i].tagName + " hide";
-                    continue;
-                }
-            }
-            parent.removeChild(l[i]);
-            container.appendChild(l[i]);
-        }
-    }
-    function init_portfolio() {
-        convert_headers2sections();
-    }
-
-    // addEventListener("load", init_portfolio);
-    init_portfolio();
-</script>
 
     </div>
     <div id='bottom'>

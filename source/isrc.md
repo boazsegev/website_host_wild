@@ -13,7 +13,7 @@ On this page you can find the ISRC codes I publicly assigned and the master's cu
 
 This doesn't necessarily reflect copyright for the song or composition, as mechanical rights are different than compositional rights.
 
-##### QZ-AYA-17-XXXXX
+## QZ-AYA-17-XXXXX
 
 |    **ISRC**     |      **Track Name**      |       **Owner**       |
 |-----------------|--------------------------|-----------------------|
@@ -21,7 +21,7 @@ This doesn't necessarily reflect copyright for the song or composition, as mecha
 | QZ-AYA-17-00011 | It's Me (retouched)      | Bo Wild (me)          |
 | QZ-AYA-17-00021 | Lost Soul (Remix)        | Bo Wild (me)          |
 
-##### QZ-AYA-18-XXXXX
+## QZ-AYA-18-XXXXX
 
 |    **ISRC**     |      **Track Name**      |       **Owner**       |
 |-----------------|--------------------------|-----------------------|
