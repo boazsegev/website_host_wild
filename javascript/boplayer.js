@@ -14,18 +14,18 @@ play / pause (inner circle).
 
 Volume and seeking are controlled clicking / touching the BoPlayer and moving
 the cursor (or finger). Double click / tap will skip forward and a triple click
-/ tap will skip backwards. Keyboard control is also available (off by default).
+/ tap will skip backwards. Keyboard control is also available.
 
 Multiple BoPlayer instances can be initialized on a single page, allowing
 multiple streams to play at the same time. However, keyboard control is limited
 to a single BoPlayer instance and must be initialized for that object.
 
-On iOS, it's impossible to control volume (seeking still works) or to start in
-autoplay mode. Also only one BoPlayer object can play at any given time.
+On Safari and iOS, it's impossible to control volume (seeking still works) or to
+start in autoplay mode. Also only one BoPlayer instance can play at a time.
 
-These limitations are imposed by iOS, where volume is controlled by the physical
-device and autoplay requires the user's interaction to confirm playback (a
-security measure).
+On iOS, these limitations are imposed by the OS, where volume is controlled by
+the physical device and autoplay requires the user's interaction to confirm
+playback (a security measure).
 
 ================================================================================
 
@@ -613,7 +613,10 @@ BoPlayer.prototype.play = function() {
     if (this.playlist.length > 0) {
       return this.next();
     } else if (this.history.length > 0) {
-      return this.prev();
+      var tmp = this.playlist;
+      this.playlist = this.history;
+      this.history = tmp;
+      return this.next();
     }
     return false;
   }
@@ -684,7 +687,7 @@ BoPlayer.prototype.step_back = function(step) {
 
 /** plays the previous source, if available. */
 BoPlayer.prototype.prev = function() {
-  if (this.player.currentSrc && this.player.childElementCount)
+  if (this.player.currentSrc)
     this.playlist.unshift(this.player.currentSrc);
   this.set_sources(this.history.pop());
   this.redraw();
@@ -693,7 +696,7 @@ BoPlayer.prototype.prev = function() {
 
 /** plays the next source, if available. */
 BoPlayer.prototype.next = function() {
-  if (this.player.currentSrc && this.player.childElementCount)
+  if (this.player.currentSrc)
     this.history.push(this.player.currentSrc);
   this.set_sources(this.playlist.shift());
   this.redraw();

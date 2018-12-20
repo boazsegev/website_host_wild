@@ -122,9 +122,22 @@
             }
         }
 
+        function test_for_anchor() {
+            var wanted = window.location.hash;
+            if(!wanted || wanted.length == 0)
+                return;
+            console.log("detected URL section request for: " + wanted);
+            var title = document.getElementById(wanted.slice(1));
+            if(title)
+                title.click();
+            else
+                console.warn("invalid URL section request for: " + wanted);
+        }
+
         function initialize_page() {
             convert_links();
             convert_images();
+            test_for_anchor();
         }
 
         function start_player_with(song) {
@@ -199,6 +212,110 @@
 <p>The following are some rough demos for songs I enjoyed writing.</p>
 
 <p>I hope you enjoy listening to these songs as much as I enjoyed writing them.</p>
+
+<h5 id="hunger-and-need">Hunger and Need</h5>
+
+<p>Some stories are hard to talk about, but, somehow, they leak into my music and come out in song.</p>
+
+<p>This song is dedicated to all the people out there who want to overcome their own misfortune through their own effort, and to the people watching from the sideline wishing they could help.</p>
+
+<p><a href="/media/hunger_and_need.m4a" title="score: Hunger and Need"><strong>Hunger and Need (a Smile at a Time)</strong> / Me</a></p>
+
+<blockquote>
+<p><strong>V.1</strong></p>
+
+<p>She cooks for me with flames of passion,</p>
+
+<p>She knows just what I need to taste,</p>
+
+<p>Truth is hard to swallow,</p>
+
+<p>I taste the price of our disgrace.</p>
+
+<p><strong>V.2</strong></p>
+
+<p>To save our hearts I sell for dollars</p>
+
+<p>My slice of life per day and night</p>
+
+<p>Even god can&#39;t save me</p>
+
+<p>If other men can steal her light</p>
+
+<p><strong>Pre.</strong></p>
+
+<p>From the shadows I watch her dance, </p>
+
+<p>She’s not dancing for me</p>
+
+<p><strong>Ch.</strong></p>
+
+<p>Selling our souls, a smile at a time</p>
+
+<p>She suffers it all, a smile at a time</p>
+
+<p>I&#39;m losing my mind, a smile at a time</p>
+
+<p>A slave to my hunger and need</p>
+
+<p><strong>V.3</strong></p>
+
+<p>With every breathe she&#39;s loosing thunder</p>
+
+<p>Her laughing eyes are turning gray</p>
+
+<p>I&#39;m losing all I ever wanted</p>
+
+<p>I cry as she slips away</p>
+
+<p><strong>Pre.</strong></p>
+
+<p>From the shadows I watch her dance, </p>
+
+<p>She’s not dancing for me</p>
+
+<p><strong>Ch.</strong></p>
+
+<p>Selling our souls, a smile at a time</p>
+
+<p>She suffers it all, a smile at a time</p>
+
+<p>I&#39;m losing my mind, a smile at a time</p>
+
+<p>A slave to my hunger and need</p>
+
+<p><strong>Br.</strong></p>
+
+<p>I blame the skies and curse the heavens,</p>
+
+<p>Their judgment cruel with righteous pride </p>
+
+<p>They judge the way she sold her body,</p>
+
+<p>But I’m the one who can’t provide</p>
+
+<p>Yes, I’m the one who can’t provide</p>
+
+<p><strong>Ch.</strong></p>
+
+<p>Selling our souls, a smile at a time</p>
+
+<p>She suffers it all, a smile at a time</p>
+
+<p>I&#39;m losing my mind, a smile at a time</p>
+
+<p>A slave to my hunger</p>
+
+<p>It&#39;s taking it&#39;s toll, a smile at a time</p>
+
+<p>A dollar and pole, a smile at a time</p>
+
+<p>She&#39;s breaking my heart, a smile at a time</p>
+
+<p>A slave to my hunger and need</p>
+
+<p>A slave to my hunger and need</p>
+</blockquote>
 
 <h5 id="its-me">It&#39;s Me</h5>
 

@@ -122,9 +122,34 @@
             }
         }
 
+        function test_for_anchor() {
+            var wanted = window.location.hash;
+            if(!wanted || wanted.length == 0)
+                return;
+            console.log("detected URL section request for: " + wanted);
+            var title = document.getElementById(wanted.slice(1));
+            if(title)
+                title.click();
+            else
+                console.warn("invalid URL section request for: " + wanted);
+        }
+
         function initialize_page() {
             convert_links();
             convert_images();
+            test_for_anchor();
+        }
+
+        function start_player_with(song) {
+            if(player) {
+                player.playlist.unshift(song);
+                player.play();
+            } else {
+                addEventListener("load", function(e) {
+                    init_player();
+                    start_player_with(this);
+                }.bind(song));
+            }
         }
 
         function collaps() {}
@@ -186,7 +211,7 @@
 
 <p>This doesn&#39;t necessarily reflect copyright for the song or composition, as mechanical rights are different than compositional rights.</p>
 
-<h2 id="qz-aya-17-xxxxx">QZ-AYA-17-XXXXX</h2>
+<h5 id="qz-aya-17-xxxxx">QZ-AYA-17-XXXXX</h5>
 
 <table><thead>
 <tr>
@@ -208,6 +233,22 @@
 <tr>
 <td>QZ-AYA-17-00021</td>
 <td>Lost Soul (Remix)</td>
+<td>Bo Wild (me)</td>
+</tr>
+</tbody></table>
+
+<h5 id="qz-aya-18-xxxxx">QZ-AYA-18-XXXXX</h5>
+
+<table><thead>
+<tr>
+<th><strong>ISRC</strong></th>
+<th><strong>Track Name</strong></th>
+<th><strong>Owner</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>QZ-AYA-18-12001</td>
+<td>Hunger and Need</td>
 <td>Bo Wild (me)</td>
 </tr>
 </tbody></table>

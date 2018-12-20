@@ -122,9 +122,22 @@
             }
         }
 
+        function test_for_anchor() {
+            var wanted = window.location.hash;
+            if(!wanted || wanted.length == 0)
+                return;
+            console.log("detected URL section request for: " + wanted);
+            var title = document.getElementById(wanted.slice(1));
+            if(title)
+                title.click();
+            else
+                console.warn("invalid URL section request for: " + wanted);
+        }
+
         function initialize_page() {
             convert_links();
             convert_images();
+            test_for_anchor();
         }
 
         function start_player_with(song) {

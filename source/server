@@ -68,7 +68,7 @@ if ENV['RACK_ENV'] == 'production'
     puts "WARN: render was requested for #{env[PATH_INFO]}" unless env.keys.length == 1
     if (File.directory?( "#{STATIC_ROOT}#{env[PATH_INFO]}"))
       if (env[PATH_INFO][-1] == '/')
-        env[PATH_INFO] << 'index.html'.freeze 
+        env[PATH_INFO] << 'index.html'.freeze
       else
         env[PATH_INFO] << '/index.html'.freeze
       end
@@ -80,7 +80,7 @@ else
   def self.call env
     if (File.directory?( "#{STATIC_ROOT}#{env[PATH_INFO]}"))
       if (env[PATH_INFO][-1] == '/')
-        env[PATH_INFO] << 'index.html'.freeze 
+        env[PATH_INFO] << 'index.html'.freeze
       else
         env[PATH_INFO] << '/index.html'.freeze
       end
@@ -173,8 +173,9 @@ end
 
 end
 
-Iodine.listen2http app: APP, log: true, public: ((ENV['RACK_ENV'] == 'production') ? STATIC_ROOT : SOURCE_ROOT)
 APP.bake_all
+
+Iodine.listen2http app: APP, log: true, public: ((ENV['RACK_ENV'] == 'production') ? STATIC_ROOT : SOURCE_ROOT)
 
 if(Iodine.threads == 0 && Iodine.workers == 0)
   Iodine.threads =-2;

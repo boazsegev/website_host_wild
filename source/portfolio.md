@@ -15,6 +15,109 @@ The following are some rough demos for songs I enjoyed writing.
 
 I hope you enjoy listening to these songs as much as I enjoyed writing them.
 
+##### Hunger and Need
+
+Some stories are hard to talk about, but, somehow, they leak into my music and come out in song.
+
+This song is dedicated to all the people out there who want to overcome their own misfortune through their own effort, and to the people watching from the sideline wishing they could help.
+
+[**Hunger and Need (a Smile at a Time)** / Me](/media/hunger_and_need.m4a "score: Hunger and Need")
+
+> **V.1**
+> 
+> She cooks for me with flames of passion,
+> 
+> She knows just what I need to taste,
+> 
+> Truth is hard to swallow,
+> 
+> I taste the price of our disgrace.
+> 
+> **V.2**
+> 
+> To save our hearts I sell for dollars
+> 
+> My slice of life per day and night
+> 
+> Even god can't save me
+> 
+> If other men can steal her light
+> 
+> **Pre.**
+> 
+> From the shadows I watch her dance, 
+> 
+> She’s not dancing for me
+> 
+> **Ch.**
+> 
+> Selling our souls, a smile at a time
+> 
+> She suffers it all, a smile at a time
+> 
+> I'm losing my mind, a smile at a time
+> 
+> A slave to my hunger and need
+> 
+> **V.3**
+> 
+> With every breathe she's loosing thunder
+> 
+> Her laughing eyes are turning gray
+> 
+> I'm losing all I ever wanted
+> 
+> I cry as she slips away
+> 
+> **Pre.**
+> 
+> From the shadows I watch her dance, 
+> 
+> She’s not dancing for me
+> 
+> **Ch.**
+> 
+> Selling our souls, a smile at a time
+> 
+> She suffers it all, a smile at a time
+> 
+> I'm losing my mind, a smile at a time
+> 
+> A slave to my hunger and need
+> 
+> **Br.**
+> 
+> I blame the skies and curse the heavens,
+> 
+> Their judgment cruel with righteous pride 
+> 
+> They judge the way she sold her body,
+> 
+> But I’m the one who can’t provide
+> 
+> Yes, I’m the one who can’t provide
+> 
+> **Ch.**
+> 
+> Selling our souls, a smile at a time
+> 
+> She suffers it all, a smile at a time
+> 
+> I'm losing my mind, a smile at a time
+> 
+> A slave to my hunger
+> 
+> It's taking it's toll, a smile at a time
+> 
+> A dollar and pole, a smile at a time
+> 
+> She's breaking my heart, a smile at a time
+> 
+> A slave to my hunger and need
+> 
+> A slave to my hunger and need
+> 
+
 ##### It's Me
 
 For years I was in love with a girl who couldn't care enough to acknowledge my existence. I was 6 years old when she stole my heart and more than 13 years old before I reclaimed it.
