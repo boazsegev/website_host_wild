@@ -443,6 +443,18 @@ Anyway, I even [have a score](/media/morning_sunshine.pdf), ready for when I can
 > please disappear
 
 
+## Instrumental
+
+##### To a New World
+
+[To a New World](/media/to_a_new_world.m4a "score: To a New World") is a heroic journey to the great unknown, where danger lurks at every turn and magical beauty inspires the heart.
+
+##### The Warlord's Lament
+
+Warlords don't really expect to age, they don't often reflect on their life's accomplishments and they rarely live long enough to get the chance.
+
+Allow us to listen to the Strings as they follow an aging warlord's musing in [The Warlord's Lament](/media/the%20warlords%20lament.m4a "score: The Warlord's Lament"). Let us march along the footsteps of empty victories and lost friends.
+
 ## Sync
 
 I had fun scoring these commercials and I hope you enjoy the score.
@@ -514,20 +526,6 @@ Now, Westworld's theme is beautiful and smart. Ramin Djawadi wrote a wonderful p
 Moreover, the piece of music was for a class and they would edit to my music (instead of the other way around), which meant I didn't have any picture to start with. Also, I didn't have enough time to find a Dobro for that beautiful metallic sound.
 
 I must say, it was a fun challenge and I hope you enjoy it too.
-
-## Instrumental
-
-##### The Warlord's Lament
-
-Warlords don't really expect to age, they don't often reflect on their life's accomplishments and they rarely live long enough to get the chance.
-
-Allow us to listen to the Strings as they follow an aging warlord's musing in [The Warlord's Lament](/media/the%20warlords%20lament.m4a "score: The Warlord's Lament"). Let us march along the footsteps of empty victories and lost friends.
-
-##### Big Band Mood Piece
-
-I really enjoyed writing [iSpy Bo](/media/ispy_bo.mp3 "score: iSpy Bo").
-
-Sadly I couldn't record this piece as well as I had hoped, but I really enjoyed working with the ensemble and discovering more ways to write instrumental pieces.
 
 ## Notes
 
