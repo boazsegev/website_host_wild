@@ -149,6 +149,7 @@
         function on_header_click(e) {
             var t = document.getElementById(e.target.id + "_content");
             if(t.className.length > 10) {
+                window.location.hash = "#" + e.target.id;
                 e.target.className = "showing";
                 t.className = "section_H5";
                 var li = [];
