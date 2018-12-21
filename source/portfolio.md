@@ -24,7 +24,9 @@ This song is dedicated to all the people out there who want to overcome their ow
 [**Hunger and Need (a Smile at a Time)** / Me](/media/hunger_and_need.m4a "score: Hunger and Need")
 
 Guitar: [Weijun Yang](https://soundcloud.com/weijun-yang)
+
 Drums: [Taiki Miyazawa](https://taikimiyazawa727.wixsite.com/mysite)
+
 Percussion, Piano, Vocals: Bo Wild
 
 > **V.1**
