@@ -30,3 +30,9 @@ This doesn't necessarily reflect copyright for the song or composition, as mecha
 | QZ-AYA-18-12003 | The Warlords Lament      | Bo Wild (me)          |    String Quintet     |
 | QZ-AYA-18-12004 | To a New World           | Bo Wild (me)          |      Orchestral       |
 | QZ-AYA-18-12005 | Silver Dreams            | Bo Wild (me)          |                       |
+
+## QZ-AYA-19-XXXXX
+
+|    **ISRC**     |      **Track Name**      |       **Owner**       |      **Comments**     |
+|-----------------|--------------------------|-----------------------|-----------------------|
+| QZ-AYA-19-10001 | Hunger and Need          | Bo Wild (me)          |      (78 BPM)         |
