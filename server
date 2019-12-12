@@ -12,13 +12,13 @@ require 'ostruct'
 require 'yaml'
 require 'set'
 
-if File.expand_path(File.dirname(__FILE__)).end_with?('source')
+if File.expand_path(File.dirname(__FILE__)).end_with?('_SOURCE')
   Dir.chdir("#{File.dirname(__FILE__)}/..")
 else
   Dir.chdir("#{File.dirname(__FILE__)}")
 end
 
-SOURCE_ROOT = 'source'
+SOURCE_ROOT = '_SOURCE'
 STATIC_ROOT = '.'
 PATH_INFO = 'PATH_INFO'.freeze
 X_SENDFILE = 'X-Sendfile'.freeze

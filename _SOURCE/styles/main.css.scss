@@ -1,0 +1,25 @@
+@import 'normal';
+@import 'small';
+@import 'print';
+
+img {
+	border-radius: 20px;
+}
+
+.banner1 {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.banner2 {
+  box-sizing: border-box;
+  width: 60%;
+  float: left;
+  clear: left;
+}
+.banner3 {
+  box-sizing: border-box;
+  width: 40%;
+  float: right;
+  clear: right;
+}
