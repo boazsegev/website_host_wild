@@ -1,9 +1,9 @@
 ---
 layout: layouts/layout.erb
 ---
-# Music can Change the World
+# I Believe Music can Change the World
 
-### Music can set us free
+### I Believe Music Can Set Us Free
 
 ![banner3:Bo Wild](/images/can_you_hear_me.jpg)
 

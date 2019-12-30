@@ -2,7 +2,7 @@
 layout: /layouts/layout.erb
 title: Bo Wild - Composer
 ---
-# Production
+# Find Your Sound
 
 Music production is half science and half art. Also, from my experience, there's always a little dance we do at the beginning as we get to know each other and I learn more about your voice and your vision.
 

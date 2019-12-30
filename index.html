@@ -91,7 +91,7 @@
                     l[i].parentNode.insertBefore(score, l[i].nextSibling);
                     l[i].parentNode.insertBefore(document.createTextNode(" "), l[i].nextSibling);
                 } else if (l[i].title.startsWith("contct")) {
-                    l[i].title = "";
+                    l[i].title = "send email";
                     l[i].onclick = function(e) {
                       var d = window.location.hostname;
                       if(d.slice(0, 3) == "loc") { d = "bowild.com"; }
@@ -110,6 +110,7 @@
                                              "lto" +
                                              ":" + n + '@' + d;
                       this.href =  "mai" + "lto" + ":" + n + '@' + d;
+                      this.innerHTML =  n + '@' + d;
                       this.onclick = undefined;
                       e.preventDefault();
                       return false;
@@ -242,9 +243,9 @@
             // }
             // document.addEventListener("load", init_document);
         </script>
-      <h1 id="music-can-change-the-world">Music can Change the World</h1>
+      <h1 id="i-believe-music-can-change-the-world">I Believe Music can Change the World</h1>
 
-<h3 id="music-can-set-us-free">Music can set us free</h3>
+<h3 id="i-believe-music-can-set-us-free">I Believe Music Can Set Us Free</h3>
 
 <p><img src="/images/can_you_hear_me.jpg" alt="banner3:Bo Wild"></p>
 
@@ -258,8 +259,8 @@
 
 
       <h2>Contact:</h2>
-      <p>I'm available at:</p>
-      <ul><li><a href='mailto:bo@bowild.com'>bo@bowild.com</a>
+      <p>I'm available by:</p>
+      <ul><li><a href="/" title="contct">email</a>
       </li><li><a href='https://t.me/bo_wild'>Telegram</a>
       </li><li><a href='https://wa.me/16176425815'>WhatsApp</a>
       </li><li>US number: <a href='tel:+16176425815'>+1 (617) 642-5815</a>
