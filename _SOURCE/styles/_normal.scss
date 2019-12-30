@@ -28,7 +28,7 @@
   html {
     background: #111;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: left;
     background-blend-mode: lighten;
     background-image: url("/images/background.jpg");
     background-size: cover;
@@ -325,12 +325,13 @@
       li {
         opacity: 0;
       }
-      li:first-child {
-        opacity: 1;
-      }
       li:last-child {
         border-radius: 0 0 0.5em 0.5em;
         overflow: hidden;
+      }
+      li:first-child {
+        opacity: 1;
+        border-radius: 0;
       }
       &:hover , &:active {
         li {

@@ -1,13 +1,16 @@
 ---
 layout: layouts/layout.erb
 ---
-### *Bo's Music Production House and Home*
+# Music can Change the World
 
-#### I believe we all have our own **unique voice**.
-#### I believe the best songs are the ones that **express our true inner voice in the most authentic way.**
-#### Let's **write something real** and see what happens.
-<script> start_player_with(["/media/the warlords lament.m4a"]); </script>
-<!-- # Prepare to [Breathe](/about)
+### Music can set us free
 
-# ...where the wild things live...
- -->
+![banner3:Bo Wild](/images/can_you_hear_me.jpg)
+
+Music is the language of our souls.
+
+The stories we share through music speak to the heart, they bring people together and fill us with compassion, happiness and joy.
+
+I believe we can increase our capacity for joy and compassion through music.
+
+I’m excited to share my music with you.

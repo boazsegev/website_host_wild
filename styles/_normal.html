@@ -19,7 +19,7 @@
   html {
     background: #111;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: left;
     background-blend-mode: lighten;
     background-image: url("/images/background.jpg");
     background-size: cover;
@@ -276,11 +276,12 @@
         overflow-y: visible; }
     #menu ul ul li {
       opacity: 0; }
-    #menu ul ul li:first-child {
-      opacity: 1; }
     #menu ul ul li:last-child {
       border-radius: 0 0 0.5em 0.5em;
       overflow: hidden; }
+    #menu ul ul li:first-child {
+      opacity: 1;
+      border-radius: 0; }
     #menu ul ul:hover li, #menu ul ul:active li {
       transition: opacity 0.25s;
       opacity: 1; }

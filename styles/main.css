@@ -19,7 +19,7 @@
   html {
     background: #111;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: left;
     background-blend-mode: lighten;
     background-image: url("/images/background.jpg");
     background-size: cover;
@@ -276,11 +276,12 @@
         overflow-y: visible; }
     #menu ul ul li {
       opacity: 0; }
-    #menu ul ul li:first-child {
-      opacity: 1; }
     #menu ul ul li:last-child {
       border-radius: 0 0 0.5em 0.5em;
       overflow: hidden; }
+    #menu ul ul li:first-child {
+      opacity: 1;
+      border-radius: 0; }
     #menu ul ul:hover li, #menu ul ul:active li {
       transition: opacity 0.25s;
       opacity: 1; }
@@ -444,20 +445,28 @@
 img {
   border-radius: 20px; }
 
-.banner1 {
+.banner1, img[src*="#banner1"] {
   box-sizing: border-box;
   width: 100%; }
 
-.banner2 {
+.banner2, img[src*="#banner2"] {
   box-sizing: border-box;
   width: 60%;
   float: left;
-  clear: left; }
+  clear: left;
+  margin-right: 1.25em; }
 
-.banner3 {
+.banner3, .banner3_big, img[src*="#banner3"], img[src*="#banner3_big"], .banner3_small, img[src*="#banner3_small"] {
   box-sizing: border-box;
+  margin-left: 0.5em;
   width: 40%;
   float: right;
   clear: right; }
+
+.banner3_big, img[src*="#banner3_big"] {
+  width: 60%; }
+
+.banner3_small, img[src*="#banner3_small"] {
+  width: 30%; }
 
 /*# sourceMappingURL=main.css.map */

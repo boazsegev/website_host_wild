@@ -6,20 +6,28 @@ img {
 	border-radius: 20px;
 }
 
-.banner1 {
+.banner1, img[src*="#banner1"]  {
   box-sizing: border-box;
   width: 100%;
 }
 
-.banner2 {
+.banner2, img[src*="#banner2"] {
   box-sizing: border-box;
   width: 60%;
   float: left;
   clear: left;
+  margin-right: 1.25em;
 }
-.banner3 {
+.banner3, .banner3_big, img[src*="#banner3"], img[src*="#banner3_big"], .banner3_small, img[src*="#banner3_small"]{
   box-sizing: border-box;
+  margin-left: 0.5em;
   width: 40%;
   float: right;
   clear: right;
+}
+.banner3_big, img[src*="#banner3_big"] {
+  width: 60%;
+}
+.banner3_small, img[src*="#banner3_small"] {
+  width: 30%;
 }
