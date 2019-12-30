@@ -103,8 +103,10 @@
                         return false;
                       }
                       var n = window.prompt("What's my nickname (two letters)?", "");
-                      if (n.length != 2 || n[1] != 'o') {
+                      if (n.length != 2 || d[0] != n[0] || d[1] != n[1]) {
                         window.alert("Nope, sorry. Try again.")
+                        e.preventDefault();
+                        return false;
                       }
                       window.location.href = "mai" +
                                              "lto" +
