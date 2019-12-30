@@ -5,7 +5,7 @@ title: Bo Wild - Composer
 ## Tailored for Your Story
 
 ### Music is a Storyteller
-![banner3_big:Bo Wild](/images/thinking.jpg#banner3_small)
+![banner3_small:Bo Wild](/images/thinking.jpg#banner3_small)
 
 Music tells a story. Just like the colors and the images on screen, it sets a mood, just like the body language of the actors, it communicates.
 

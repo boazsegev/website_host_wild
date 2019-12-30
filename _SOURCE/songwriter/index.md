@@ -4,7 +4,7 @@ title: Bo Wild - Composer
 ---
 ## Writing Your Story
 
-![banner3_big:Bo Wild](/images/white_piano.jpg#banner3)
+![banner3:Bo Wild](/images/white_piano.jpg#banner3)
 
 There is something very intimate about writing a song.
 
