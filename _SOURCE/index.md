@@ -13,4 +13,4 @@ The stories we share through music speak to the heart, they bring people togethe
 
 I believe we can increase our capacity for joy and compassion through music.
 
-I’m excited to share my music with you.
+As a [Songwriter](songwriter), [Artist](artist), [Composer](composer), and [Producer](producer), I’m excited to share my music with you.
