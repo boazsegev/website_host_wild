@@ -19,4 +19,4 @@ By visiting and/or viewing and/or listening to this website (website herein: inc
 
 Thank you for your understanding.
 
-&copy; Copyright Boaz Segev (aka. Bo Wild), 2017-2019.
+&copy; Copyright Boaz Segev (aka. Bo Wild), 2017-2020.
