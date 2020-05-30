@@ -30,11 +30,7 @@ This song is dedicated to all the people out there who want to overcome their ow
 
 [**Hunger and Need (a Smile at a Time)** / Me](/media/hunger_and_need.m4a "score: Hunger and Need")
 
-Guitar: [Weijun Yang](https://soundcloud.com/weijun-yang)
-
-Drums: [Taiki Miyazawa](https://taikimiyazawa727.wixsite.com/mysite)
-
-Percussion, Piano, Vocals: Bo Wild
+Lyrics, Composition, Production and Performance: Bo Wild
 
 > **V.1**
 > 
@@ -143,6 +139,8 @@ During our work, I wrote this song inspired by my own story and some of the tech
 
 [**It's Me** / Me](/media/its_me.m4a "score: It's Me")
 
+Lyrics, Composition, Production and Performance: Bo Wild
+
 > **V.1.**
 > 
 > I guess it’s true,
@@ -207,6 +205,8 @@ And the opening of the film Up was one I couldn't easily let go of... and this i
 
 [**Turned Gray** / Me](/media/turned_gray.m4a "score: Turned Gray")
 
+Lyrics, Composition, Production and Performance: Bo Wild
+
 > **V.1.**
 > 
 > Small broken dreams, we left by the stream,
@@ -270,6 +270,11 @@ And the opening of the film Up was one I couldn't easily let go of... and this i
 [Lost Soul](/media/lost_soul.m4a "score: Lost Soul") is one I am quietly in love with. There's a million songs about "_boy meets girl at bar and never sees here again_", but this story is my story, which makes it a bit more personal... at least for me.
 
 [**Lost Soul** / Me](/media/lost_soul.m4a "score: Lost Soul")
+
+**Piano**: [Hinako Sato](https://www.hinakosato.com)
+**Bass**: Yoshihi Yamada
+**Drums**: [Renato Milone](https://www.renatomilone.com)
+Lyrics, Composition, Production and Performance: Bo Wild
 
 > **V.1.**
 > 
@@ -367,6 +372,7 @@ And the opening of the film Up was one I couldn't easily let go of... and this i
 > **Ch.**
 > 
 > She was a lost soul...
+
 
 ##### Morning Sunshine
 
