@@ -1,71 +1,151 @@
 #!/usr/bin/env ruby
 
-# ENV['RACK_ENV'] = 'production'
+# About This Script:
+# =================
+#
+# This is a quilted script torn and patched from a number of different projects I wrote here and there.
+#
+# I wrote this script specifically to handle the GitHub pages environment, so I could post static pages.
+#
+# I wouldn't recommend trying to read the code, it will only give you a headache...
+#
+# ...even I'm not sure what it does or how. I just threw it together to have something that works.
 
-require 'redcarpet'
+require 'date'
 require 'erb'
-require 'slim'
-require 'sass'
-require 'iodine'
 require 'fileutils'
-require 'ostruct'
 require 'yaml'
 require 'set'
+require 'json'
 
-if File.expand_path(File.dirname(__FILE__)).end_with?('_SOURCE')
-  Dir.chdir("#{File.dirname(__FILE__)}/..")
-else
-  Dir.chdir("#{File.dirname(__FILE__)}")
-end
+# Gems and stuff we use in this script
+require 'redcarpet'
+require 'slim'
+require 'sassc'
+require 'iodine'
+require 'rouge'
+require 'rouge/plugins/redcarpet'
 
-SOURCE_ROOT = '_SOURCE'
-STATIC_ROOT = '.'
+# The folder for source files
+SOURCE_ROOT = File.dirname(__FILE__)
+# The output folder for the static site
+STATIC_ROOT = File.join(File.dirname(__FILE__), "..")
+# File / folder names to be excluded from the script
+EXCLUDE = [File.basename(__FILE__), "layout.html.slim", "layout.erb", "Gemfile", "layouts"]
+# Constants for Rack and HTTP headers for Iodine's X-Sendfile support
 PATH_INFO = 'PATH_INFO'.freeze
 X_SENDFILE = 'X-Sendfile'.freeze
+# Default Layout for pages
+DEFAULT_LAYOUT = "layouts/layout.erb" # "layouts/layout.html.slim"
+DEFAULT_SIDEBAR = nil
+# By default, produce Table Oof Contents?
+TOC_IS_DEFAULT = false
+# # We don't need this, but we might
+# unless File.directory?(STATIC_ROOT)
+#   Dir.mkdir(STATIC_ROOT, 0777)
+# end
 
+# # A README.md file that will be placed in the static site's folder
+# README = <<EOS
+# EOS
+# IO.binwrite(File.join(STATIC_ROOT, "README.md"), README)
+
+# Schema Description for the layout template
+SCHEMA_ABOUT = "Bo Wild - Songwriter, Composer and Music Procuder.".freeze
+
+# Schema JSON for the layout template
+SCHEMA_AUTHOR = {
+  '@type' => 'Person',
+  name: 'Bo Wild (Boaz Segev)',
+  url: 'http://bowild.com',
+  email: 'bo(at)bowild.com'
+}
+
+# Schema JSON for the layout template
+SCHEMA_ORG = {
+  '@context' => 'http://schema.org',
+  '@type' => 'WebSite',
+  url: 'http://bowild.com',
+  name: 'Bo Wild',
+  description: SCHEMA_ABOUT,
+  keywords: 'music, songwriting, songwriter, composition, composer, music production, production, producer, music producer, boaz, segev, bo, wild',
+  image: 'http://facil.io/website/logo/facil-io.svg',
+  # potentialAction: {
+  #     "@type" => "SearchAction",
+  #     target: "http://example.com/search?&q={query}",
+  #     "query-input" => "required",
+  #   },
+  author: [ SCHEMA_AUTHOR ],
+  sourceOrganization: {
+    '@context' => 'http://schema.org',
+    '@type' => 'Organization',
+    name: 'Bo Wild',
+    url: 'http://bowild.com',
+    description: SCHEMA_ABOUT,
+    # logo: 'http://facil.io/website/logo/facil-io.svg',
+    image: 'http://bowild.com/images/welcome_back.jpg',
+    email: 'bo(at)bowild.com',
+    member: [ SCHEMA_AUTHOR ]
+  }
+}.to_json
+
+
+
+# The Rack application - this is where things get messy.
+#
+# This module does it all - it "bakes" pages into static pages as well as allows Rack to serve the updated version.
+#
+# In production mode (which we don't really use), the static pages will be served directly once they were baked (no live updates).
 module APP
 
+  # for the sitemap data
+  @sitemap = {}.to_set
+  # This HashMap will map file extensions to a Proc that will render the file
   @extensions = {}
+  # File extensions that might require a page to be rendered (unlike jpeg, which is passed through)
   @bakers = %w{.css .html .js}.to_set
 
-  class Wrapper
-    attr_accessor :page
-    def initialize vars, &block
-      @page = OpenStruct.new(vars)
-      @block = block
-    end
-    def binding &block
-      super
-    end
-    def yield
-      @block.call if(@block)
-    end
-  end
 
+  # Converts templates to static pages and saves the pages to the static location.
   def self.bake_all
-    @extensions.keys.each do |k|
-      Dir[File.join SOURCE_ROOT, '**', "*#{k}"].each do |pt|
+    @sitemap.clear
+    # test each file in the SOURCE_ROOT folder and sub-folders. Should it be rendered or copied to the STATIC_ROOT tree?
+    Dir[File.join SOURCE_ROOT, '**', "*"].each do |pt|
+      file_basename = File.basename(pt)
+      file_extension = File.extname(pt)
+      # stuff we skip
+      next if file_basename.start_with?('_') || EXCLUDE.include?(file_basename) || File.directory?(pt) # || File.expand_path(pt) == File.expand_path(__FILE__)
+      if(@extensions[file_extension])
+        # should be rendered - route to application rendering path
         begin
-          env = {PATH_INFO => pt[SOURCE_ROOT.length..(-1-k.length)]}
-          APP.call(env)
-          puts "INFO: pre-baked: #{env[PATH_INFO]}"
+          url_path = pt[SOURCE_ROOT.length..(-1-file_extension.length)]
+          env = {PATH_INFO => url_path}
+          APP.call(env) # will create the file (in production, file is onnly created if missing)
+          puts "INFO: pre-baked: #{url_path}"
+          @sitemap << url_path
         rescue => e
           puts "WARN: couldn't pre-bake #{pt}: #{e.message}"
+          raise e
+        end
+      else
+        # should be copied
+        begin
+          target = pt[SOURCE_ROOT.length..-1]
+          save2static target, IO.binread(pt)
+          puts "INFO: copied #{target}"
+          # @sitemap << target
+        rescue => e
+          puts "WARN: copy failed at #{pt}: #{e.message}"
         end
       end
     end
-    Dir[File.join SOURCE_ROOT, '**', "*"].each do |pt|
-      unless @extensions[File.extname(pt)] || File.directory?(pt)
-        target = pt[SOURCE_ROOT.length..-1]
-        bake target, IO.binread(pt)
-        puts "INFO: copied #{pt} to #{target}"
-      end
-    end
   end
 
+# define different Rack application methods, depending on the environment.
 if ENV['RACK_ENV'] == 'production'
+  # No live updates mean that this shouldn't have been called (maybe except to result in 404 errors)
   def self.call env
-    puts "WARN: render was requested for #{env[PATH_INFO]}" unless env.keys.length == 1
+    puts "WARN: render was requested for #{env[PATH_INFO]}" unless env.count == 1
     if (File.directory?( "#{STATIC_ROOT}#{env[PATH_INFO]}"))
       if (env[PATH_INFO][-1] == '/')
         env[PATH_INFO] << 'index.html'.freeze
@@ -74,112 +154,212 @@ if ENV['RACK_ENV'] == 'production'
       end
     end
     env[PATH_INFO] << ".html" if(File.extname(env[PATH_INFO]) == "")
+    # use iodine's X-Sendfile support
     [200, {X_SENDFILE => "#{STATIC_ROOT}#{env[PATH_INFO]}"}, ["".freeze]]
   end
 else
+  # Live update file on disk and send with X-Sendfile
   def self.call env
-    if (File.directory?( "#{STATIC_ROOT}#{env[PATH_INFO]}"))
-      if (env[PATH_INFO][-1] == '/')
+    original_path = env[PATH_INFO]
+    env[PATH_INFO] = File.join(SOURCE_ROOT, original_path).to_s
+    if (File.directory?(env[PATH_INFO]))
+      if (original_path[-1] == '/')
+        original_path << 'index.html'.freeze
         env[PATH_INFO] << 'index.html'.freeze
       else
+        original_path << '/index.html'.freeze
         env[PATH_INFO] << '/index.html'.freeze
       end
     end
-    env[PATH_INFO] << ".html" if(File.extname(env[PATH_INFO]) == "".freeze)
+    if(File.extname(original_path) == "".freeze)
+      original_path << ".html"
+      env[PATH_INFO] << ".html"
+    end
     data = render(env[PATH_INFO]) if(@bakers.include?(File.extname(env[PATH_INFO])))
-    [200, {X_SENDFILE => "#{STATIC_ROOT}#{env[PATH_INFO]}"}, [data]]
+    # use iodine's X-Sendfile support to send file from disk
+    puts "SENDFILE: #{STATIC_ROOT}#{original_path}"
+    [200, {X_SENDFILE => "#{STATIC_ROOT}#{original_path}"}, [data]]
   end
 
 end
 
-  def self.render path
-    name = File.join(SOURCE_ROOT, path).to_s
-    base = name[0..(-1-(File.extname(path).length))]
+  # Render a template / resource
+  def self.render name
+    puts "attempting #{name}"
+    base = name[0..(-1-(File.extname(name).length))]
     data = nil
     @extensions.keys.each { |k| data = try_name(name, k) || try_name(base, k); break if data }
-    bake path, data if data
+    save2static name, data if data
   end
 
+  # Attempt rendering for a specific extension
   def self.try_name name, ext
     name = "#{name}#{ext}"
     return nil unless File.exist?(name)
     @extensions[ext].call(name)
   end
 
-  def self.bake path, data
+  # Save a (rendered) result
+  def self.save2static path, data
     return unless data
-    path = "#{STATIC_ROOT}#{path}"
+    path = "#{STATIC_ROOT}/#{path.gsub /^#{SOURCE_ROOT}\//, ''}"
     FileUtils.mkpath File.dirname(path)
     IO.binwrite path, data
     data
-  end
-
-  # simple markdown rendering
-  YAML_FRONT_MATTER_REGEXP = /\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)/m.freeze
-  MD_EXTENSIONS = { with_toc_data: true, strikethrough: true, autolink: true, fenced_code_blocks: true, no_intra_emphasis: true, tables: true, footnotes: true, underline: true, highlight: true }.freeze
-  MD_RENDERER = ::Redcarpet::Markdown.new ::Redcarpet::Render::HTML.new(MD_EXTENSIONS.dup), MD_EXTENSIONS.dup
-  SAFE_TYPES = [Symbol, Date, Time, Encoding, Struct, Regexp, Range, Set].freeze
-  @extensions['.md'] = proc do |name|
-    data = IO.binread(name)
-    vars = {}
-    front = data.match YAML_FRONT_MATTER_REGEXP
-    if(front)
-      vars = YAML.safe_load(front[1], SAFE_TYPES)
-      data = front.post_match
-    end
-    context = Wrapper.new(vars).binding
-    start = nil
-    fin = nil
-    while ((start = data.index "{{"))
-      fin = data[(start+2)..-1]
-      data = data[0..start] + context.eval(fin[0..((fin.index("}}") || -3) + 2)]) + fin[((fin.index("}}") || -3) + 2)..-1]
-    end
-    data = MD_RENDERER.render(data)
-    layout = File.join(SOURCE_ROOT, vars['layout']).to_s
-    if(vars['layout'] && File.exist?(layout) && @extensions[File.extname(layout)])
-      block = proc { data }
-      @extensions[File.extname(layout)].call(layout, vars, block)
-    else
-      data
-    end
   end
 
   # slim rendering (support variables and code blocks)
   @extensions['.slim'] = proc do |name, vars, block|
     engine = (Slim::Template.new { IO.binread(name).force_encoding(::Encoding::UTF_8) })
     if(block)
-      engine.render(Wrapper.new(vars || {}), &block)
+      engine.render((vars || {}), &block)
     else
-      engine.render(Wrapper.new(vars || {}))
+      engine.render((vars || {}))
     end
   end
 
-  SASS_OPTIONS = { cache_store: Sass::CacheStores::Memory.new, style: (ENV['SASS_STYLE'] || ((ENV['ENV'] || ENV['RACK_ENV']) == 'production' ? :compressed : :nested)) }.dup
+  # Common SASS options
+  SASS_OPTIONS = {load_paths: [SOURCE_ROOT], source_map_file: nil, filename: nil, style: (ENV['SASS_STYLE'] || ((ENV['ENV'] || ENV['RACK_ENV']) == 'production' ? :compressed : :nested)) }.dup
 
+  # SASS rendering
   @extensions['.scss'] = @extensions['.sass'] = proc do |name|
-    eng = Sass::Engine.for_file(name, SASS_OPTIONS)
-    map_name = name.gsub /s[ac]ss$/, 'map'
-    map_name.gsub! /^#{SOURCE_ROOT}/, ''
-    css, map = eng.render_with_sourcemap(File.basename(map_name))
-    bake map_name, map.to_json(css_uri: File.basename(name))
+    opt = SASS_OPTIONS.dup
+    opt[:filename] = name.gsub /^#{SOURCE_ROOT}\//, ''
+    opt[:load_paths] = opt[:load_paths].dup
+    opt[:load_paths] << File.dirname(name)
+    opt[:source_map_file] = opt[:filename].gsub(/s[ac]ss$/, 'map')
+    # opt[:source_map_file] = map_name.gsub /^#{SOURCE_ROOT}/, ''
+    eng = SassC::Engine.new(IO.binread(name), opt)
+    css = eng.render()
+    map = eng.source_map()
+    save2static name.gsub(/s[ac]ss$/, 'map'), map
     css
   end
 
-  # slim rendering (support variables and code blocks)
+  # mustache rendering (supports variables and a single code blocks - but no embedded code)
+  @extensions['.mustache'] = proc do |name, vars, block|
+    vars ||= {}
+    vars[:yield] = block if(block)
+    Iodine::Mustache.render(name, vars)
+  end
+
+  # supports bindings in erb rendering (support variables and code blocks)
+  class Wrapper
+    attr_accessor :page, :block
+    def initialize vars, &block
+      @page = OpenStruct.new(vars)
+      @block = block
+    end
+    def binding &block
+      @block = block
+      super
+    end
+    def yield
+      if(@block)
+        @block.call
+      else
+        warn "WARNING: yield called without a block"
+      end
+    end
+  end
+
+  # erb rendering (support variables and code blocks)
   @extensions['.erb'] = proc do |name, vars, block|
+    ctx = Wrapper.new(vars, &block)
     engine = ::ERB.new(IO.binread(name).force_encoding(::Encoding::UTF_8))
-    engine.result(Wrapper.new((vars || {}), &block).binding(&block), &block)
+    if(block)
+      engine.result(ctx.binding(&block), &block)
+    else
+      engine.result
+    end
+  end
+
+  # The rest of the code in this module is the Markdown rendering code,
+  # which gets more complicated to allow for mustache, fron-matter and layout options.
+
+  MD_EXTENSIONS = { with_toc_data: true, strikethrough: true, autolink: true, fenced_code_blocks: true, no_intra_emphasis: true, tables: true, footnotes: true, underline: true, highlight: true }.freeze
+  class RedcarpetWithRouge < ::Redcarpet::Render::HTML
+    include Rouge::Plugins::Redcarpet
+    def block_code(code, language)
+      language ||= 'c'
+      super
+    end
+  end
+  MD_RENDERER = ::Redcarpet::Markdown.new RedcarpetWithRouge.new(MD_EXTENSIONS.dup), MD_EXTENSIONS.dup
+  MD_RENDERER_TOC = Redcarpet::Markdown.new Redcarpet::Render::HTML_TOC.new(MD_EXTENSIONS.dup), MD_EXTENSIONS.dup
+  YAML_FRONT_MATTER_REGEXP = /\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)/m.freeze
+  SAFE_TYPES = [Symbol, ::Date, ::Time, ::DateTime, Encoding, Struct, Regexp, Range, Set].freeze
+
+  @extensions['.md'] = proc do |name|
+    # read file
+    data = IO.binread(name)
+
+    # collect YAML front-matter
+    vars = {}
+    front = data.match YAML_FRONT_MATTER_REGEXP
+    if(front)
+      vars = YAML.safe_load(front[1], SAFE_TYPES) || {}
+      data = front.post_match
+    end
+
+    # some sane defaults, even if there's no front matter
+    unless File.basename(name).start_with?('_')
+      vars['layout'] ||= DEFAULT_LAYOUT
+      vars['sidebar'] ||= DEFAULT_SIDEBAR
+      vars['toc'] = TOC_IS_DEFAULT if vars['toc'].nil?
+    end
+
+    # try mustache template rendering before rendering the Markdown
+    begin
+      data = Iodine::Mustache.render(name, vars, data)
+    rescue Exception => e
+      puts "mustache error: #{name}"
+      p vars
+      raise e
+    end
+
+    # Render the markdown
+    if(vars['toc'])
+      data = "<div class='toc'>#{MD_RENDERER_TOC.render(data)}</div>#{MD_RENDERER.render(data)}"
+    else
+      data = MD_RENDERER.render(data)
+    end
+
+    # Attach any side-bar / layout required
+    layout = File.join(SOURCE_ROOT, vars['layout'].to_s).to_s
+    if(vars['layout'] && File.exist?(layout) && @extensions[File.extname(layout)])
+      # render sidebar to a String
+      sidebar = File.join(SOURCE_ROOT, vars['sidebar'].to_s).to_s
+      if(vars['sidebar'] && File.exist?(sidebar) && @extensions[File.extname(sidebar)])
+        vars['sidebar'] = @extensions[File.extname(sidebar)].call(sidebar)
+      elsif vars['sidebar']
+          puts "can't find #{vars['sidebar']} (extension #{File.extname(sidebar)})?"
+      end
+      # Return the layout with the data
+      block = proc { data }
+      @extensions[File.extname(layout)].call(layout, vars, block)
+    else
+      # Return the data as is (no layout)
+      data
+    end
   end
 
 end
 
+# Copy the updated CHANGELOG.md file to the source folder
+FileUtils.cp(File.join(STATIC_ROOT, '..', 'CHANGELOG.md'), File.join(SOURCE_ROOT, 'changelog.md')) rescue nil
+# "Bake" the templates and copy the data
 APP.bake_all
+# Remove the changelog from the source folder
+FileUtils.rm(File.join(SOURCE_ROOT, 'changelog.md')) rescue nil
 
+
+# Setup iodine to serve static files and to run the Rack application `APP`
 Iodine.listen service: :http, handler: APP, log: true, public: ((ENV['RACK_ENV'] == 'production') ? STATIC_ROOT : SOURCE_ROOT)
-
+# If no threads / processes were setup, use half the cores for multi-threading and a single process
 if(Iodine.threads == 0 && Iodine.workers == 0)
   Iodine.threads =-2;
   Iodine.workers =1;
 end
-_did_run = nil
-at_exit { Iodine.start unless _did_run }
+# Start up the server
+Iodine.start
