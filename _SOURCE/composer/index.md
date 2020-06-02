@@ -41,6 +41,16 @@ And this commercial just screamed to me "big bang", where music emerges from cha
 
 <p> </p>
 
+##### Westworld (HBO) Competition
+
+HBO make amazing TV shows and Spitfire Audio makes amazing virtual instruments for composers. Together they teamed up and came up with an amazing composition competition.
+
+I really had fun trying out new ideas for this competition and scored this cue in two very different - it really changes in the middle in a way that was both challenging and fun. I hope you enjoy it. 
+
+<div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/Wi29OWe8piY" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+
+<p> </p>
+
 ##### Rebook
 
 I found this commercial a bit of a challenge. I wanted the sounds to be organic, but fresh and young, like running shoes - they are a technology that let's us go running in nature.
