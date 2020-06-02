@@ -46,9 +46,14 @@ TOC_IS_DEFAULT = false
 # end
 
 # # A README.md file that will be placed in the static site's folder
-# README = <<EOS
-# EOS
-# IO.binwrite(File.join(STATIC_ROOT, "README.md"), README)
+README = <<EOS
+# Bo Wild Website repo
+
+This repo is used to publish the [bowild.com](https://bowild.com) website. It is governed by the same terms and conditions (and license) as the website.
+
+Thank you.
+EOS
+IO.binwrite(File.join(STATIC_ROOT, "README.md"), README)
 
 # Schema Description for the layout template
 SCHEMA_ABOUT = "Bo Wild - Songwriter, Composer and Music Procuder.".freeze
