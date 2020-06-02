@@ -197,6 +197,123 @@ Lyrics, Composition, Production and Performance: Bo Wild
 > 
 > The day you'll know, it's me. 
 
+##### I Close my Eyes (broken on the floor)
+
+It so hard for me to give up on relationships.
+
+I know, in my __head__, that sometimes it just doesn't fit... but in my __heart__, it's so hard to let go.
+
+[**I Close my Eyes (broken on the floor)** / Me (demo)](/media/i_close_my_eyes_demo.m4a)
+
+> **V.1**
+>
+> Sweet, sweat on cotton sheets
+>
+> I lost my heart in winter storms
+>
+> Outside snow, inside we felt the heat
+>
+> Now it's broken on the floor
+>
+> **V.2**
+>
+> Scrambled eggs and little lies
+>
+> Monday mornings in the spring
+>
+> Stolen flowers you kissed along the way
+>
+> Left us broken on the floor
+>
+> Broken on the floor
+>
+> **Ch.**
+>
+> I close my eyes
+>
+> Don't wanna see no lies
+>
+> They keep me here, still holding on
+>
+> I close my eyes
+>
+> (and) Watch as our love dies
+>
+> I know it's time to let it go
+>
+> Should let it go
+>
+> **V.3**
+>
+> Desperate heat through summer nights
+>
+> On repeat we'd kiss and fight
+>
+> I should have gone but hope still held me tight
+>
+> Now it's broken on the floor
+>
+> Broken on the floor
+>
+> **Ch.**
+>
+> I close my eyes
+>
+> Don't wanna see no lies
+>
+> They keep me here, still holding on
+>
+> I close my eyes
+>
+> (and) Watch as our love dies
+>
+> I know it's time to let it go
+>
+> Should let it go
+>
+> **Br.**
+>
+> No this was never meant to last
+>
+> Still I gave it all I got
+>
+> God, this love of mine
+>
+> I wish we had more time
+>
+> **Ch.**
+>
+> I close my eyes
+>
+> Don't wanna see no lies
+>
+> They keep me here, still holding on
+>
+> I close my eyes
+>
+> (and) Watch as our love dies
+>
+> I know it's time to let it go
+>
+> Should let it go
+>
+> **Ch.Alt.**
+>
+> I close my eyes
+>
+> Cut away these ties
+>
+> Admit what our heart already know
+>
+> I close my eyes
+>
+> (and) Whisper my goodbyes
+>
+> I’m brave enough to let it go
+>
+> I let it go
+>
+
 ##### Turned Gray
 
 I love animation movies, like Finding Nemo and Toy Story. I don't know what it is, but somehow the adult in me is torn be these little stories.
