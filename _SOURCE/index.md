@@ -7,10 +7,8 @@ layout: layouts/layout.erb
 
 ![banner3:Bo Wild](/images/can_you_hear_me.jpg)
 
-Music is the language of our souls.
-
 The stories we share through music speak to the heart, they bring people together and fill us with compassion, happiness and joy.
 
-I believe we can increase our capacity for joy and compassion through music.
+I believe we all have our own unique voice, that we have an inner truth that we yearn to express and it is unique to who we are.
 
 As a [Songwriter](songwriter), [Artist](artist), [Composer](composer), and [Producer](producer), I’m excited to share my music with you.

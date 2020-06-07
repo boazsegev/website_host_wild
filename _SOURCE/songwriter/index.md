@@ -1,10 +1,14 @@
 ---
 layout: /layouts/layout.erb
-title: Bo Wild - Composer
+title: Bo Wild - Songwriter
 ---
-## Writing Your Story
+## Honoring Your Truth
 
 ![banner3:Bo Wild](/images/white_piano.jpg#banner3)
+
+I believe we all have our own unique voice, that we have an inner truth that we yearn to express and it is unique to who we are.
+
+## Focusing Your Expression
 
 There is something very intimate about writing a song.
 
@@ -12,7 +16,7 @@ I was lucky and privileged enough to spend a few years learning with amazing tea
 
 I am thrilled to be the humble vessel through which their knowledge and tools can be shared during our time together.
 
-These amazing ideas and tools offer a wonderful opportunity to improve your lyrics and melody and to help the telling of your story.
+These amazing ideas and tools offer a wonderful opportunity to focus your lyrics and melody and to help the telling of your story.
 
 I will never force my opinions - after all, **I'm here to serve your vision**. However, I am very happy to share these tools with you.
 

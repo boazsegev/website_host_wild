@@ -1,8 +1,14 @@
 ---
 layout: /layouts/layout.erb
-title: Bo Wild - Composer
+title: Bo Wild - Producer
 ---
-# Find Your Sound
+## Your Style
+
+I believe we all have our own unique voice and style, our own unique expression.
+
+Let's find yours.
+
+## Your Sound
 
 Music production is half science and half art. Also, from my experience, there's always a little dance we do at the beginning as we get to know each other and I learn more about your voice and your vision.
 
@@ -10,13 +16,13 @@ I was lucky enough to have amazing teachers to help me discover both the science
 
 However, my greatest teacher will be you. As we explore your voice and discover the sound you want, we will embark on a journey together where we both learn more about how we are and how we've grown.
 
-## The Artist You Are Becoming
+## You Journey
 
 My hope is that the song we produce together will be a song that expresses your growth as a musician and an artist.
 
 I don't want to repeat what you did for your last album, I want to help you take your next step in your journey in a way that is authentic and true to your own voice.
 
-## The Roots of Your Journey
+## Your Roots
 
 Before we can start exploring your next step as an artist, I will need to learn more about the artist you are, your inspirations, the music of your youth, your past albums and favorite songs.
 
