@@ -8,11 +8,13 @@ _background: /images/recital.jpg
 ### Music is Love
 ![banner3_big:Bo Wild](/images/welcome_back.jpg#banner3_big)
 
-As a singer / songwriter my music focuses on stories.
+Now a Singer/Songwriter and producer, I was a scuba diving instructor, a lawyer, a tantric, a soldier and a Buddhist. I traveled all the continents except the warmest (Africa) and the coldest (Antarctica)... **Music is my home**.
 
-Influenced by The Beatles, the Blues, and American Country music, my style is easy to listen to and relaxed.
+Through it all there was one thing I learned - **when we follow our inner voice, when we listen closely to the whispering of our hearts, we increase our capacity for compassion, happiness and a meaningful life**.
 
-Here are examples from songs I might sing:
+I believe musical expression can bring our innermost truths to light.
+
+Here are examples of my work:
 
 *  [Hunger and Need (original)](/media/hunger_and_need.m4a "play: Hunger and Need")
 *  [Silver Dreams (original, solo)](/media/silver_dreams.m4a "play: Silver Dreams")
