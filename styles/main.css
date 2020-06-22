@@ -291,7 +291,28 @@
     table tr, table td, table th {
       border-collapse: collapse;
       border: 1px rgba(128, 128, 128, 0.9) solid;
-      padding: 0.1em 1em; } }
+      padding: 0.1em 1em; }
+  img {
+    border-radius: 20px; }
+  .banner1, img[src*="#banner1"] {
+    box-sizing: border-box;
+    width: 100%; }
+  .banner2, img[src*="#banner2"] {
+    box-sizing: border-box;
+    width: 60%;
+    float: left;
+    clear: left;
+    margin-right: 1.25em; }
+  .banner3, .banner3_big, img[src*="#banner3"], img[src*="#banner3_big"], .banner3_small, img[src*="#banner3_small"] {
+    box-sizing: border-box;
+    margin-left: 0.5em;
+    width: 40%;
+    float: right;
+    clear: right; }
+  .banner3_big, img[src*="#banner3_big"] {
+    width: 60%; }
+  .banner3_small, img[src*="#banner3_small"] {
+    width: 30%; } }
 
 @media only screen and (max-width: 768px) {
   #top h1 {
@@ -379,7 +400,18 @@
       width: 100%; }
   #burger:checked + svg + ul {
     opacity: 1;
-    transform: scaleY(1); } }
+    transform: scaleY(1); }
+  img {
+    border-radius: 20px; }
+  .banner1, img[src*="#banner1"],
+  .banner2, img[src*="#banner2"],
+  .banner3, img[src*="#banner3"],
+  .banner3_big, img[src*="#banner3_big"],
+  .banner3_small, img[src*="#banner3_small"] {
+    box-sizing: border-box;
+    float: none;
+    width: 100%;
+    margin: 0.5em; } }
 
 @media print {
   html {
@@ -411,33 +443,6 @@
       padding: 0.1em 1em; }
   img {
     border: 1px solid #fff; } }
-
-img {
-  border-radius: 20px; }
-
-.banner1, img[src*="#banner1"] {
-  box-sizing: border-box;
-  width: 100%; }
-
-.banner2, img[src*="#banner2"] {
-  box-sizing: border-box;
-  width: 60%;
-  float: left;
-  clear: left;
-  margin-right: 1.25em; }
-
-.banner3, .banner3_big, img[src*="#banner3"], img[src*="#banner3_big"], .banner3_small, img[src*="#banner3_small"] {
-  box-sizing: border-box;
-  margin-left: 0.5em;
-  width: 40%;
-  float: right;
-  clear: right; }
-
-.banner3_big, img[src*="#banner3_big"] {
-  width: 60%; }
-
-.banner3_small, img[src*="#banner3_small"] {
-  width: 30%; }
 
 .p4video {
   text-align: center;
