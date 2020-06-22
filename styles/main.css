@@ -51,7 +51,8 @@
       font-size: 0.4em;
       position: absolute;
       top: 0.5em;
-      right: 1em; }
+      right: 1em;
+      text-align: right; }
   #bottom {
     width: 100%;
     position: fixed;
@@ -171,6 +172,7 @@
     list-style-position: inside;
     display: list-item;
     cursor: pointer;
+    padding: 0.2em 0;
     border-radius: 0.4em; }
     h5.showing {
       list-style-type: disc;
@@ -185,6 +187,7 @@
     background-color: rgba(200, 200, 200, 0.1);
     border-radius: 0.4em;
     border: 1px solid #aaa;
+    border-top: none;
     padding: 0.5em; }
   .hide {
     max-height: 0;
@@ -279,7 +282,7 @@
       position: relative; }
       #menu a:hover, #menu a:active {
         background: rgba(128, 128, 128, 0.9); }
-  #burger {
+  input.burger, input.burger + svg {
     display: none; }
   table {
     width: 100%;
@@ -292,57 +295,62 @@
 
 @media only screen and (max-width: 768px) {
   #top h1 {
-    text-align: right;
-    font-size: 1.8em;
+    font-size: 2em;
     vertical-align: middle;
     line-height: 2em;
-    padding: 0 0.2em 0 0; }
+    padding: 0 0.2em 0 0.1em; }
   #top p {
     font-size: 0.25em; }
-  #burger {
+  input.burger {
     display: block;
+    width: 0em;
+    height: 0em;
     position: absolute;
-    font-size: 2em;
-    top: 1.5em;
-    left: 0.2em;
-    overflow: visible;
-    transform: translateX(-999999px);
-    z-index: 900; }
-    #burger:before, #burger:after {
-      transform: translateX(999999px) rotateX(0deg);
-      content: " ";
-      font-size: 1em;
-      display: block;
-      box-sizing: border-box;
-      padding: 0;
-      margin: 0;
-      width: 2em;
-      height: 2em;
-      position: absolute;
-      left: 0;
-      top: 0;
-      border-radius: 1em;
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      -webkit-transition: transform 0.75s ease, opacity 0.3s ease, background-color 0.3s ease;
-      -moz-transition: transform 0.75s ease, opacity 0.3s ease, background-color 0.3s ease;
-      -o-transition: transform 0.75s ease, opacity 0.3s ease, background-color 0.3s ease;
-      transition: transform 0.75s ease, opacity 0.3s ease, background-color 0.1s ease; }
-    #burger:before {
-      background-color: rgba(192, 192, 192, 0.3);
-      z-index: +1; }
-    #burger:after {
-      background-image: url(/images/menu.svg);
-      z-index: +2; }
-    #burger:checked:before {
-      background-color: rgba(192, 192, 192, 0.4); }
-    #burger:checked:after {
-      transform: translateX(999999px) rotateX(540deg); }
+    transform: translate(-999999px); }
+  input.burger + svg + ul,
+  input.burger + ul {
+    transform: translateX(100%); }
+  input.burger.left + svg + ul,
+  input.burger.left + ul {
+    transform: translateX(-100%); }
+  input.burger:checked + svg + nav,
+  input.burger:checked + nav {
+    transform: translateX(0); }
+  input.burger + svg {
+    width: 2.5em;
+    height: 2.5em;
+    display: block;
+    border-radius: 10%;
+    position: absolute;
+    z-index: 999; }
+  input.burger + svg .line1,
+  input.burger + svg .line2,
+  input.burger + svg .line3,
+  input.burger + svg .line4 {
+    transition: 0.25s;
+    stroke: #7878ff;
+    stroke-width: 20%;
+    stroke-linecap: round;
+    transform-origin: center center; }
+  input.burger:checked + svg .line1 {
+    stroke: #c83c3c;
+    transform-origin: 5% 35%;
+    transform: translate(-3%, 0%) rotate(45deg) scale(1); }
+  input.burger:checked + svg .line2,
+  input.burger:checked + svg .line3,
+  input.burger.left:checked + svg .line2,
+  input.burger.left:checked + svg .line3 {
+    stroke: #c83c3c;
+    transform-origin: 50% 50%;
+    transform: translate(0%, 0%) rotate(-45deg) scale(0.1); }
+  input.burger:checked + svg .line4 {
+    stroke: #c83c3c;
+    transform-origin: 5% 70%;
+    transform: translate(-1.5%, -3%) rotate(-45deg) scale(1); }
   #menu {
     padding: 0;
     background-color: inherit; }
-  #burger + ul {
+  #burger + svg + ul {
     padding: 0;
     opacity: 0;
     overflow-y: visible;
@@ -352,24 +360,24 @@
     transition: opacity 0.4s, transform 0.3s;
     width: 100%;
     box-sizing: border-box; }
-    #burger + ul li {
+    #burger + svg + ul li {
       display: block;
       width: 100%;
       box-sizing: border-box; }
-    #burger + ul ul {
+    #burger + svg + ul ul {
       height: auto;
       border-bottom: rgba(128, 128, 128, 0.4) solid 1px;
       border-top: rgba(128, 128, 128, 0.6) solid 1px; }
-      #burger + ul ul li {
+      #burger + svg + ul ul li {
         opacity: 1;
         border-radius: 0; }
-        #burger + ul ul li:first-child {
+        #burger + svg + ul ul li:first-child {
           background: rgba(0, 0, 0, 0.7); }
-        #burger + ul ul li:last-child {
+        #burger + svg + ul ul li:last-child {
           border-radius: 0; }
-    #burger + ul a {
+    #burger + svg + ul a {
       width: 100%; }
-  #burger:checked + ul {
+  #burger:checked + svg + ul {
     opacity: 1;
     transform: scaleY(1); } }
 
@@ -430,5 +438,20 @@ img {
 
 .banner3_small, img[src*="#banner3_small"] {
   width: 30%; }
+
+.p4video {
+  text-align: center;
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden; }
+
+.p4video iframe, .p4video embed, .p4video object {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
 
 /*# sourceMappingURL=main.css.map */

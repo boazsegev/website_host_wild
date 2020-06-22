@@ -67,6 +67,7 @@
       position: absolute;
       top:0.5em;
       right: 1em;
+      text-align: right;
     }
   }
 
@@ -213,6 +214,7 @@
     list-style-position: inside;
     display: list-item;
     cursor: pointer;
+    padding: 0.2em 0;
     border-radius: 0.4em;
     &.showing {
       list-style-type: disc;
@@ -231,6 +233,7 @@
     background-color: rgba(200, 200, 200, 0.1);
     border-radius: 0.4em;
     border: 1px solid #aaa;
+    border-top: none;
     padding: 0.5em;
   }
 
@@ -354,10 +357,9 @@
     }
   }
 
-  #burger {
+input.burger, input.burger+svg {
     display: none;
   }
-
 
   table {
     width: 100%;

@@ -39,7 +39,7 @@ I love drums and rhythm... there's something raw and powerful.
 
 And this commercial just screamed to me "big bang", where music emerges from chaos.
 
-<div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/fe_fmv08qNs?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+<p class="p4video"><iframe src="https://www.youtube-nocookie.com/embed/fe_fmv08qNs?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></p>
 
 <p> </p>
 
@@ -49,7 +49,7 @@ HBO make amazing TV shows and Spitfire Audio makes amazing virtual instruments f
 
 I really had fun trying out new ideas for this competition and scored this cue in two very different - it really changes in the middle in a way that was both challenging and fun. I hope you enjoy it. 
 
-<div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/Wi29OWe8piY" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+<p class="p4video"><iframe src="https://www.youtube-nocookie.com/embed/Wi29OWe8piY" frameborder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></p>
 
 <p> </p>
 
@@ -59,7 +59,7 @@ I found this commercial a bit of a challenge. I wanted the sounds to be organic,
 
 Eventually I think I managed to find a balance between the digital and nature, using both orchestral and synth sounds. An interesting mix.
 
-<div style="text-align: center"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/MKI2EKgV8n0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+<p class="p4video"><iframe src="https://www.youtube-nocookie.com/embed/MKI2EKgV8n0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></p>
 
 <p> </p>
 
@@ -71,7 +71,7 @@ Even without sound, the sweetness of heroic dreams and the innocence of youth we
 
 I decided on a balance between a bit of humor and a touch of drama to bring the heroic and playful puppy dreams to life, which brought me up to orchestral sounds and a sprinkle of corny voicings in fourths.
 
-<div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/2CA8BR_boqo?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+<p class="p4video"><iframe src="https://www.youtube-nocookie.com/embed/2CA8BR_boqo?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></p>
 
 <p> </p>
 
@@ -83,7 +83,7 @@ So when I saw this old Cheetos commercial, I has to give a shot at scoring it.
 
 Sadly, this one has no sound design. I was focused on learning the Jazzy sound and wasn't too concerned about the polish.
 
-<div style="text-align: center"><iframe width="560" height="316" src="https://www.youtube-nocookie.com/embed/sa4cFCnTn2c?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+<p class="p4video"><iframe src="https://www.youtube-nocookie.com/embed/sa4cFCnTn2c?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></p>
 
 <p> </p>
 
@@ -93,7 +93,7 @@ This hilarious commercial was re-scored as a school assignment. I ended up writi
 
 After the first time, feel free to follow along with [the score](/media/together.pdf) if you like.
 
-<div style="text-align: center"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OWtjESI2RsM?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></div>
+<p class="p4video"><iframe src="https://www.youtube-nocookie.com/embed/OWtjESI2RsM?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style='display: inline-block; margin: 0.4em;'></iframe></p>
 
 <p> </p>
 

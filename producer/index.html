@@ -91,7 +91,7 @@
                     l[i].parentNode.insertBefore(document.createTextNode(" "), l[i].nextSibling);
                     l[i].parentNode.insertBefore(score, l[i].nextSibling);
                     l[i].parentNode.insertBefore(document.createTextNode(" "), l[i].nextSibling);
-                } else if (l[i].title.startsWith("contct")) {
+                } else if (l[i].title.startsWith("email_contact")) {
                     l[i].title = "send email";
                     l[i].onclick = function(e) {
                       var d = window.location.hostname;
@@ -181,28 +181,31 @@
             var l = [];
             var parent = document.getElementById("content");
             var children = parent.children;
-            for (var i = children.length - 1; i >= 0; i--) {
-                l.push(children[i]);
-            }
-            // replace children with containers
-            var container = document.createElement("div");
-            container.className = "section";
-            parent.appendChild(container);
-            for (var i = l.length - 1; i >= 0; i--) {
-                if(l[i].tagName.length == 2 && l[i].tagName.startsWith("H")){
-                    container = document.createElement("div");
-                    l[i].insertAdjacentElement("afterend", container);
-                    if(l[i].tagName == "H5") {
-                        container.id = l[i].id + "_content";
-                        l[i].addEventListener("click", on_header_click, true);
-                        l[i].className = "clickable";
-                        container.className = "section_" + l[i].tagName + " hide";
-                        continue;
+            var container = false; // document.createElement("div");
+
+            for (var i = 0; i < children.length; i++) {
+                var node = children[i];
+                if(node.tagName.length == 2 && node.tagName.startsWith("H")) {
+                    container = false;
+                    if(node.tagName == "H5") {
+                        container = document.createElement("div");
+                        container.id = node.id + "_content";
+                        node.addEventListener("click", on_header_click, true);
+                        node.className = "clickable";
+                        container.className = "section_" + node.tagName + " hide";
+                        node.insertAdjacentElement("afterend", container);
                     }
+                } else if(container && node != container) {
+                    container.appendChild(node.cloneNode(true));
+                    l.push(node);
                 }
-                parent.removeChild(l[i]);
-                container.appendChild(l[i]);
             }
+            while(l.length > 0) {
+                var node = l.pop();
+                parent.removeChild(node);
+            };
+            // document.body.style.padding = "1em";
+            // setTimeout(function(){ document.body.style.padding = ""; }, 1);
         }
 
         function initialize_page() {
@@ -211,8 +214,6 @@
             convert_headers2sections();
             test_for_anchor();
         }
-
-        addEventListener("load", initialize_page);
     </script>
 </head>
 
@@ -220,8 +221,12 @@
     <div id="top">
         <h1><a href='/' title="Bo Wild's Music Production House and Home">Bo Wild</a></h1>
         <p>Music Production Home</p>
-    </div>
-    <nav id="menu"><input id='burger' type='checkbox'></input><ul><!--
+    </div><nav id="menu"><input id='burger' class='burger' type='checkbox'></input><svg xmlns='http://www.w3.org/2000/svg' onclick="document.getElementById('burger').checked = !document.getElementById('burger').checked">
+        <line class='line1' x1='0' y1='10%' x2='100%' y2='10%'></line>
+        <line class='line2' x1='0' y1='50%' x2='100%' y2='50%'></line>
+        <line class='line3' x1='0' y1='50%' x2='100%' y2='50%'></line>
+        <line class='line4' x1='0' y1='90%' x2='100%' y2='90%'></line>
+    </svg><ul><!--
     --><li><ul><!--
         --><li><a href='/composer'>Composer</a></li><!--
     --></ul></li><!--
@@ -234,18 +239,6 @@
         --></ul></li><!--
     --></ul></nav>
     <div id="content">
-        <script type="text/javascript">
-            // document.getElementById('content').style.opacity = "0";
-            // function init_document() {
-            //     var content = document.getElementById('content');
-            //     content.style.transition = "opacity 1s";
-            //     setTimeout(function(c) {c.style.opacity = "1";}, 250, content);
-            //     var content = document.getElementById('bottom');
-            //     content.style.transition = "opacity 1s";
-            //     setTimeout(function(c) {c.style.opacity = "1";}, 250, content);
-            // }
-            // document.addEventListener("load", init_document);
-        </script>
       <h2 id="your-style">Your Style</h2>
 
 <p>I believe we all have our own unique voice and style, our own unique expression.</p>
@@ -278,10 +271,9 @@
 
 <p>It&#39;s a wonderful thing to start close to an artist you love and learn from them (I <a href="/media/its_me.m4a" title="play: It&#39;s Me">wrote this one</a> as a Beatles influenced song), but it&#39;s important to me to write something that grows beyond your beginnings into the artist you are becoming. </p>
 
-
       <h2>Contact:</h2>
       <p>I'm available by:</p>
-      <ul><li><a href="/" title="contct">email</a>
+      <ul><li><a href="/" title="email_contact">email</a>
       </li><li><a href='https://t.me/bo_wild' target='_new'>Telegram</a>
       </li><li><a href='https://wa.me/16176425815' target='_new'>WhatsApp</a>
       </li><li>US number: <a href='tel:+16176425815' target='_new'>+1 (617) 642-5815</a>
@@ -290,9 +282,6 @@
       </p><p>If I'm in the studio or otherwise engaged, I will do my best to get back to you as soon as the session is over.</p>
     </div>
     <div id='bottom'>
-        <script type="text/javascript">
-            // document.getElementById('bottom').style.opacity = "0";
-        </script>
         <div class='social'>
             <a href="http://facebook.com/bowildmusic" class='social' target='_new' style='background-image:url("/images/facebook_logo.png")'></a>
             <a href="https://twitter.com/bowildmusic" class='social' target='_new' style='background-image:url("/images/twitter_logo.svg")'></a>
@@ -303,6 +292,9 @@
         <div id='player_container'><div id='player'></div><a href='' target='_blank' id='score_link'></a></div>
         <a href="/terms" class='copyright'> Terms and Conditions &copy;</a>
     </div>
+    <script type="text/javascript">
+        initialize_page();
+    </script>
 </body>
 
 </html>
