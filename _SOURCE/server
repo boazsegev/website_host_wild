@@ -96,6 +96,7 @@ SCHEMA_ORG = {
 
 
 
+
 # The Rack application - this is where things get messy.
 #
 # This module does it all - it "bakes" pages into static pages as well as allows Rack to serve the updated version.
@@ -190,7 +191,6 @@ end
 
   # Render a template / resource
   def self.render name
-    puts "attempting #{name}"
     base = name[0..(-1-(File.extname(name).length))]
     data = nil
     @extensions.keys.each { |k| data = try_name(name, k) || try_name(base, k); break if data }
@@ -204,12 +204,24 @@ end
     @extensions[ext].call(name)
   end
 
+  # saves a compressed variation of the file.
+  def self.save_compressed_variant filename
+    # gzip resources for gzipped responses (TODO? brotli)
+    if(File.file?(filename) && File.size?(filename).to_i >= 16384)
+      `gzip -kf -9 #{filename}`
+      if(File.file?("#{filename}.gz") && File.size?("#{filename}.gz").to_i + 8192 >= File.size?(filename).to_i)
+        File.delete("#{filename}.gz")
+      end
+    end
+  end
+
   # Save a (rendered) result
   def self.save2static path, data
     return unless data
     path = "#{STATIC_ROOT}/#{path.gsub /^#{SOURCE_ROOT}\//, ''}"
     FileUtils.mkpath File.dirname(path)
     IO.binwrite path, data
+    save_compressed_variant(path)
     data
   end
 
@@ -348,6 +360,7 @@ end
       data
     end
   end
+
 
 end
 
