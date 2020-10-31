@@ -26,6 +26,82 @@ The following are some rough demos for songs I enjoyed writing.
 
 I hope you enjoy listening to these songs as much as I enjoyed writing them.
 
+##### Broken Rings
+
+Sometimes when things don't work out, it's time to go chance those dreams you thought you sacrificed along the way.
+
+[**Broken Rings** / Me](/media/broken_rings.m4a)
+
+Lyrics, Composition, Production and Performance: Bo Wild
+
+> **V1.**
+>
+> You say there was a time, babe 
+>
+> When I was yours and you were mine, babe
+>
+> Tell me when you stooped to love me, dear
+>
+> ‘Cause I remember New Orleans
+>
+> The night you woke me up in screams
+>
+> Oh, how you held me tight an' cried away your fears
+
+> **Alt Ch.**
+>
+> Said you wanted me to be your man
+>
+> Said I'm the one who understands
+>
+> And then you tore your clothes
+>
+> With someone new behind closed doors
+>
+> And lied
+
+> **V.2**
+>
+> I thought you said you do, Babe
+>
+> Somehow now I see we're through, An'
+>
+> All that's left to say are silent tears
+>
+> But I remember nights in June
+>
+> When you and I would touch the moon
+>
+> After skinny dipping in the open sea
+
+> **Ch.**
+>
+> So I will pawn these broken rings
+>
+> And dust away my childhood dreams
+>
+> Say goodbye and shut the door
+>
+> 'Cause what I need is something more than this
+>
+> Your faithless kiss
+
+> **Br.**
+>
+> You know I loved you girl
+>
+> You know I love you
+
+> **Ch.**
+>
+> Still I will pawn these broken rings
+>
+> And dust away my childhood dreams
+>
+> Say goodbye and shut the door
+>
+> 'Cause what I need is something more than this
+
 ##### Hunger and Need
 
 Some stories are hard to talk about, but, somehow, they leak into my music and come out in song.
@@ -45,7 +121,7 @@ Lyrics, Composition, Production and Performance: Bo Wild
 > Truth is hard to swallow,
 > 
 > I taste the price of our disgrace.
-> 
+
 > **V.2**
 > 
 > To save our hearts I sell for dollars
@@ -55,13 +131,13 @@ Lyrics, Composition, Production and Performance: Bo Wild
 > Even god can't save me
 > 
 > If other men can steal her light
-> 
+
 > **Pre.**
 > 
 > From the shadows I watch her dance, 
 > 
 > She’s not dancing for me
-> 
+
 > **Ch.**
 > 
 > Selling our souls, a smile at a time
@@ -71,7 +147,7 @@ Lyrics, Composition, Production and Performance: Bo Wild
 > I'm losing my mind, a smile at a time
 > 
 > A slave to my hunger and need
-> 
+
 > **V.3**
 > 
 > With every breathe she's loosing thunder
@@ -81,13 +157,13 @@ Lyrics, Composition, Production and Performance: Bo Wild
 > I'm losing all I ever wanted
 > 
 > I cry as she slips away
-> 
+
 > **Pre.**
 > 
 > From the shadows I watch her dance, 
 > 
 > She’s not dancing for me
-> 
+
 > **Ch.**
 > 
 > Selling our souls, a smile at a time
@@ -97,7 +173,7 @@ Lyrics, Composition, Production and Performance: Bo Wild
 > I'm losing my mind, a smile at a time
 > 
 > A slave to my hunger and need
-> 
+
 > **Br.**
 > 
 > I blame the skies and curse the heavens,
@@ -109,7 +185,7 @@ Lyrics, Composition, Production and Performance: Bo Wild
 > But I’m the one who can’t provide
 > 
 > Yes, I’m the one who can’t provide
-> 
+
 > **Ch.**
 > 
 > Selling our souls, a smile at a time
@@ -130,6 +206,72 @@ Lyrics, Composition, Production and Performance: Bo Wild
 > 
 > A slave to my hunger and need
 > 
+
+##### More Than I Can Say (Words I Learned)
+
+Some emotions don't fit inside the words we learned to say.
+
+[**More Than I Can Say** / Me](/media/more_than_i_can_say.m4a)
+
+Lyrics, Composition, Production and Performance: Bo Wild
+
+> **V.1**
+>
+> Girl tonight I'll take you by the hand and make you shine
+>
+> Dancing in the park with summer stars
+>
+> Sitting on a wooden bench and swimming in your eyes
+>
+> Watching while the world just strolls on by
+
+> **Ch.**
+>
+> Don't you know I love you more than I could say, love
+>
+> Words I learned refuse to say enough.
+>
+> Don't you know I love you more than I could say
+>
+> Let me whisper with my touch
+
+> **V.2**
+>
+> Move a little closer I don't want to say goodbye
+>
+> Let me heal my scars in your embrace
+>
+> Let me taste your kindness with my hands around your waist
+>
+> Can't you feel us falling in to grace?
+
+> **Ch.**
+>
+> Don't you know I love you more than I could say, love
+>
+> Words I learned refuse to say enough.
+>
+> Don't you know I love you more than I could say
+>
+> Let me whisper with my touch
+
+> **Br.**
+>
+> I never thought you'd love me
+>
+> You're more than I deserve.
+
+> **Ch.**
+>
+> Don't you know I love you more than I could say, love
+>
+> Words I learned refuse to say enough.
+>
+> Don't you know I love you more than I could say
+>
+> Let me whisper with my touch
+>
+> I love you
 
 ##### It's Me
 
@@ -218,7 +360,7 @@ I know, in my __head__, that sometimes it just doesn't fit... but in my __heart_
 > Outside snow, inside we felt the heat
 >
 > Now it's broken on the floor
->
+
 > **V.2**
 >
 > Scrambled eggs and little lies
@@ -230,7 +372,7 @@ I know, in my __head__, that sometimes it just doesn't fit... but in my __heart_
 > Left us broken on the floor
 >
 > Broken on the floor
->
+
 > **Ch.**
 >
 > I close my eyes
@@ -246,7 +388,7 @@ I know, in my __head__, that sometimes it just doesn't fit... but in my __heart_
 > I know it's time to let it go
 >
 > Should let it go
->
+
 > **V.3**
 >
 > Desperate heat through summer nights
@@ -258,7 +400,7 @@ I know, in my __head__, that sometimes it just doesn't fit... but in my __heart_
 > Now it's broken on the floor
 >
 > Broken on the floor
->
+
 > **Ch.**
 >
 > I close my eyes
@@ -274,7 +416,7 @@ I know, in my __head__, that sometimes it just doesn't fit... but in my __heart_
 > I know it's time to let it go
 >
 > Should let it go
->
+
 > **Br.**
 >
 > No this was never meant to last
@@ -284,7 +426,7 @@ I know, in my __head__, that sometimes it just doesn't fit... but in my __heart_
 > God, this love of mine
 >
 > I wish we had more time
->
+
 > **Ch.**
 >
 > I close my eyes
@@ -300,7 +442,7 @@ I know, in my __head__, that sometimes it just doesn't fit... but in my __heart_
 > I know it's time to let it go
 >
 > Should let it go
->
+
 > **Ch.Alt.**
 >
 > I close my eyes
@@ -316,7 +458,6 @@ I know, in my __head__, that sometimes it just doesn't fit... but in my __heart_
 > I’m brave enough to let it go
 >
 > I let it go
->
 
 ##### Turned Gray
 
@@ -413,7 +554,6 @@ Lyrics, Composition, Production and Performance: Bo Wild
 > 
 > on my knees
 
-
 > **Ch.**
 > 
 > She was a lost soul
@@ -427,7 +567,6 @@ Lyrics, Composition, Production and Performance: Bo Wild
 > Lost soul
 > 
 > Lost Soul
-
 
 > **V.2.**
 > 
@@ -447,11 +586,9 @@ Lyrics, Composition, Production and Performance: Bo Wild
 > 
 > on my knees
 
-
 > **Ch.**
 > 
 > She was a lost soul...
-
 
 > **Br.**
 > 
@@ -465,12 +602,10 @@ Lyrics, Composition, Production and Performance: Bo Wild
 > 
 > I knew that it could never be
 
-
 > **Ch.**
 > 
 > She was a lost soul...
 
- 
 > **V.3.**
 > 
 > She broke my heart
@@ -489,11 +624,9 @@ Lyrics, Composition, Production and Performance: Bo Wild
 > 
 > on my knees
 
-
 > **Ch.**
 > 
 > She was a lost soul...
-
 
 ##### Morning Sunshine
 

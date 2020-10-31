@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html>
-
-<head>
+<html><head>
     <meta charset="utf-8">
     <title><%= page.title || "Bo Wild - Songwriter, Music Producer and Explorer" %></title>
     <script type="application/ld+json"><%= SCHEMA_ORG %></script>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=2.0, user-scalable=yes, minimal-ui=yes" name="viewport" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=2.0, user-scalable=yes" name="viewport" />
     <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' />
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' />
     <link href='/styles/main.css' rel='stylesheet' media="all" />
@@ -19,7 +17,6 @@
     <style type="text/css" media="screen">
         html {background-image: url(<%= page.background || "/images/background.jpg"%>); }
     </style>
-
     <script type="text/javascript">
         player = undefined;
         function play_file(e) {
@@ -220,6 +217,7 @@
             convert_images();
             convert_headers2sections();
             test_for_anchor();
+            return true;
         }
     </script>
 </head>
