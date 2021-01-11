@@ -16,7 +16,9 @@ I believe musical expression can bring our innermost truths to light.
 
 Here are examples of my work:
 
+*  [I Close My Eyes (original, band)](/media/i_close_my_eyes_demo.m4a "play: I Close My Eyes")
 *  [Hunger and Need (original)](/media/hunger_and_need.m4a "play: Hunger and Need")
 *  [Silver Dreams (original, solo)](/media/silver_dreams.m4a "play: Silver Dreams")
+*  [Broken Rings (original)](/media/broken_rings.m4a "play: Broken Rings")
 *  [Don't Fly (original)](/media/dont_fly.m4a "play: Don't Fly")
 *  [Lost Soul (original, band)](/media/lost_soul.m4a "play: Lost Soul")

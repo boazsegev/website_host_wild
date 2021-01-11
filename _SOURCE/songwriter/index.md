@@ -30,7 +30,7 @@ I hope you enjoy listening to these songs as much as I enjoyed writing them.
 
 Sometimes when things don't work out, it's time to go chance those dreams you thought you sacrificed along the way.
 
-[**Broken Rings** / Me](/media/broken_rings.m4a)
+[**Broken Rings** / Me](/media/broken_rings.m4a  "play: Broken Rings")
 
 Lyrics, Composition, Production and Performance: Bo Wild
 
@@ -40,7 +40,7 @@ Lyrics, Composition, Production and Performance: Bo Wild
 >
 > When I was yours and you were mine, babe
 >
-> Tell me when you stooped to love me, dear
+> Tell me when you stopped to love me, dear
 >
 > ‘Cause I remember New Orleans
 >
@@ -211,7 +211,7 @@ Lyrics, Composition, Production and Performance: Bo Wild
 
 Some emotions don't fit inside the words we learned to say.
 
-[**More Than I Can Say** / Me](/media/more_than_i_can_say.m4a)
+[**More Than I Can Say** / Me](/media/more_than_i_can_say.m4a "play: More Than I Can Say")
 
 Lyrics, Composition, Production and Performance: Bo Wild
 
@@ -349,7 +349,7 @@ It so hard for me to give up on relationships.
 
 I know, in my __head__, that sometimes it just doesn't fit... but in my __heart__, it's so hard to let go.
 
-[**I Close my Eyes (broken on the floor)** / Me (demo)](/media/i_close_my_eyes_demo.m4a)
+[**I Close my Eyes (broken on the floor)** / Me (demo)](/media/i_close_my_eyes_demo.m4a "play: I Close My Eyes")
 
 > **V.1**
 >
@@ -458,6 +458,134 @@ I know, in my __head__, that sometimes it just doesn't fit... but in my __heart_
 > I’m brave enough to let it go
 >
 > I let it go
+
+##### Don't Fly
+
+Inspired by the amazing, soul shattering, and highly recommended book ["All the Bright Places" by Jennifer Niven](https://en.wikipedia.org/wiki/All_the_Bright_Places).
+
+[**Don't Fly** / Me](/media/dont_fly.m4a "play: Don't Fly")
+
+Lyrics, Composition, Production and Performance: Bo Wild
+
+> **V.1**
+>
+> Standing on this roof top, arms that spread like wings
+>
+> Fighting this desire to take that final flight
+>
+> I beg for her to hear me over the sound of all our fears
+
+> **Pre.1**
+>
+> I sing away the darkness
+>
+> Try to hold the sky
+>
+> The world is too big
+>
+> She holds me as she cries 
+
+> **Ch**
+>
+> Please, don't fly
+>
+> Please, don't fly
+>
+> Please, don't fly
+>
+> Don't fly
+>
+> Don't
+
+> **V.2**
+>
+> There 're days when we are golden, rainbow footsteps where we run
+>
+> There 're days when we are fearless, lifting fists against the sun
+>
+> But now the smiles are failing, there's a wall behind these eyes.
+
+> **Pre.2**
+>
+> I sing away the darkness
+>
+> Try to hold the sky
+>
+> Never show my weakness
+>
+> And struggle as she cries     
+
+> **Ch**
+>
+> Please, don't fly
+>
+> Please, don't fly
+>
+> Please, don't fly
+>
+> Don't fly
+>
+> Don’t
+
+> **Br.1**
+>
+> God, I don't know what I'm doing.
+>
+> This pain is written in my bones.
+>
+> I don't want my pain to touch her. 
+>
+> Can't she see I'm not that strong?
+>
+> As she whispers to hold on
+
+> **V.3**
+>
+> I'm standing in this shadow, where pain and troubles hum and ring
+>
+> And my shadow's tilting falling, she wants to fight but she can't win
+>
+> I'm bending on this rooftop, my arms are golden wings
+
+> **Br.2**
+>
+> I am different 
+>
+> I’m an outcast
+>
+> My only home is in her smile
+>
+> She’s my shelter 
+>
+> She’s my heart beat
+>
+> I hear it's rhythm, soft and wild
+>
+> Whispering
+
+> **Ch**
+>
+> Please, don't fly
+>
+> Please, don't fly
+>
+> Please, don't fly
+>
+> Don't fly
+>
+> Don’t
+>
+> Please, don't fly
+>
+> Please, don't fly
+>
+> Please, don't fly
+>
+> Don't fly
+>
+> Don’t
+>
+> Fly
 
 ##### Turned Gray
 
