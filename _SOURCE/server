@@ -206,6 +206,7 @@ end
 
   # saves a compressed variation of the file.
   def self.save_compressed_variant filename
+    return #skip
     # gzip resources for gzipped responses (TODO? brotli)
     if(File.file?(filename) && File.size?(filename).to_i >= 16384)
       `gzip -kf -9 #{filename}`
