@@ -8,6 +8,8 @@ title: Bo Wild - Songwriter
 
 I believe we all have our own unique voice, that we have an inner truth that we yearn to express and it is unique to who we are.
 
+Songs I wrote for myself can be heard on [![logo:Apple Music](/images/apple_music.svg)](https://music.apple.com/us/artist/bo-wild/1602428458) [![logo:Spotify](/images/spotify.svg)](https://open.spotify.com/artist/06LFekW9oLivQ96QMf2RcH) [![logo:YouTube Music](/images/youtube_music.svg)](https://music.youtube.com/playlist?list=OLAK5uy_mk6iRCKmpjBGdbjl3oaRKNTM7iFuLbxNo) [![logo:Yandex Music](/images/yandex_music.svg)](https://music.yandex.com/artist/15535336)
+
 ## Focusing Your Expression
 
 There is something very intimate about writing a song.
@@ -25,82 +27,6 @@ I will never force my opinions - after all, **I'm here to serve your vision**. H
 The following are some rough demos for songs I enjoyed writing.
 
 I hope you enjoy listening to these songs as much as I enjoyed writing them.
-
-##### Broken Rings
-
-Sometimes when things don't work out, it's time to go chance those dreams you thought you sacrificed along the way.
-
-[**Broken Rings** / Me](/media/broken_rings.m4a  "play: Broken Rings")
-
-Lyrics, Composition, Production and Performance: Bo Wild
-
-> **V1.**
->
-> You say there was a time, babe 
->
-> When I was yours and you were mine, babe
->
-> Tell me when you stopped to love me, dear
->
-> ‘Cause I remember New Orleans
->
-> The night you woke me up in screams
->
-> Oh, how you held me tight an' cried away your fears
-
-> **Alt Ch.**
->
-> Said you wanted me to be your man
->
-> Said I'm the one who understands
->
-> And then you tore your clothes
->
-> With someone new behind closed doors
->
-> And lied
-
-> **V.2**
->
-> I thought you said you do, Babe
->
-> Somehow now I see we're through, An'
->
-> All that's left to say are silent tears
->
-> But I remember nights in June
->
-> When you and I would touch the moon
->
-> After skinny dipping in the open sea
-
-> **Ch.**
->
-> So I will pawn these broken rings
->
-> And dust away my childhood dreams
->
-> Say goodbye and shut the door
->
-> 'Cause what I need is something more than this
->
-> Your faithless kiss
-
-> **Br.**
->
-> You know I loved you girl
->
-> You know I love you
-
-> **Ch.**
->
-> Still I will pawn these broken rings
->
-> And dust away my childhood dreams
->
-> Say goodbye and shut the door
->
-> 'Cause what I need is something more than this
 
 ##### Hunger and Need
 

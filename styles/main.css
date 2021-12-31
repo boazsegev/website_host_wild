@@ -312,7 +312,13 @@
   .banner3_big, img[src*="#banner3_big"] {
     width: 60%; }
   .banner3_small, img[src*="#banner3_small"] {
-    width: 30%; } }
+    width: 30%; }
+  .logo {
+    height: 1.5em;
+    transition: background 0.25s;
+    vertical-align: middle; }
+    .logo:hover, .logo:active {
+      background: rgba(128, 128, 128, 0.8); } }
 
 @media only screen and (max-width: 768px) {
   #top h1 {

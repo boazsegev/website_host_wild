@@ -402,5 +402,13 @@ input.burger, input.burger+svg {
     width: 30%;
   }
 
+  .logo {
+    height: 1.5em;
+    transition: background 0.25s;
+    vertical-align: middle;
+    &:hover , &:active {
+      background: rgba(128, 128, 128, 0.8);
+    }
+  }
 
 }

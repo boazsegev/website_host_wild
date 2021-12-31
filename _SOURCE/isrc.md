@@ -43,4 +43,10 @@ This doesn't necessarily reflect copyright for the song or composition, as mecha
 |    **ISRC**     |      **Track Name**      |       **Owner**       |      **Comments**     |
 |-----------------|--------------------------|-----------------------|-----------------------|
 | QZ-AYA-20-10001 | Hunger and Need          | Bo Wild (me)          |      (82+ BPM)        |
-| QZ-AYA-20-10002 | Broken Rings             | Bo Wild (me)          |      (72  BPM)        |
+| QZ-AYA-20-10002 | Broken Rings (demo)      | Bo Wild (me)          |      (72  BPM)        |
+
+## QZ-AYA-21-XXXXX
+
+|    **ISRC**     |      **Track Name**      |       **Owner**       |      **Comments**     |
+|-----------------|--------------------------|-----------------------|-----------------------|
+| QZ-AYA-21-12310 | Broken Rings             | Bo Wild (me)          |      (74+ BPM)        |
